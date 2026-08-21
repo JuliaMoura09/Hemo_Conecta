@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="24dp"
+    android:background="@drawable/back_foto">
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/logo" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/textLogo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:src="@drawable/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sua doação salva até 10 vidas."
+        app:layout_constraintBottom_toTopOf="@+id/linear2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLogo1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textLogo1"
+        android:gravity="center"
+        android:id="@+id/linear2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-mail"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="24dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="seu@email.com"
+            android:textColor="@color/cinza"
+            android:textColorHint="@color/cinza"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/white"
+            android:padding="18dp"
+            android:inputType="text"
+            android:id="@+id/emailLogin_input"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Senha"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="24dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="********"
+            android:textColor="@color/cinza"
+            android:textColorHint="@color/cinza"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/white"
+            android:padding="18dp"
+            android:inputType="textPassword"
+            android:id="@+id/senhaLogin_input"
+            android:layout_marginTop="12dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/vermelho"
+            android:padding="18dp"
+            android:textSize="18sp"
+            android:layout_marginTop="24dp"
+            android:id="@+id/login_bt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Esqueceu a senha?"
+            android:textSize="14sp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/vermelho"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Cadastre-se"
+            android:textSize="14sp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
