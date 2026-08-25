@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">Hemo_Conecta</string>
+    <string name="app_name">HemoConecta</string>
+    <string name="title_carteirinha">Carteirinha:\nDoador de Sangue</string>
+    <string name="doador_sangue">Doador de Sangue</string>
+    <string name="nome_doador">Rubi Silva</string>
+    <string name="registro_doador">Registro Doador</string>
+    <string name="rd_doador">1.234.567-8/ES</string>
+    <string name="data_cadastro">Data de Cadastro</string>
+    <string name="data_doador">10/02/20</string>
+    <string name="tipo_sanguineo">Tipo Sanguíneo</string>
+    <string name="sangue_doador">O+</string>
+    <string name="title_carteirinha_medula">Carteirinha:\nDoador de Medula Óssea</string>
+    <string name="doador_medula">Doador de Medula Óssea</string>
+    <string name="registro_redome">Registro REDOME</string>
+    <string name="numero_redome">9432</string>
+    <string name="data_cadastro">Data de Cadastro</string>
+    <string name="data_doador_medula">10/02/20</string>
+    <string name="status">Status</string>
+    <string name="status_doador">Ativo</string>
+    <string name="baixar_pdf">Baixar PDF</string>
+    <string name="atualizar">Atualizar</string>
 </resources>
