@@ -130,7 +130,7 @@
 
                 </LinearLayout>
 
-                <!-- barra de progresso -->
+                <!-- barra de progress-->
 
                 <FrameLayout
                     android:layout_width="match_parent"
