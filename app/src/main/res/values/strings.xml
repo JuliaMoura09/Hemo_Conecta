@@ -20,4 +20,56 @@
     <string name="atualizar">Atualizar</string>
     <string name="title_carteirinha_medula_sangue">Carteirinha:\nDoador de Medula Óssea e  de Sangue</string>
     <string name="doador_medula_sangue">Doador de Medula Óssea e de Sangue</string>
+
+    <!-- tela inicial -->
+
+    <string name="ola">Olá,</string>
+    <string name="nome_usuario">Rubi Silva</string>
+    <string name="tipo_sanguineo_usuario">O+</string>
+
+    <string name="proxima_doacao">
+    Você poderá fazer sua próxima doação de sangue em:
+</string>
+
+    <string name="dias_proxima_doacao">12</string>
+    <string name="dias">dias</string>
+
+    <string name="agendar_agora">Agendar agora</string>
+
+    <string name="acesso_rapido">Acesso Rápido</string>
+    <string name="historico">Histórico</string>
+    <string name="processo">Processo</string>
+    <string name="questionario">Questionário</string>
+    <string name="descontos">Descontos</string>
+
+    <string name="avisos_importantes">Avisos Importantes</string>
+    <string name="ver_todos">Ver todos</string>
+    <string name="sangue_o_positivo_requisitado">
+    Sangue O+ requisitado
+</string>
+    <string name="aviso_estoque">
+    O Hemocentro Central está com baixo estoque\ndo seu tipo sanguíneo.
+</string>
+
+    <string name="compatibilidade_encontrada">
+    Compatibilidade Encontrada!
+</string>
+    <string name="compatibilidade_descricao">
+    Toque para ver detalhes sobre doação de\nmedula.
+</string>
+
+
+    <string name="ranking_local">Ranking Local</string>
+    <string name="ranking_primeiro">Maria Costa</string>
+    <string name="pontos_primeiro">3.450 pts</string>
+    <string name="ranking_segundo">Cláudia Lima</string>
+    <string name="pontos_segundo">2.890 pts</string>
+    <string name="ranking_terceiro">Rubi Silva (Você)</string>
+    <string name="pontos_terceiro">1.250 pts</string>
+    <string name="primeiro_lugar">#1</string>
+    <string name="segundo_lugar">#2</string>
+    <string name="terceiro_lugar">#3</string>
+
+    <string name="notificacoes">Notificações</string>
+
 </resources>

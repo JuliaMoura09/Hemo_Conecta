@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+
+    <!-- menu inferior -->
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingTop="55dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="25dp">
+
+            <!-- cabeçalho -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ola"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nome_usuario"
+                        android:textColor="@color/text_title"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- tipo sanguíneo -->
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_quick_red"
+                    android:gravity="center"
+                    android:text="@string/tipo_sanguineo_usuario"
+                    android:textColor="@color/red"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- notificações -->
+
+                <ImageButton
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_button_refresh"
+                    android:contentDescription="@string/notificacoes"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_notifications"
+                    app:tint="@color/text_dark" />
+
+            </LinearLayout>
+
+
+            <!-- cartão próxima doação -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_doacao"
+                android:elevation="6dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/proxima_doacao"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dias_proxima_doacao"
+                        android:textColor="@color/white"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="@string/dias"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <!-- barra de progresso -->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/bg_progress">
+
+                    <View
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_progress_fill" />
+
+                </FrameLayout>
+
+                <!-- botão -->
+
+                <TextView
+                    android:layout_width="101dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_agendar"
+                    android:gravity="center"
+                    android:text="@string/agendar_agora"
+                    android:textColor="@color/button_text"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <!-- acesso rápido -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/acesso_rapido"
+                android:textColor="@color/text_title"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- histórico -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_quick_red"
+                        android:padding="17dp"
+                        android:src="@drawable/ic_blood"
+                        app:tint="@color/quick_red_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/historico"
+                        android:textColor="@color/text_dark"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <!-- processo -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_quick_blue"
+                        android:padding="17dp"
+                        android:src="@drawable/ic_document"
+                        app:tint="@color/quick_blue_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/processo"
+                        android:textColor="@color/text_dark"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <!-- questionário -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_quick_purple"
+                        android:padding="17dp"
+                        android:src="@drawable/ic_clipboard"
+                        app:tint="@color/quick_purple_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/questionario"
+                        android:textColor="@color/text_dark"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <!-- descontos -->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_quick_yellow"
+                        android:padding="17dp"
+                        android:src="@drawable/ic_gift"
+                        app:tint="@color/quick_yellow_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/descontos"
+                        android:textColor="@color/text_dark"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- avisos importantes -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/avisos_importantes"
+                    android:textColor="@color/text_title"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ver_todos"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+
+            <!-- aviso de sangue -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_aviso"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_quick_yellow"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_warning"
+                    app:tint="@color/warning_icon" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sangue_o_positivo_requisitado"
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/aviso_estoque"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- compatibilidade -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/bg_compatibilidade"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_quick_red"
+                    android:padding="11dp"
+                    android:src="@drawable/ic_blood"
+                    app:tint="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compatibilidade_encontrada"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/compatibilidade_descricao"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="›"
+                    android:textColor="@color/white"
+                    android:textSize="28sp" />
+
+            </LinearLayout>
+
+
+            <!-- ranking -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="215dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_ranking"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <!-- título -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_trophy"
+                        app:tint="@color/ranking_gold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/ranking_local"
+                        android:textColor="@color/text_title"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ver_todos"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <!-- primeiro -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/primeiro_lugar"
+                        android:textColor="@color/ranking_gold"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ranking_primeiro"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pontos_primeiro"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- segundo -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/segundo_lugar"
+                        android:textColor="@color/ranking_second"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ranking_segundo"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pontos_segundo"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- terceiro / usuário -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:background="@drawable/bg_ranking_selected"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/terceiro_lugar"
+                        android:textColor="@color/ranking_third"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ranking_terceiro"
+                        android:textColor="@color/red_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pontos_terceiro"
+                        android:textColor="@color/text_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="66dp"
+        android:background="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,4 +17,28 @@
     <color name="button_background">#F8FAFC</color>
     <color name="button_border">#D1D5DB</color>
     <color name="card_shadow">#D1D5DB</color>
+
+
+    <!-- home -->
+    <color name="text_secondary">#64748B</color>
+    <color name="text_dark">#374151</color>
+    <color name="red_dark">#B91419</color>
+    <color name="red_light">#FFE1E1</color>
+    <color name="button_text">#B91419</color>
+    <color name="progress_background">#A9161B</color>
+    <color name="quick_red_background">#FFE1E1</color>
+    <color name="quick_red_icon">#EF233C</color>
+    <color name="quick_blue_background">#DDEBFF</color>
+    <color name="quick_blue_icon">#3B82F6</color>
+    <color name="quick_purple_background">#F0E1FF</color>
+    <color name="quick_purple_icon">#9333EA</color>
+    <color name="quick_yellow_background">#FFF1BF</color>
+    <color name="quick_yellow_icon">#EAB308</color>
+    <color name="warning_background">#FFF1C7</color>
+    <color name="warning_icon">#F59E0B</color>
+    <color name="ranking_gold">#EAB308</color>
+    <color name="ranking_second">#94A3B8</color>
+    <color name="ranking_third">#DC2626</color>
+    <color name="ranking_selected">#FFF0F0</color>
+
 </resources>
