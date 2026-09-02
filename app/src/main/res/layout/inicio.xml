@@ -79,7 +79,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="10dp"
-                    android:background="@drawable/bg_button_refresh"
+                    android:background="@drawable/bg_buttom_notifications"
                     android:contentDescription="@string/notificacoes"
                     android:padding="12dp"
                     android:src="@drawable/ic_notifications"
@@ -381,8 +381,7 @@
                 <ImageView
                     android:layout_width="42dp"
                     android:layout_height="42dp"
-                    android:background="@drawable/bg_quick_red"
-                    android:padding="11dp"
+                    android:padding="8dp"
                     android:src="@drawable/ic_blood"
                     app:tint="@color/white" />
 
