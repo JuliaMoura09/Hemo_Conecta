@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/back_foto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Perfil -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="14dp">
+
+                <TextView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/iniciais"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_perfil" />
+
+                <!-- Tipo Sanguíneo -->
+                <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:translationX="25dp"
+                    android:translationY="28dp"
+                    android:gravity="center"
+                    android:text="@string/tipo_sanguineo_perfil"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_tipo_sanguineo" />
+            </FrameLayout>
+
+            <!-- Nome do Usuário -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nome_usuario"
+                android:textColor="#20283A"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <!-- E-mail -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/text_description"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:layout_marginTop="3dp" />
+
+            <!-- Card Nível -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="112dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_card_nivel">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nivel_perfil"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nome_nivel_perfil"
+                            android:textColor="@color/quick_red_icon"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="1dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/qnt_pontos"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pontos_totais"
+                            android:textColor="@color/black"
+                            android:textSize="9sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Barra de Progresso -->
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:id="@+id/progressoNivel"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="9dp"
+                    android:max="1500"
+                    android:progress="1250"
+                    android:progressTint="@color/quick_red_icon"
+                    android:backgroundTint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/qnt_pontos_proximo_nivel"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_marginTop="3dp" />
+            </LinearLayout>
+
+
+            <!-- Medalhas -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medalhas"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Primeira Linha de Medalhas-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Primeira Medalha -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="132dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_medalha">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_blood"
+                        android:padding="10dp"
+                        android:background="@drawable/bg_icone_medalha"
+                        android:backgroundTint="@color/red_light"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/primeira_medalha"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/primeira_medalha_descricao"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="1dp" />
+
+                <!-- Segunda Medalha -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="132dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_medalha">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:src="@drawable/ic_star"
+                        android:padding="10dp"
+                        android:scaleType="centerInside"
+                        android:backgroundTint="@color/warning_background"
+                        android:background="@drawable/bg_icone_medalha" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/segunda_medalha"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/segunda_medalha_descricao"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="1dp" />
+
+
+                <!-- Terceira Medalha -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="132dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_medalha">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:src="@drawable/ic_heart"
+                        android:padding="10dp"
+                        android:scaleType="centerInside"
+                        android:backgroundTint="@color/red_light"
+                        android:background="@drawable/bg_icone_medalha" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/terceira_medalha"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/terceira_medalha_descricao"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Segunda Linha de Medalhas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <!-- Quarta Medalha - Bloqueada -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="132dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_medalha">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_padlock"
+                        android:padding="10dp"
+                        android:backgroundTint="#F1F5F9"
+                        android:background="@drawable/bg_icone_medalha" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quarta_medalha"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quarta_medalha_descricao"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:gravity="center" />
+                </LinearLayout>
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="1dp" />
+
+                <!-- Quinta Medalha - Bloqueada -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="132dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_medalha">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_padlock"
+                        android:padding="10dp"
+                        android:backgroundTint="#F1F5F9"
+                        android:background="@drawable/bg_icone_medalha" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quinta_medalha"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quinta_medalha_descricao"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="1dp" />
+
+                <!-- Sexta Medalha - Bloqueada -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="132dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_medalha">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_padlock"
+                        android:padding="10dp"
+                        android:backgroundTint="#F1F5F9"
+                        android:background="@drawable/bg_icone_medalha" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sexta_medalha"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sexta_medalha_descricao"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Botão - Sair da Conta -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSair"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="@string/sair_conta"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_botao_sair_conta" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

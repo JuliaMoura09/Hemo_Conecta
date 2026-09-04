@@ -71,6 +71,31 @@
     <string name="terceiro_lugar">#3</string>
 
     <string name="notificacoes">Notificações</string>
+
+    <!-- Tela de Perfil -->
+    <string name="iniciais">RS</string>
+    <string name="tipo_sanguineo_perfil">O+</string>
+    <string name="email">rubi_silva@gmail.com</string>
+    <string name="nivel_perfil">Nível 5</string>
+    <string name="nome_nivel_perfil">Heroína do Sangue</string>
+    <string name="qnt_pontos">1.250</string>
+    <string name="pontos_totais">pontos totais</string>
+    <string name="qnt_pontos_proximo_nivel">250 pontos para o próximo nível</string>
+    <string name="medalhas">Suas Medalhas</string>
+    <string name="primeira_medalha">Primeira Gota</string>
+    <string name="primeira_medalha_descricao">Realizou a primeira\ndoação</string>
+    <string name="segunda_medalha">Doador</string>
+    <string name="segunda_medalha_descricao">Faz a primeira\ndoação de plasma</string>
+    <string name="terceira_medalha">Herói da Medula</string>
+    <string name="terceira_medalha_descricao">Cadastrou no\nREDOME</string>
+    <string name="quarta_medalha">Recrutador</string>
+    <string name="quarta_medalha_descricao">Convidou 3 \namigos</string>
+    <string name="quinta_medalha">Doador</string>
+    <string name="quinta_medalha_descricao">Doou 3x em \num ano</string>
+    <string name="sexta_medalha">Lenda Viva</string>
+    <string name="sexta_medalha_descricao">20 doações\nrealizadas</string>
+    <string name="sair_conta">Sair da Conta</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
