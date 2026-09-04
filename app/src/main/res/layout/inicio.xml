@@ -585,7 +585,6 @@
         android:layout_height="66dp"
         android:background="@color/white"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/menu_bottom_navigation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
