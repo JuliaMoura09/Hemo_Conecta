@@ -39,7 +39,7 @@
 
     <!-- cards -->
     <color name="card_conteudos_start">#FFF5F5</color>
-    <color name="card_conteudos_end">#FD9090</color>
+    <color name="card_conteudos_end">#FBB1B1</color>
     <color name="card_shadow">#D1D5DB</color>
     <color name="card_red_start">#A80F13</color>
     <color name="card_red_end">#F31C23</color>

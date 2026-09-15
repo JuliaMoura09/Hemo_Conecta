@@ -99,4 +99,21 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- autores e títulos -->
+    <string name="autor1">Dra. Silva</string>
+    <string name="autor2">Dr. Costa</string>
+    <string name="autor3">Nutri. Santos</string>
+    <string name="autor4">Enf. Oliveira</string>
+
+    <string name="titulo1">Como funciona a doação de sangue</string>
+    <string name="titulo2">Mitos sobre a doção de medula óssea</string>
+    <string name="titulo3">O que comer antes de doar</string>
+    <string name="titulo4">Quem pode doar sangue?</string>
+    <string name="titulo5">O processo de transplante de medula</string>
+    <string name="titulo6">Cuidados após a doação</string>
+
+    <string name="categoria1">Processo de doação</string>
+    <string name="categoria2">Medula óssea</string>
+    <string name="categoria3">Pré-doação</string>
+    <string name="categoria4">Pós-doação</string>
 </resources>
