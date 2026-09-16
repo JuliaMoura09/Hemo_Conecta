@@ -32,6 +32,11 @@ class LoginFragment : Fragment() {
         binding.btnTelaCadastro.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment2)
         }
+
+        binding.loginBt.setOnClickListener {
+            findNavController().navigate(R.id.action_global_inicioFragment)
+        }
+
     }
 
     override fun onDestroyView() {

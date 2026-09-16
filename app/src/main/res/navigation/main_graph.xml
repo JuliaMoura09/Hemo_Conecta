@@ -6,6 +6,8 @@
     app:startDestination="@id/splashFragment">
 
     <fragment
+        app:popUpTo="@id/splashFragment"
+
         android:id="@+id/splashFragment"
         android:name="com.example.hemo_conecta.ui.SplashFragment"
         android:label="SplashFragment"
@@ -28,5 +30,12 @@
             android:id="@+id/cadastroFragment"
             android:name="com.example.hemo_conecta.ui.auth.CadastroFragment"
             android:label="CadastroFragment" />
+        <action
+            android:id="@+id/action_global_inicioFragment"
+            app:destination="@id/inicioFragment" />
     </navigation>
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.example.hemo_conecta.ui.InicioFragment"
+        android:label="InicioFragment" />
 </navigation>
