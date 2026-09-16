@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.hemo_conecta.R
 import com.example.hemo_conecta.databinding.FragmentCadastroBinding
 import com.example.hemo_conecta.databinding.FragmentLoginBinding
@@ -22,7 +23,13 @@ class CadastroFragment : Fragment() {
         return binding.root
     }
 
-    override fun onDestroyView() {
+    private fun initListener() {
+        binding.cadastroBt.setOnClickListener {
+            findNavController().navigate(R.id.action_global_inicioFragment)
+        }
+    }
+
+        override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

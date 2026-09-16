@@ -404,7 +404,7 @@
                 android:padding="18dp"
                 android:textSize="18sp"
                 android:layout_marginTop="24dp"
-                android:id="@+id/login_bt" />
+                android:id="@+id/cadastro_bt" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
