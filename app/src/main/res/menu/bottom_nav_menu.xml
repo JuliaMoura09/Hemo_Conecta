@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/inicioFragment"
+        android:icon="@drawable/ic_house"
+        android:title="Início" />
+
+    <item
+        android:id="@+id/carteirinhaFragment"
+        android:icon="@drawable/ic_card"
+        android:title="Carteirinha" />
+
+    <item
+        android:id="@+id/LocalizacaoFragment"
+        android:icon="@drawable/ic_map"
+        android:title="Mapa" />
+
+    <item
+        android:id="@+id/fragmentConteudosEducativos"
+        android:icon="@drawable/ic_lamp"
+        android:title="Artigos" />
+
+    <item
+        android:id="@+id/perfilFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Perfil" />
+</menu>

@@ -37,5 +37,20 @@
     <fragment
         android:id="@+id/inicioFragment"
         android:name="com.example.hemo_conecta.ui.InicioFragment"
-        android:label="InicioFragment" />
+        android:label="InicioFragment" >
+        <action
+            android:id="@+id/action_inicioFragment_to_cuponsFragment"
+            app:destination="@id/cuponsFragment" />
+        <action
+            android:id="@+id/action_inicioFragment_to_fragmentConteudosEducativos"
+            app:destination="@id/fragmentConteudosEducativos" />
+    </fragment>
+    <fragment
+        android:id="@+id/cuponsFragment"
+        android:name="com.example.hemo_conecta.CuponsFragment"
+        android:label="CuponsFragment" />
+    <fragment
+        android:id="@+id/fragmentConteudosEducativos"
+        android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
+        android:label="FragmentConteudosEducativos" />
 </navigation>
