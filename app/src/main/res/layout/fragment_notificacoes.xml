@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificacoesFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <!-- Cabeçalho -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Voltar"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_back" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Notificações"
+                        android:textColor="#111827"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- 1 - Compatibilidade Encontrada -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:background="#FF315C" />
+
+                        <ImageView
+                            android:id="@+id/iconHeart"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_icone_medalha"
+                            android:backgroundTint="@color/red_light"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_heart" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvTitle1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Compatibilidade Encontrada!"
+                                android:textColor="#111827"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:maxLines="2"
+                                android:text="Encontramos um paciente compatível com sua medula óssea. Por favor, entre em contato urgente."
+                                android:textColor="#9CA3AF"
+                                android:textSize="9sp" />
+
+                            <TextView
+                                android:id="@+id/tvTime1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Agora mesmo"
+                                android:textColor="#B0B0B0"
+                                android:textSize="7sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- 2 - Sangue O+ requisitado -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:background="#FFB000" />
+
+                        <ImageView
+                            android:id="@+id/iconWarning"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_icone_medalha"
+                            android:backgroundTint="#FFF4CC"
+                            android:padding="7dp"
+                            android:src="@drawable/ic_warning" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvTitle2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Sangue O+ requisitado"
+                                android:textColor="#111827"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:maxLines="2"
+                                android:text="O hemocentro Central está com baixo estoque de seu tipo sanguíneo. Sua ajuda é fundamental."
+                                android:textColor="#9CA3AF"
+                                android:textSize="9sp" />
+
+                            <TextView
+                                android:id="@+id/tvTime2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Há 2 horas"
+                                android:textColor="#B0B0B0"
+                                android:textSize="7sp" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- 3 - Você já pode doar -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:background="#FF315C" />
+
+                        <ImageView
+                            android:id="@+id/iconClock"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_icone_medalha"
+                            android:backgroundTint="@color/red_light"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_clock" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvTitle3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Você já pode doar novamente!"
+                                android:textColor="#111827"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:maxLines="2"
+                                android:text="Já se passaram 90 dias desde sua última doação. Agende sua próxima visita."
+                                android:textColor="#9CA3AF"
+                                android:textSize="9sp" />
+
+                            <TextView
+                                android:id="@+id/tvTime3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Ontem"
+                                android:textColor="#B0B0B0"
+                                android:textSize="7sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- 4 - Nova conquista -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:background="#FFB000" />
+
+                        <ImageView
+                            android:id="@+id/iconTrophy"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_icone_medalha"
+                            android:backgroundTint="#FFF4CC"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_trophy" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvTitle4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Nova conquista desbloqueada"
+                                android:textColor="#111827"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:maxLines="2"
+                                android:text="Parabéns! Você alcançou a marca de 10 doações e ganhou a medalha &quot;Doador Frequente&quot;."
+                                android:textColor="#9CA3AF"
+                                android:textSize="9sp" />
+
+                            <TextView
+                                android:id="@+id/tvTime4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Há 3 dias"
+                                android:textColor="#B0B0B0"
+                                android:textSize="7sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- 5 - Novo cupom -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:background="#19C878" />
+
+                        <ImageView
+                            android:id="@+id/iconCoupon"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_icone_medalha"
+                            android:backgroundTint="#E8FFF4"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_tag" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvTitle5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Novo cupom disponível"
+                                android:textColor="#111827"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:maxLines="2"
+                                android:text="Você tem 20% de desconto na Farmácia Saúde. Resgate na aba de Prêmios."
+                                android:textColor="#9CA3AF"
+                                android:textSize="9sp" />
+
+                            <TextView
+                                android:id="@+id/tvTime5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Há 1 semana"
+                                android:textColor="#B0B0B0"
+                                android:textSize="7sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
