@@ -47,7 +47,8 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.splashFragment,
                 R.id.loginFragment,
-                R.id.cadastroFragment -> {
+                R.id.cadastroFragment,
+                R.id.RecuperarSenhaFragment-> {
                     bottomNavigation.visibility = BottomNavigationView.GONE
                 }
 

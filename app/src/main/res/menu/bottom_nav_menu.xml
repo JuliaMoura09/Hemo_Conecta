@@ -7,12 +7,12 @@
         android:title="Início" />
 
     <item
-        android:id="@+id/carteirinhaFragment"
+        android:id="@+id/carteirinhaAmbosFragment"
         android:icon="@drawable/ic_card"
         android:title="Carteirinha" />
 
     <item
-        android:id="@+id/LocalizacaoFragment"
+        android:id="@+id/localizacaoFragment"
         android:icon="@drawable/ic_map"
         android:title="Mapa" />
 

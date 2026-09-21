@@ -1,24 +1,26 @@
 package com.example.hemo_conecta.ui.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.hemo_conecta.R
 import com.example.hemo_conecta.databinding.FragmentLoginBinding
+import com.example.hemo_conecta.databinding.FragmentRecuperarSenhaBinding
 
-class LoginFragment : Fragment() {
-    private var _binding: FragmentLoginBinding? = null
+class RecuperarSenhaFragment : Fragment() {
+    private var _binding: FragmentRecuperarSenhaBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentRecuperarSenhaBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,20 +31,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun initListener(){
-        binding.btnTelaCadastro.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment2)
+        binding.BtnRecuperar.setOnClickListener {
+            findNavController().navigate(R.id.action_RecuperarSenhaFragment_to_loginFragment)
         }
-
-        binding.btnRecuperarSenha.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_RecuperarSenhaFragment)
-        }
-
-        binding.loginBt.setOnClickListener {
-            findNavController().navigate(R.id.action_global_inicioFragment)
-        }
-
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

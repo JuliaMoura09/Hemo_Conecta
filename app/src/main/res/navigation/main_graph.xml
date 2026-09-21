@@ -5,52 +5,111 @@
     android:id="@+id/main_graph"
     app:startDestination="@id/splashFragment">
 
-    <fragment
-        app:popUpTo="@id/splashFragment"
+    <!-- ação global -->
+    <action
+        android:id="@+id/action_global_inicioFragment"
+        app:destination="@id/inicioFragment" />
 
+    <!-- tela de splash -->
+    <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.hemo_conecta.ui.SplashFragment"
         android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
+
         <action
             android:id="@+id/action_splashFragment_to_authentication"
-            app:destination="@id/authentication" />
+            app:destination="@id/authentication"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
-    <navigation android:id="@+id/authentication"
+
+    <!-- autenticação -->
+    <navigation
+        android:id="@+id/authentication"
         app:startDestination="@id/loginFragment">
+
         <fragment
             android:id="@+id/loginFragment"
             android:name="com.example.hemo_conecta.ui.auth.LoginFragment"
             android:label="LoginFragment">
+
             <action
                 android:id="@+id/action_loginFragment_to_cadastroFragment2"
                 app:destination="@id/cadastroFragment" />
+
+            <action
+                android:id="@+id/action_loginFragment_to_RecuperarSenhaFragment"
+                app:destination="@id/RecuperarSenhaFragment" />
+
         </fragment>
+
         <fragment
             android:id="@+id/cadastroFragment"
             android:name="com.example.hemo_conecta.ui.auth.CadastroFragment"
             android:label="CadastroFragment" />
+
+        <fragment
+            android:id="@+id/RecuperarSenhaFragment"
+            android:name="com.example.hemo_conecta.ui.auth.RecuperarSenhaFragment"
+            android:label="RecuperarSenhaFragment" />
+
         <action
-            android:id="@+id/action_global_inicioFragment"
-            app:destination="@id/inicioFragment" />
+            android:id="@+id/action_RecuperarSenhaFragment_to_loginFragment"
+            app:destination="@+id/loginFragment" />
+
     </navigation>
+
+    <!-- telas principais - dentro do app-->
     <fragment
         android:id="@+id/inicioFragment"
         android:name="com.example.hemo_conecta.ui.InicioFragment"
-        android:label="InicioFragment" >
-        <action
-            android:id="@+id/action_inicioFragment_to_cuponsFragment"
-            app:destination="@id/cuponsFragment" />
+        android:label="InicioFragment">
+
         <action
             android:id="@+id/action_inicioFragment_to_fragmentConteudosEducativos"
             app:destination="@id/fragmentConteudosEducativos" />
+
+        <action
+            android:id="@+id/action_inicioFragment_to_cuponsFragment"
+            app:destination="@id/cuponsFragment" />
+
+        <action
+            android:id="@+id/action_inicioFragment_to_carteirinhaAmbosFragment"
+            app:destination="@id/carteirinhaAmbosFragment" />
+
+        <action
+            android:id="@+id/action_inicioFragment_to_localizacaoFragment"
+            app:destination="@id/localizacaoFragment" />
+
+        <action
+            android:id="@+id/action_inicioFragment_to_perfilFragment2"
+            app:destination="@id/perfilFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/cuponsFragment"
-        android:name="com.example.hemo_conecta.CuponsFragment"
-        android:label="CuponsFragment" />
+
     <fragment
         android:id="@+id/fragmentConteudosEducativos"
         android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
         android:label="FragmentConteudosEducativos" />
+
+    <fragment
+        android:id="@+id/cuponsFragment"
+        android:name="com.example.hemo_conecta.CuponsFragment"
+        android:label="CuponsFragment" />
+
+    <fragment
+        android:id="@+id/carteirinhaAmbosFragment"
+        android:name="com.example.hemo_conecta.CarteirinhaAmbosFragment"
+        android:label="CarteirinhaAmbosFragment" />
+
+    <fragment
+        android:id="@+id/localizacaoFragment"
+        android:name="com.example.hemo_conecta.LocalizacaoFragment"
+        android:label="LocalizacaoFragment" />
+
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.hemo_conecta.PerfilFragment"
+        android:label="PerfilFragment" />
+
 </navigation>
