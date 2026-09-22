@@ -34,6 +34,10 @@ class RecuperarSenhaFragment : Fragment() {
         binding.BtnRecuperar.setOnClickListener {
             findNavController().navigate(R.id.action_RecuperarSenhaFragment_to_loginFragment)
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {
