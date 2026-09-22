@@ -74,6 +74,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="10dp"
+                    android:id="@+id/btn_notificacoes"
                     android:background="@drawable/bg_buttom_notifications"
                     android:contentDescription="@string/notificacoes"
                     android:padding="12dp"

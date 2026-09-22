@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
+import com.example.hemo_conecta.R
 import com.example.hemo_conecta.databinding.FragmentInicioBinding
 
 class InicioFragment : Fragment() {
@@ -21,7 +21,12 @@ class InicioFragment : Fragment() {
     ): View {
         _binding = FragmentInicioBinding.inflate(inflater, container, false)
 
-        val navController = findNavController()
+        binding.btnNotificacoes.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_inicioFragment_to_notificacoesFragment
+            )
+        }
+
         return binding.root
     }
 
