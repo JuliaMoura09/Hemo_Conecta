@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "215175259716",
+    "project_id": "hemoconecta",
+    "storage_bucket": "hemoconecta.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215175259716:android:ef1d4bb288fd46e54cfe11",
+        "android_client_info": {
+          "package_name": "com.example.hemo_conecta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB338DdwOXcvglflpgq5dp-LVTnwiEeP84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
