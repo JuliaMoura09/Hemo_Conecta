@@ -46,4 +46,23 @@
     <color name="card_yellow_start">#FF7A18</color>
     <color name="card_yellow_end">#FFB347</color>
 
+    <!-- tela de processo  -->
+    <color name="icon_voltar">#53606D</color>
+    <color name="titulo_processo">#273445</color>
+    <color name="texto_processo">#6F7D91</color>
+    <color name="icon_tempo">#FF4F4F</color>
+    <color name="fundo_tempo">#FFF1F1</color>
+    <color name="view_processo">#E7EBF0</color>
+    <color name="fundo_cadastro">#EDF5FF</color>
+    <color name="icon_cadastro">#5794FF</color>
+    <color name="fundo_triagem">#F5ECFF</color>
+    <color name="icon_triagem">#A965FF</color>
+    <color name="fundo_triagem_clinica">#FFF3E7</color>
+    <color name="icon_triagem_clinica">#FF9C43</color>
+    <color name="fundo_coleta">#FFF0F1</color>
+    <color name="icon_coleta">#FF5D68</color>
+    <color name="fundo_lanche">#E9FBF5</color>
+    <color name="icon_lanche">#35C990</color>
+
+
 </resources>

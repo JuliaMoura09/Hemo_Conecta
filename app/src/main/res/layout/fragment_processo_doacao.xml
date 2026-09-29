@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_foto"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="16dp">
+
+        <!-- título da página e informações adcionais -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- botão para voltar -->
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_icon"
+                android:backgroundTint="@color/white">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Voltar"
+                    android:src="@drawable/ic_back" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O processo"
+                    android:textColor="@color/titulo_processo"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="Simples, rápido e seguro."
+                    android:textColor="@color/texto_processo"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- cardview onde as informações serão armazenadas -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="17dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="17dp"
+                android:paddingTop="19dp"
+                android:paddingEnd="17dp"
+                android:paddingBottom="13dp">
+
+                <!-- informações de tempo -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tempo Estimado"
+                            android:textColor="@color/texto_processo"
+                            android:textSize="9sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="40 – 60 min"
+                            android:textColor="@color/titulo_processo"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/bg_icon"
+                        android:backgroundTint="@color/fundo_tempo">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_clock"
+                            app:tint="@color/icon_tempo" />
+                    </FrameLayout>
+                </LinearLayout>
+
+
+                <!-- linha que dá início as etapas de doação -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/view_processo" />
+
+                <!-- primeira etapa - cadastro -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/bg_icon"
+                            android:backgroundTint="@color/fundo_cadastro">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_document"
+                                app:tint="@color/icon_cadastro" />
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/view_processo" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="7dp"
+                        android:paddingTop="13dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cadastro"
+                            android:textColor="@color/titulo_processo"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:lineSpacingExtra="1dp"
+                            android:text="Apresentação de documento oficial com foto e atualização de dados."
+                            android:textColor="@color/texto_processo"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <!-- segunda etapa - pré-triagem -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_icon"
+                            android:backgroundTint="@color/fundo_triagem">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_pulse"
+                                app:tint="@color/icon_triagem" />
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/view_processo" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="7dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pré-Triagem"
+                            android:textColor="@color/titulo_processo"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:lineSpacingExtra="1dp"
+                            android:text="Verificação dos sinais vitais: pressão&#10;arterial, temperatura, frequência&#10;cardíaca, peso dosagem de&#10;hemoglobina."
+                            android:textColor="@color/texto_processo"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <!-- terceira etapa - triagem clínica -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_icon"
+                            android:backgroundTint="@color/fundo_triagem_clinica">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_heart"
+                                app:tint="@color/icon_triagem_clinica" />
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/view_processo" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="7dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Triagem Clínica"
+                            android:textColor="@color/titulo_processo"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:lineSpacingExtra="1dp"
+                            android:text="Entrevista individual e sigilosa sobre&#10;seu estado de saúde para verificar se&#10;a doação pode ser feita e assinatura do&#10;Termo de Consentimento Livre e&#10;Esclarecido."
+                            android:textColor="@color/texto_processo"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- quarta etapa - coleta de sangue -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_icon"
+                            android:backgroundTint="@color/fundo_coleta">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_blood"
+                                app:tint="@color/icon_coleta" />
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/view_processo" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="7dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coleta de Sangue"
+                            android:textColor="@color/titulo_processo"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:lineSpacingExtra="1dp"
+                            android:text="Doação feita através de punção com&#10;agulha em uma veia do braço com o&#10;material estéril e descartável. O volume&#10;de sangue coletado varia de 400 a&#10;470ml e o processo dura de 5 a&#10;15 minutos."
+                            android:textColor="@color/texto_processo"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <!-- quinta etapa - lanche e descanso -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_icon"
+                            android:backgroundTint="@color/fundo_lanche">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_coffee"
+                                app:tint="@color/icon_lanche" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="7dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="1dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lanche e Descanso"
+                            android:textColor="@color/titulo_processo"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:lineSpacingExtra="1dp"
+                            android:text="Após a doação, o doador faz um lanche&#10;para repor os níveis de glicemia e&#10;hidratação e permanece no Hemoes por&#10;pelo menos 15 minutos após o fim da&#10;doação. Essas medidas visam a&#10;diminuição do risco de problemas&#10;após a doação."
+                            android:textColor="@color/texto_processo"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>
