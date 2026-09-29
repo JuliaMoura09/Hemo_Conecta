@@ -44,6 +44,7 @@ class RecuperarSenhaFragment : Fragment() {
         }
     }
 
+
     private fun validateData() {
         val email = binding.inputRecuperarSenha.text.toString().trim()
 
