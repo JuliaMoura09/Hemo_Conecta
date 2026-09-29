@@ -8,7 +8,9 @@
     <!-- ação global -->
     <action
         android:id="@+id/action_global_inicioFragment"
-        app:destination="@id/inicioFragment" />
+        app:destination="@id/inicioFragment"
+        app:popUpTo="@id/loginFragment"
+        app:popUpToInclusive="true"/>
 
     <!-- tela de splash -->
     <fragment
@@ -20,6 +22,11 @@
         <action
             android:id="@+id/action_splashFragment_to_authentication"
             app:destination="@id/authentication"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_inicioFragment"
+            app:destination="@id/inicioFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -69,6 +76,14 @@
         <action
             android:id="@+id/action_inicioFragment_to_fragmentConteudosEducativos"
             app:destination="@id/fragmentConteudosEducativos" />
+
+        <action
+            android:id="@+id/action_inicioFragment_to_authentication"
+            app:destination="@id/authentication"
+            app:popUpTo="@id/inicioFragment"
+            app:popUpToInclusive="true"
+            />
+
 
         <action
             android:id="@+id/action_inicioFragment_to_cuponsFragment"
