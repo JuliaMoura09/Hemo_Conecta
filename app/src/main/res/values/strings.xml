@@ -1,5 +1,6 @@
-<!--suppress LanguageDetectionInspection -->
 <resources>
+
+    <!-- tela de carteirinha -->
     <string name="app_name">Carteirinha</string>
     <string name="title_carteirinha">Carteirinha:\nDoador de Sangue</string>
     <string name="doador_sangue">Doador de Sangue</string>
@@ -11,7 +12,7 @@
     <string name="sangue_doador">O+</string>
     <string name="title_carteirinha_medula">Carteirinha:\nDoador de Medula Óssea</string>
     <string name="doador_medula">Doador de Medula Óssea</string>
-    <string name="registro_redome">Registro REDOME</string>
+    <string name="registro_redome_carteirinha">Registro REDOME</string>
     <string name="numero_redome">9432</string>
     <string name="data_cadastro">Data de Cadastro</string>
     <string name="data_doador_medula">10/02/20</string>
@@ -22,43 +23,35 @@
     <string name="title_carteirinha_medula_sangue">Carteirinha:\nDoador de Medula Óssea e  de Sangue</string>
     <string name="doador_medula_sangue">Doador de Medula Óssea e de Sangue</string>
 
-    <!-- tela inicial -->
+    <!-- tela de dados do doador -->
+    <string name="titulo_dados_doador">Atualize suas informações de doador</string>
+    <string name="data_hemoes">Data de Cadastro no HEMOES</string>
+    <string name="registro_hemoes">Registro de Doador do HEMOES</string>
+    <string name="data_redome">Data de Cadastro no REDOME</string>
+    <string name="registro_redome">Registro de Doador do REDOME</string>
+    <string name="botao_atualizar">Atualizar Cadastro</string>
+    <string name="data_vazia">00/00/0000</string>
+    <string name="registro_vazio">000000-00</string>
 
+    <!-- tela inicial -->
     <string name="ola">Olá,</string>
     <string name="nome_usuario">Rubi Silva</string>
     <string name="tipo_sanguineo_usuario">O+</string>
-
-    <string name="proxima_doacao">
-    Você poderá fazer sua próxima doação de sangue em:
-</string>
-
+    <string name="proxima_doacao">Você poderá fazer sua próxima doação de sangue em:</string>
     <string name="dias_proxima_doacao">12</string>
     <string name="dias">dias</string>
-
     <string name="agendar_agora">Agendar agora</string>
-
     <string name="acesso_rapido">Acesso Rápido</string>
     <string name="historico">Histórico</string>
     <string name="processo">Processo</string>
     <string name="questionario">Questionário</string>
     <string name="descontos">Descontos</string>
-
     <string name="avisos_importantes">Avisos Importantes</string>
     <string name="ver_todos">Ver todos</string>
-    <string name="sangue_o_positivo_requisitado">
-    Sangue O+ requisitado
-</string>
-    <string name="aviso_estoque">
-    O Hemocentro Central está com baixo estoque\ndo seu tipo sanguíneo.
-</string>
-
-    <string name="compatibilidade_encontrada">
-    Compatibilidade Encontrada!
-</string>
-    <string name="compatibilidade_descricao">
-    Toque para ver detalhes sobre doação de\nmedula.
-</string>
-
+    <string name="sangue_o_positivo_requisitado">Sangue O+ requisitado</string>
+    <string name="aviso_estoque">O Hemocentro Central está com baixo estoque\ndo seu tipo sanguíneo.</string>
+    <string name="compatibilidade_encontrada">Compatibilidade Encontrada!</string>
+    <string name="compatibilidade_descricao">Toque para ver detalhes sobre doação de\nmedula.</string>
 
     <string name="ranking_local">Ranking Local</string>
     <string name="ranking_primeiro">Maria Costa</string>
@@ -70,10 +63,9 @@
     <string name="primeiro_lugar">#1</string>
     <string name="segundo_lugar">#2</string>
     <string name="terceiro_lugar">#3</string>
-
     <string name="notificacoes">Notificações</string>
 
-    <!-- Tela de Perfil -->
+    <!-- tela de perfil -->
     <string name="iniciais">RS</string>
     <string name="tipo_sanguineo_perfil">O+</string>
     <string name="email">rubi_silva@gmail.com</string>
@@ -82,6 +74,7 @@
     <string name="qnt_pontos">1.250</string>
     <string name="pontos_totais">pontos totais</string>
     <string name="qnt_pontos_proximo_nivel">250 pontos para o próximo nível</string>
+
     <string name="medalhas">Suas Medalhas</string>
     <string name="primeira_medalha">Primeira Gota</string>
     <string name="primeira_medalha_descricao">Realizou a primeira\ndoação</string>
@@ -97,10 +90,7 @@
     <string name="sexta_medalha_descricao">20 doações\nrealizadas</string>
     <string name="sair_conta">Sair da Conta</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <!-- autores e títulos -->
+    <!-- tela de conteúdos educativos - autores e títulos -->
     <string name="autor1">Dra. Silva</string>
     <string name="autor2">Dr. Costa</string>
     <string name="autor3">Nutri. Santos</string>
@@ -118,7 +108,7 @@
     <string name="categoria3">Pré-doação</string>
     <string name="categoria4">Pós-doação</string>
 
-    <!-- Questionário -->
+    <!-- páginas de questionário -->
     <string name="pagName">Pré-Triagem</string>
     <string name="text">Responda as perguntas e descubra se você está ou não apto a doar. </string>
 
@@ -134,4 +124,22 @@
     <!-- Apto e Não-apto -->
     <string name="condicao1">Você está apto para doar</string>
     <string name="condicao2">Voce não está apto para doar</string>
+
+    <!-- páginas de questionário -->
+    <string name="titulo_processo">O Processo</string>
+    <string name="subtitulo_processo">Simples, rápido e seguro.</string>
+    <string name="processo_tempo">Tempo Estimado</string>
+    <string name="processo_tempo_min">40 – 60 min</string>
+    <string name="titulo_cadastro">Cadastro</string>
+    <string name="descricao_cadastro">Apresentação de documento oficial com foto e atualização \n de dados.</string>
+    <string name="titulo_pre_triagem">Pré-Triagem</string>
+    <string name="descricao_pre_triagem">Verificação dos sinais vitais: pressão arterial, temperatura, \n frequência cardíaca, peso dosagem de hemoglobina.</string>
+    <string name="titulo_triagem">Triagem Clínica</string>
+    <string name="descricao_triagem">Entrevista individual e sigilosa sobre seu estado de saúde \n para verificar se a doação pode ser feita e assinatura do \n Termo de Consentimento Livre e Esclarecido.</string>
+    <string name="titulo_coleta">Coleta de Sangue</string>
+    <string name="descricao_coleta">Doação feita através de punção com agulha em uma veia \n do braço com o material estéril e descartável. O volume \n de sangue coletado varia de 400 a 470ml e o processo \n dura de 5 a 15 minutos.</string>
+    <string name="titulo_lanche">Lanche e Descanso</string>
+    <string name="descricao_lanche">Após a doação, o doador faz um lanche para repor os níveis \n de glicemia e hidratação e permanece no Hemoes por pelo \n menos 15 minutos após o fim da doação. Essas medidas \n visam a diminuição do risco de problemas após a doação.</string>
+    <string name=""></string>
+
 </resources>
