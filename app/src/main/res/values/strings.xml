@@ -1,3 +1,4 @@
+<!--suppress LanguageDetectionInspection -->
 <resources>
     <string name="app_name">Carteirinha</string>
     <string name="title_carteirinha">Carteirinha:\nDoador de Sangue</string>
@@ -116,4 +117,21 @@
     <string name="categoria2">Medula óssea</string>
     <string name="categoria3">Pré-doação</string>
     <string name="categoria4">Pós-doação</string>
+
+    <!-- Questionário -->
+    <string name="pagName">Pré-Triagem</string>
+    <string name="text">Responda as perguntas e descubra se você está ou não apto a doar. </string>
+
+    <string name="pergunta1">Você tem entre 16 e 69 anos?</string>
+    <string name="pergunta2">Você pesa mais de 50kg?</string>
+    <string name="pergunta3">Você fez alguma tatuagem ou maquiagem definitiva nos últimos 12 meses? </string>
+    <string name="pergunta4">Você teve febre ou sintomas de gripe nos últimos 7 dias?</string>
+    <string name="pergunta5">Você fez alguma cirurgia de grande porte  nos últimos 5 meses?</string>
+
+    <string name="opcao1">Sim</string>
+    <string name="opcao2">Não</string>
+
+    <!-- Apto e Não-apto -->
+    <string name="condicao1">Você está apto para doar</string>
+    <string name="condicao2">Voce não está apto para doar</string>
 </resources>
