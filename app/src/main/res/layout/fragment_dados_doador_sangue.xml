@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@drawable/back_foto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Atualize suas informações de doador"
+            android:text="@string/titulo_dados_doador"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -54,7 +55,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data de Cadastro no HEMOES"
+                android:text="@string/data_hemoes"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="24dp"/>
@@ -62,7 +63,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="00/00/0000"
+                android:hint="@string/data_vazia"
                 android:textColor="@color/cinza"
                 android:textColorHint="@color/cinza"
                 android:textSize="18sp"
@@ -87,7 +88,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registro de Doador do HEMOES"
+                android:text="@string/registro_hemoes"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="24dp"/>
@@ -95,7 +96,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="000000-00"
+                android:hint="@string/registro_vazio"
                 android:textColor="@color/cinza"
                 android:textColorHint="@color/cinza"
                 android:textSize="18sp"
@@ -107,181 +108,18 @@
                 android:layout_marginTop="12dp"/>
         </LinearLayout>
 
-        <!--TIPO SANGUÍNEO-->
-        <LinearLayout
-            android:id="@+id/linear4"
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/botao_atualizar"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/red"
+            android:padding="18dp"
+            android:textSize="18sp"
+            android:layout_marginTop="24dp"
+            android:id="@+id/atualizar_bt"
             app:layout_constraintTop_toBottomOf="@id/linear3"
-            android:gravity="center" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tipo Sanguíneo"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="24dp"/>
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="4"
-                android:rowCount="2"
-                android:layout_marginTop="12dp"
-                android:alignmentMode="alignMargins">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardApositivo"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="A+"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:gravity="center"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardAnegativo"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="A−"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:gravity="center"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardBpositivo"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="B+"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:gravity="center"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardBnegativo"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="B−"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:gravity="center"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardABpositivo"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="AB+"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:gravity="center"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardABnegativo"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="AB−"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:gravity="center"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardOpositivo"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="O+"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:gravity="center"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardOnegativo"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardCornerRadius="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="O−"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:gravity="center"/>
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Atualizar"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/red"
-                android:padding="18dp"
-                android:textSize="18sp"
-                android:layout_marginTop="24dp"
-                android:id="@+id/atualizar_bt" />
-
-        </LinearLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

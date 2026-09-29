@@ -31,13 +31,19 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/btnBack"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Voltar"
-                    android:src="@drawable/ic_back" />
+                <FrameLayout
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_icon"
+                    android:backgroundTint="@color/white">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Voltar"
+                        android:src="@drawable/ic_back" />
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -48,8 +54,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pré-Triagem"
-                        android:textColor="#111827"
+                        android:text="@string/pagName"
+                        android:textColor="@color/black"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:layout_marginTop="30dp"/>
@@ -57,8 +63,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Responda as perguntas e descubra se você está ou não apto a doar."
-                        android:textColor="#6B7280"
+                        android:text="@string/text"
+                        android:textColor="@color/cinza"
                         android:textSize="12sp"
                         android:layout_marginBottom="30dp"/>
                 </LinearLayout>
@@ -80,44 +86,58 @@
                     android:orientation="vertical"
                     >
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1">
 
-                        android:id="@+id/perguntaText"
-                        android:text="Você tem entre 16 e 69 anos?"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:id="@+id/perguntaText"
+                            android:text="@string/pergunta3"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="30dp"
+                            android:padding="8dp"/>
+
+                    </LinearLayout>
 
                     <!--  Botão SIM -->
                     <LinearLayout
                         android:id="@+id/linearEscolha"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Sim"
+                            android:text="@string/opcao1"
                             android:textColor="@color/black"
                             android:backgroundTint="@color/white"
                             android:padding="18dp"
                             android:textSize="18sp"
                             android:layout_marginTop="24dp"
-                            android:id="@+id/cadastro_bt" />
+                            android:id="@+id/opcaoSim_bt" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Não"
+                            android:text="@string/opcao2"
                             android:textColor="@color/black"
                             android:backgroundTint="@color/white"
                             android:padding="18dp"
                             android:textSize="18sp"
                             android:layout_marginTop="24dp"
-                            android:id="@+id/opcao2" />
+                            android:id="@+id/opcaoNao" />
                     </LinearLayout>
 
 
