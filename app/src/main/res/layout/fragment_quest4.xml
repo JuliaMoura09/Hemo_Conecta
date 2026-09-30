@@ -100,6 +100,7 @@
                             android:id="@+id/perguntaText"
                             android:text="@string/pergunta4"
                             android:textColor="@color/black"
+                            android:textAlignment="center"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:layout_marginTop="30dp"

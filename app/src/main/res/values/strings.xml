@@ -122,8 +122,11 @@
     <string name="opcao2">Não</string>
 
     <!-- Apto e Não-apto -->
-    <string name="condicao1">Você está apto para doar</string>
-    <string name="condicao2">Voce não está apto para doar</string>
+    <string name="condicao1">Você está apto para doar!</string>
+    <string name="ex1">Ótima notícia! Baseado nas suas respostas, você atende aos requisitos básicos para doar sangue.</string>
+
+    <string name="condicao2">Voce não está apto para doar no momento.</string>
+    <string name="ex2">Algumas de suas respostas indicam que você precisa aguardar um pouco mais antes de doar. Consulte as regras completas.</string>
 
     <!-- páginas de questionário -->
     <string name="titulo_processo">O Processo</string>
@@ -140,6 +143,5 @@
     <string name="descricao_coleta">Doação feita através de punção com agulha em uma veia \n do braço com o material estéril e descartável. O volume \n de sangue coletado varia de 400 a 470ml e o processo \n dura de 5 a 15 minutos.</string>
     <string name="titulo_lanche">Lanche e Descanso</string>
     <string name="descricao_lanche">Após a doação, o doador faz um lanche para repor os níveis \n de glicemia e hidratação e permanece no Hemoes por pelo \n menos 15 minutos após o fim da doação. Essas medidas \n visam a diminuição do risco de problemas após a doação.</string>
-    <string name=""></string>
 
 </resources>
