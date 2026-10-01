@@ -65,7 +65,62 @@
             android:id="@+id/action_RecuperarSenhaFragment_to_loginFragment"
             app:destination="@+id/loginFragment" />
 
+        <action
+            android:id="@+id/action_global_DoadorMedulaFragment"
+            app:destination="@id/DoadorMedulaFragment" />
+
+        <action
+            android:id="@+id/action_global_DoadorSangueFragment"
+            app:destination="@id/DoadorSangueFragment" />
+
+        <action
+            android:id="@+id/action_global_DoadorAmbosFragment"
+            app:destination="@id/DoadorAmbosFragment" />
+
     </navigation>
+
+    <action
+        android:id="@+id/action_cadastroFragment2_to_DoadorAmbosFragment"
+        app:destination="@id/DoadorAmbosFragment" />
+
+    <action
+        android:id="@+id/action_cadastroFragment2_to_DoadorSangueFragment"
+        app:destination="@id/DoadorSangueFragment" />
+
+    <action
+        android:id="@+id/action_cadastroFragment2_to_DoadorMedulaFragment"
+        app:destination="@id/DoadorMedulaFragment" />
+
+    <!-- informações do cadastro, dados do doador -->
+    <fragment
+        android:id="@+id/DoadorAmbosFragment"
+        android:name="com.example.hemo_conecta.ui.auth.DadosDoadorAmbosFragment"
+        android:label="DoadorAmbosFragment">
+
+        <action
+            android:id="@+id/action_DoadorAmbosFragment_to_inicioFragment2"
+            app:destination="@id/inicioFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DoadorSangueFragment"
+        android:name="com.example.hemo_conecta.ui.auth.DadosDoadorSangueFragment"
+        android:label="DoadorSangueFragment">
+
+        <action
+            android:id="@+id/action_DoadorSangueFragment_to_inicioFragment2"
+            app:destination="@id/inicioFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DoadorMedulaFragment"
+        android:name="com.example.hemo_conecta.ui.auth.DadosDoadorMedulaFragment"
+        android:label="DoadorMedulaFragment">
+
+        <action
+            android:id="@+id/action_DoadorMedulaFragment_to_inicioFragment"
+            app:destination="@id/inicioFragment" />
+    </fragment>
 
     <!-- telas principais - dentro do app-->
     <fragment
@@ -74,43 +129,44 @@
         android:label="InicioFragment">
 
         <action
-            android:id="@+id/action_inicioFragment_to_fragmentConteudosEducativos"
-            app:destination="@id/fragmentConteudosEducativos" />
-
-        <action
             android:id="@+id/action_inicioFragment_to_authentication"
             app:destination="@id/authentication"
             app:popUpTo="@id/inicioFragment"
             app:popUpToInclusive="true"
             />
 
-
         <action
             android:id="@+id/action_inicioFragment_to_cuponsFragment"
             app:destination="@id/cuponsFragment" />
 
         <action
-            android:id="@+id/action_inicioFragment_to_carteirinhaAmbosFragment"
-            app:destination="@id/carteirinhaAmbosFragment" />
+            android:id="@+id/action_inicioFragment_to_fragmentConteudosEducativos2"
+            app:destination="@id/fragmentConteudosEducativos2" />
 
         <action
-            android:id="@+id/action_inicioFragment_to_localizacaoFragment"
-            app:destination="@id/localizacaoFragment" />
+            android:id="@+id/action_inicioFragment_to_processoDoacaoFragment"
+            app:destination="@id/processoDoacaoFragment" />
 
         <action
-            android:id="@+id/action_inicioFragment_to_perfilFragment2"
-            app:destination="@id/perfilFragment" />
+            android:id="@+id/action_inicioFragment_to_carteirinhaAmbosFragment2"
+            app:destination="@id/carteirinhaAmbosFragment2" />
+
+        <action
+            android:id="@+id/action_inicioFragment_to_localizacaoFragment2"
+            app:destination="@id/localizacaoFragment2" />
 
         <action
             android:id="@+id/action_inicioFragment_to_notificacoesFragment"
             app:destination="@id/notificacoesFragment" />
 
-    </fragment>
+        <action
+            android:id="@+id/action_inicioFragment_to_cuponsFragment2"
+            app:destination="@id/cuponsFragment" />
 
-    <fragment
-        android:id="@+id/fragmentConteudosEducativos"
-        android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
-        android:label="FragmentConteudosEducativos" />
+        <action
+            android:id="@+id/action_inicioFragment_to_perfilFragment2"
+            app:destination="@id/perfilFragment2" />
+    </fragment>
 
     <fragment
         android:id="@+id/cuponsFragment"
@@ -118,22 +174,33 @@
         android:label="CuponsFragment" />
 
     <fragment
-        android:id="@+id/carteirinhaAmbosFragment"
+        android:id="@+id/fragmentConteudosEducativos2"
+        android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
+        android:label="FragmentConteudosEducativos" />
+
+    <fragment
+        android:id="@+id/processoDoacaoFragment"
+        android:name="com.example.hemo_conecta.ProcessoDoacaoFragment"
+        android:label="ProcessoDoacaoFragment" />
+
+    <fragment
+        android:id="@+id/carteirinhaAmbosFragment2"
         android:name="com.example.hemo_conecta.CarteirinhaAmbosFragment"
         android:label="CarteirinhaAmbosFragment" />
 
     <fragment
-        android:id="@+id/localizacaoFragment"
+        android:id="@+id/localizacaoFragment2"
         android:name="com.example.hemo_conecta.LocalizacaoFragment"
         android:label="LocalizacaoFragment" />
 
     <fragment
-        android:id="@+id/perfilFragment"
+        android:id="@+id/notificacoesFragment"
+        android:name="com.example.hemo_conecta.ui.NotificacoesFragment"
+        android:label="NotificacoesFragment" />
+
+    <fragment
+        android:id="@+id/perfilFragment2"
         android:name="com.example.hemo_conecta.PerfilFragment"
         android:label="PerfilFragment" />
 
-    <fragment
-        android:id="@+id/notificacoesFragment"
-        android:name="com.example.hemo_conecta.ui.NotificacoesFragment"
-        android:label="Notificações" />
 </navigation>

@@ -128,7 +128,7 @@
     <string name="condicao2">Voce não está apto para doar no momento.</string>
     <string name="ex2">Algumas de suas respostas indicam que você precisa aguardar um pouco mais antes de doar. Consulte as regras completas.</string>
 
-    <!-- páginas de questionário -->
+    <!-- páginas de processo -->
     <string name="titulo_processo">O Processo</string>
     <string name="subtitulo_processo">Simples, rápido e seguro.</string>
     <string name="processo_tempo">Tempo Estimado</string>
@@ -143,5 +143,7 @@
     <string name="descricao_coleta">Doação feita através de punção com agulha em uma veia \n do braço com o material estéril e descartável. O volume \n de sangue coletado varia de 400 a 470ml e o processo \n dura de 5 a 15 minutos.</string>
     <string name="titulo_lanche">Lanche e Descanso</string>
     <string name="descricao_lanche">Após a doação, o doador faz um lanche para repor os níveis \n de glicemia e hidratação e permanece no Hemoes por pelo \n menos 15 minutos após o fim da doação. Essas medidas \n visam a diminuição do risco de problemas após a doação.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

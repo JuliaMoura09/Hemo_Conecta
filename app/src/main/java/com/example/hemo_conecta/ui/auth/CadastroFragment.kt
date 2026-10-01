@@ -41,9 +41,7 @@ class CadastroFragment : Fragment() {
     }
 
     private fun initListener() {
-
-        binding.cadastroBt.setOnClickListener {
-
+        binding.buttonCadastro.setOnClickListener {
             val nome = binding.nomeInput.text.toString()
             val cpf = binding.cpfInput.text.toString()
             val nascimento = binding.nascInput.text.toString()
@@ -74,38 +72,48 @@ class CadastroFragment : Fragment() {
 
     private fun selecionarTipoSanguineo() {
 
-        binding.cardApositivo.setOnClickListener {
-            tipoSanguineo = "A+"
-        }
+            val cards = listOf(
+                binding.cardApositivo,
+                binding.cardAnegativo,
+                binding.cardBpositivo,
+                binding.cardBnegativo,
+                binding.cardABpositivo,
+                binding.cardABnegativo,
+                binding.cardOpositivo,
+                binding.cardOnegativo
+            )
 
-        binding.cardAnegativo.setOnClickListener {
-            tipoSanguineo = "A-"
-        }
+            val tiposMap = mapOf(
+                binding.cardApositivo to "A+",
+                binding.cardAnegativo to "A-",
+                binding.cardBpositivo to "B+",
+                binding.cardBnegativo to "B-",
+                binding.cardABpositivo to "AB+",
+                binding.cardABnegativo to "AB-",
+                binding.cardOpositivo to "O+",
+                binding.cardOnegativo to "O-"
+            )
 
-        binding.cardBpositivo.setOnClickListener {
-            tipoSanguineo = "B+"
-        }
+            // código para que o card fique colorido ao usuário selecionar-lo
+            cards.forEach { selectedCard ->
+                selectedCard.setOnClickListener {
 
-        binding.cardBnegativo.setOnClickListener {
-            tipoSanguineo = "B-"
-        }
+                    cards.forEach { card ->
+                        card.isSelected = false
+                        card.setCardBackgroundColor(
+                            androidx.core.content.ContextCompat.getColor(requireContext(), R.color.cinza)
+                        )
+                    }
 
-        binding.cardABpositivo.setOnClickListener {
-            tipoSanguineo = "AB+"
-        }
+                    selectedCard.isSelected = true
+                    selectedCard.setCardBackgroundColor(
+                        androidx.core.content.ContextCompat.getColor(requireContext(), R.color.vermelho)
+                    )
 
-        binding.cardABnegativo.setOnClickListener {
-            tipoSanguineo = "AB-"
+                    tipoSanguineo = tiposMap[selectedCard] ?: ""
+                }
+            }
         }
-
-        binding.cardOpositivo.setOnClickListener {
-            tipoSanguineo = "O+"
-        }
-
-        binding.cardOnegativo.setOnClickListener {
-            tipoSanguineo = "O-"
-        }
-    }
 
     private fun registerUser(
         nome: String,
@@ -167,6 +175,32 @@ class CadastroFragment : Fragment() {
                     ).show()
                 }
             }
+    }
+
+    private fun navegabilidadeTipoDoador() {
+        val selectedId = binding.radioGroupDoador.checkedRadioButtonId
+
+        when (selectedId) {
+            R.id.option_doador_sangue -> {
+                findNavController().navigate(R.id.action_cadastroFragment2_to_DoadorSangueFragment)
+            }
+            R.id.option_doador_medula -> {
+                findNavController().navigate(R.id.action_cadastroFragment2_to_DoadorMedulaFragment)
+            }
+            R.id.option_doador_ambos -> {
+                findNavController().navigate(R.id.action_cadastroFragment2_to_DoadorAmbosFragment)
+            }
+            R.id.option_nao_doador -> {
+                findNavController().navigate(R.id.action_global_inicioFragment)
+            }
+
+            else -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Por favor, selecione uma opção na quinta pergunta",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onDestroyView() {
