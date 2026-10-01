@@ -28,11 +28,12 @@
                 android:layout_marginTop="14dp">
 
                 <TextView
+                    android:id="@+id/iniciaisPerfil"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="@string/iniciais"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -40,13 +41,14 @@
 
                 <!-- Tipo Sanguíneo -->
                 <TextView
+                    android:id="@+id/tipoSanguineoPerfil"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:translationX="25dp"
                     android:translationY="28dp"
                     android:gravity="center"
-                    android:text="@string/tipo_sanguineo_perfil"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold"
@@ -55,9 +57,10 @@
 
             <!-- Nome do Usuário -->
             <TextView
+                android:id="@+id/nomeUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nome_usuario"
+                android:text=""
                 android:textColor="#20283A"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -65,9 +68,10 @@
 
             <!-- E-mail -->
             <TextView
+                android:id="@+id/emailUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
+                android:text=""
                 android:textColor="@color/text_description"
                 android:textSize="15sp"
                 android:gravity="center"
