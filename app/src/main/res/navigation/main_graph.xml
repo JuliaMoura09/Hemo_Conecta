@@ -83,27 +83,27 @@
     <!-- informações do cadastro, dados do doador -->
     <fragment
         android:id="@+id/DoadorAmbosFragment"
-        android:name="com.example.hemo_conecta.ui.auth.DadosDoadorAmbosFragment"
+        android:name="com.example.hemo_conecta.ui.DadosDoadorAmbosFragment"
         android:label="DoadorAmbosFragment">
 
         <action
-            android:id="@+id/action_DoadorAmbosFragment_to_inicioFragment2"
+            android:id="@+id/action_DoadorAmbosFragment_to_inicioFragment"
             app:destination="@id/inicioFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/DoadorSangueFragment"
-        android:name="com.example.hemo_conecta.ui.auth.DadosDoadorSangueFragment"
+        android:name="com.example.hemo_conecta.ui.DadosDoadorSangueFragment"
         android:label="DoadorSangueFragment">
 
         <action
-            android:id="@+id/action_DoadorSangueFragment_to_inicioFragment2"
+            android:id="@+id/action_DoadorSangueFragment_to_inicioFragment"
             app:destination="@id/inicioFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/DoadorMedulaFragment"
-        android:name="com.example.hemo_conecta.ui.auth.DadosDoadorMedulaFragment"
+        android:name="com.example.hemo_conecta.ui.DadosDoadorMedulaFragment"
         android:label="DoadorMedulaFragment">
 
         <action
