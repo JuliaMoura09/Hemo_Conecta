@@ -152,9 +152,8 @@ class CadastroFragment : Fragment() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                findNavController().navigate(
-                                    R.id.action_global_inicioFragment
-                                )
+                                navegabilidadeTipoDoador()
+
 
                             } else {
 
@@ -182,13 +181,13 @@ class CadastroFragment : Fragment() {
 
         when (selectedId) {
             R.id.option_doador_sangue -> {
-                findNavController().navigate(R.id.action_cadastroFragment2_to_DoadorSangueFragment)
+                findNavController().navigate(R.id.action_cadastroFragment_to_DoadorSangueFragment)
             }
             R.id.option_doador_medula -> {
-                findNavController().navigate(R.id.action_cadastroFragment2_to_DoadorMedulaFragment)
+                findNavController().navigate(R.id.action_cadastroFragment_to_DoadorMedulaFragment)
             }
             R.id.option_doador_ambos -> {
-                findNavController().navigate(R.id.action_cadastroFragment2_to_DoadorAmbosFragment)
+                findNavController().navigate(R.id.action_cadastroFragment_to_DoadorAmbosFragment)
             }
             R.id.option_nao_doador -> {
                 findNavController().navigate(R.id.action_global_inicioFragment)

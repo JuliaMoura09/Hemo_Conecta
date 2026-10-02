@@ -36,7 +36,7 @@ class LoginFragment : Fragment() {
 
     private fun initListener() {
         binding.btnTelaCadastro.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment2)
+            findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment)
         }
 
         binding.btnRecuperarSenha.setOnClickListener {

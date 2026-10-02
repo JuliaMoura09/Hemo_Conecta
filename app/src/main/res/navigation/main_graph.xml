@@ -42,7 +42,7 @@
             android:label="LoginFragment">
 
             <action
-                android:id="@+id/action_loginFragment_to_cadastroFragment2"
+                android:id="@+id/action_loginFragment_to_cadastroFragment"
                 app:destination="@id/cadastroFragment" />
 
             <action
@@ -54,7 +54,21 @@
         <fragment
             android:id="@+id/cadastroFragment"
             android:name="com.example.hemo_conecta.ui.auth.CadastroFragment"
-            android:label="CadastroFragment" />
+            android:label="CadastroFragment" >
+
+        <action
+            android:id="@+id/action_cadastroFragment_to_DoadorAmbosFragment"
+            app:destination="@id/DoadorAmbosFragment" />
+
+        <action
+            android:id="@+id/action_cadastroFragment_to_DoadorSangueFragment"
+            app:destination="@id/DoadorSangueFragment" />
+
+        <action
+            android:id="@+id/action_cadastroFragment_to_DoadorMedulaFragment"
+            app:destination="@id/DoadorMedulaFragment" />
+
+        </fragment>
 
         <fragment
             android:id="@+id/RecuperarSenhaFragment"
@@ -63,33 +77,8 @@
 
         <action
             android:id="@+id/action_RecuperarSenhaFragment_to_loginFragment"
-            app:destination="@+id/loginFragment" />
-
-        <action
-            android:id="@+id/action_global_DoadorMedulaFragment"
-            app:destination="@id/DoadorMedulaFragment" />
-
-        <action
-            android:id="@+id/action_global_DoadorSangueFragment"
-            app:destination="@id/DoadorSangueFragment" />
-
-        <action
-            android:id="@+id/action_global_DoadorAmbosFragment"
-            app:destination="@id/DoadorAmbosFragment" />
-
+            app:destination="@id/loginFragment" />
     </navigation>
-
-    <action
-        android:id="@+id/action_cadastroFragment2_to_DoadorAmbosFragment"
-        app:destination="@id/DoadorAmbosFragment" />
-
-    <action
-        android:id="@+id/action_cadastroFragment2_to_DoadorSangueFragment"
-        app:destination="@id/DoadorSangueFragment" />
-
-    <action
-        android:id="@+id/action_cadastroFragment2_to_DoadorMedulaFragment"
-        app:destination="@id/DoadorMedulaFragment" />
 
     <!-- informações do cadastro, dados do doador -->
     <fragment
@@ -132,40 +121,36 @@
             android:id="@+id/action_inicioFragment_to_authentication"
             app:destination="@id/authentication"
             app:popUpTo="@id/inicioFragment"
-            app:popUpToInclusive="true"
-            />
+            app:popUpToInclusive="true" />
 
         <action
             android:id="@+id/action_inicioFragment_to_cuponsFragment"
             app:destination="@id/cuponsFragment" />
 
         <action
-            android:id="@+id/action_inicioFragment_to_fragmentConteudosEducativos2"
-            app:destination="@id/fragmentConteudosEducativos2" />
+            android:id="@+id/action_inicioFragment_to_fragmentConteudosEducativos"
+            app:destination="@id/fragmentConteudosEducativos" />
 
         <action
             android:id="@+id/action_inicioFragment_to_processoDoacaoFragment"
             app:destination="@id/processoDoacaoFragment" />
 
         <action
-            android:id="@+id/action_inicioFragment_to_carteirinhaAmbosFragment2"
-            app:destination="@id/carteirinhaAmbosFragment2" />
+            android:id="@+id/action_inicioFragment_to_carteirinhaAmbosFragment"
+            app:destination="@id/carteirinhaAmbosFragment" />
 
         <action
-            android:id="@+id/action_inicioFragment_to_localizacaoFragment2"
-            app:destination="@id/localizacaoFragment2" />
+            android:id="@+id/action_inicioFragment_to_localizacaoFragment"
+            app:destination="@id/localizacaoFragment" />
 
         <action
             android:id="@+id/action_inicioFragment_to_notificacoesFragment"
             app:destination="@id/notificacoesFragment" />
 
         <action
-            android:id="@+id/action_inicioFragment_to_cuponsFragment2"
-            app:destination="@id/cuponsFragment" />
+            android:id="@+id/action_inicioFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
 
-        <action
-            android:id="@+id/action_inicioFragment_to_perfilFragment2"
-            app:destination="@id/perfilFragment2" />
     </fragment>
 
     <fragment
@@ -174,7 +159,7 @@
         android:label="CuponsFragment" />
 
     <fragment
-        android:id="@+id/fragmentConteudosEducativos2"
+        android:id="@+id/fragmentConteudosEducativos"
         android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
         android:label="FragmentConteudosEducativos" />
 
@@ -184,12 +169,12 @@
         android:label="ProcessoDoacaoFragment" />
 
     <fragment
-        android:id="@+id/carteirinhaAmbosFragment2"
+        android:id="@+id/carteirinhaAmbosFragment"
         android:name="com.example.hemo_conecta.CarteirinhaAmbosFragment"
         android:label="CarteirinhaAmbosFragment" />
 
     <fragment
-        android:id="@+id/localizacaoFragment2"
+        android:id="@+id/localizacaoFragment"
         android:name="com.example.hemo_conecta.LocalizacaoFragment"
         android:label="LocalizacaoFragment" />
 
@@ -199,7 +184,7 @@
         android:label="NotificacoesFragment" />
 
     <fragment
-        android:id="@+id/perfilFragment2"
+        android:id="@+id/perfilFragment"
         android:name="com.example.hemo_conecta.PerfilFragment"
         android:label="PerfilFragment" />
 

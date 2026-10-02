@@ -45,17 +45,19 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                R.id.splashFragment,
-                R.id.loginFragment,
-                R.id.cadastroFragment,
-                R.id.RecuperarSenhaFragment-> {
-                    bottomNavigation.visibility = BottomNavigationView.GONE
+                R.id.inicioFragment,
+                R.id.carteirinhaAmbosFragment,
+                R.id.localizacaoFragment,
+                R.id.fragmentConteudosEducativos,
+                R.id.perfilFragment -> {
+                    bottomNavigation.visibility = BottomNavigationView.VISIBLE
                 }
 
                 else -> {
-                    bottomNavigation.visibility = BottomNavigationView.VISIBLE
+                    bottomNavigation.visibility = BottomNavigationView.GONE
                 }
             }
         }
+
     }
 }
