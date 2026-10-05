@@ -5,56 +5,94 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.hemo_conecta.R
+import com.example.hemo_conecta.databinding.FragmentQuest5Binding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
+import com.example.hemo_conecta.questionario.Quest1Fragment.QuestViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Quest5Fragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Quest5Fragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val viewModel: QuestViewModel by activityViewModels()
+    private var _binding: FragmentQuest5Binding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var auth: FirebaseAuth
+    private lateinit var reference: DatabaseReference
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+
+        _binding = FragmentQuest5Binding.inflate(inflater, container, false)
+
+        auth = FirebaseAuth.getInstance()
+        reference = FirebaseDatabase.getInstance().reference
+
+        initListener()
+
+        return binding.root
+    }
+
+    private fun initListener() {
+        binding.opcaoNao.setOnClickListener {
+            viewModel.resposta5= false
+
+            val apto = viewModel.respostasEstaoCorretas()
+            salvarResultado(apto)
+
+            if (apto) {
+                findNavController().navigate(R.id.action_quest5Fragment_to_aptoFragment)
+            } else {
+                findNavController().navigate(R.id.action_quest5Fragment_to_naoAptoFragment)
+            }
+        }
+
+        binding.opcaoSimBt.setOnClickListener {
+            viewModel.resposta5= true
+
+            val apto = viewModel.respostasEstaoCorretas()
+
+            salvarResultado(apto)
+
+            if (apto) {
+                findNavController().navigate(R.id.action_quest5Fragment_to_aptoFragment)
+            } else {
+                findNavController().navigate(R.id.action_quest5Fragment_to_naoAptoFragment)
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quest5, container, false)
+    private fun salvarResultado(apto: Boolean) {
+
+        val usuario = FirebaseAuth.getInstance().currentUser
+
+        if (usuario == null) {
+            return
+        }
+
+        val idUsuario = usuario.uid
+
+        val dados = mapOf(
+            "idUsuario" to idUsuario,
+            "apto" to apto,
+            "data" to System.currentTimeMillis()
+        )
+
+        reference.child("questionarios")
+            .child(idUsuario)
+            .setValue(dados)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Quest5Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Quest5Fragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

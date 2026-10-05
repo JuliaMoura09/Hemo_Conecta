@@ -229,6 +229,7 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
+                        android:id="@+id/quest_bt"
                         android:background="@drawable/bg_quick_purple"
                         android:padding="17dp"
                         android:src="@drawable/ic_clipboard"

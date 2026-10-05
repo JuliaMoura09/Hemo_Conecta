@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ex1"
                 android:textColor="@color/cinza"
-                android:textSize="14dp"
+                android:textSize="16dp"
                 android:textAlignment="center"
                 android:layout_marginTop="12dp"
                 />

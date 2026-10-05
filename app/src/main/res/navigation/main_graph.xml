@@ -150,6 +150,9 @@
         <action
             android:id="@+id/action_inicioFragment_to_perfilFragment"
             app:destination="@id/perfilFragment" />
+        <action
+            android:id="@+id/action_inicioFragment_to_quest1Fragment"
+            app:destination="@id/quest1Fragment" />
 
     </fragment>
 
@@ -187,5 +190,56 @@
         android:id="@+id/perfilFragment"
         android:name="com.example.hemo_conecta.PerfilFragment"
         android:label="PerfilFragment" />
+    <fragment
+        android:id="@+id/quest1Fragment"
+        android:name="com.example.hemo_conecta.questionario.Quest1Fragment"
+        android:label="Quest1Fragment" >
+        <action
+            android:id="@+id/action_quest1Fragment_to_quest2Fragment"
+            app:destination="@id/quest2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quest2Fragment"
+        android:name="com.example.hemo_conecta.questionario.Quest2Fragment"
+        android:label="Quest2Fragment" >
+        <action
+            android:id="@+id/action_quest2Fragment_to_quest3Fragment"
+            app:destination="@id/quest3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quest3Fragment"
+        android:name="com.example.hemo_conecta.questionario.Quest3Fragment"
+        android:label="Quest3Fragment" >
+        <action
+            android:id="@+id/action_quest3Fragment_to_quest4Fragment"
+            app:destination="@id/quest4Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quest4Fragment"
+        android:name="com.example.hemo_conecta.questionario.Quest4Fragment"
+        android:label="Quest4Fragment" >
+        <action
+            android:id="@+id/action_quest4Fragment_to_quest5Fragment"
+            app:destination="@id/quest5Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quest5Fragment"
+        android:name="com.example.hemo_conecta.questionario.Quest5Fragment"
+        android:label="Quest5Fragment" >
+        <action
+            android:id="@+id/action_quest5Fragment_to_aptoFragment"
+            app:destination="@id/aptoFragment" />
+        <action
+            android:id="@+id/action_quest5Fragment_to_naoAptoFragment"
+            app:destination="@id/naoAptoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aptoFragment"
+        android:name="com.example.hemo_conecta.questionario.AptoFragment"
+        android:label="AptoFragment" />
+    <fragment
+        android:id="@+id/naoAptoFragment"
+        android:name="com.example.hemo_conecta.questionario.NaoAptoFragment"
+        android:label="NaoAptoFragment" />
 
 </navigation>

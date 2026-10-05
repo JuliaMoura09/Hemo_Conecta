@@ -27,6 +27,14 @@ class InicioFragment : Fragment() {
             )
         }
 
+        binding.questBt.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_inicioFragment_to_quest1Fragment
+            )
+
+
+        }
+
         return binding.root
     }
 
