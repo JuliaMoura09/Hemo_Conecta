@@ -24,6 +24,7 @@
 
             <!-- botão para voltar -->
             <FrameLayout
+                android:id="@+id/btnBack"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="10dp"

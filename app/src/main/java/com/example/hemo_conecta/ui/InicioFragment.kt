@@ -27,12 +27,22 @@ class InicioFragment : Fragment() {
             )
         }
 
+        binding.processoBt.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_inicioFragment_to_processoDoacaoFragment
+            )
+        }
+
         binding.questBt.setOnClickListener {
             findNavController().navigate(
                 R.id.action_inicioFragment_to_quest1Fragment
             )
+        }
 
-
+        binding.cuponsBt.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_inicioFragment_to_cuponsFragment
+            )
         }
 
         return binding.root

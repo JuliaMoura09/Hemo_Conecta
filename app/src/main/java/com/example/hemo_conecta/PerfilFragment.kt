@@ -99,7 +99,7 @@ class PerfilFragment : Fragment() {
             auth.signOut()
 
             findNavController().navigate(
-                R.id.action_inicioFragment_to_authentication
+                R.id.action_perfilFragment_to_authentication
             )
         }
     }

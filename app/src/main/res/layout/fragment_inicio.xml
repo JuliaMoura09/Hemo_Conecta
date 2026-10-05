@@ -204,6 +204,7 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
+                        android:id="@+id/processo_bt"
                         android:background="@drawable/bg_quick_blue"
                         android:padding="17dp"
                         android:src="@drawable/ic_document"
@@ -255,6 +256,7 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
+                        android:id="@+id/cupons_bt"
                         android:background="@drawable/bg_quick_yellow"
                         android:padding="17dp"
                         android:src="@drawable/ic_gift"

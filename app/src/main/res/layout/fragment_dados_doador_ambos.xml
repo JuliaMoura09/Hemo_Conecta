@@ -71,7 +71,7 @@
                 android:backgroundTint="@color/white"
                 android:padding="18dp"
                 android:inputType="text"
-                android:id="@+id/data_hemoes_input"
+                android:id="@+id/DataHemoesInput"
                 android:layout_marginTop="12dp"/>
         </LinearLayout>
 
@@ -104,7 +104,7 @@
                 android:backgroundTint="@color/white"
                 android:padding="18dp"
                 android:inputType="text"
-                android:id="@+id/registro_hemoes_input"
+                android:id="@+id/CadastroHemoes"
                 android:layout_marginTop="12dp"/>
         </LinearLayout>
 
@@ -135,7 +135,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/data_redome_input"
+                    android:id="@+id/DataRedomeInput"
                     android:hint="@string/data_vazia"
                     android:textColor="@color/cinza"
                     android:textColorHint="@color/cinza"
@@ -175,7 +175,7 @@
                     android:backgroundTint="@color/white"
                     android:padding="18dp"
                     android:inputType="text"
-                    android:id="@+id/registro_redome_input"
+                    android:id="@+id/CadastroRedome"
                     android:layout_marginTop="12dp"/>
             </LinearLayout>
 

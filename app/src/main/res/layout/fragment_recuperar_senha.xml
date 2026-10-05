@@ -8,14 +8,22 @@
     android:padding="24dp"
     android:background="@drawable/back_foto">
 
-    <ImageButton
+    <!-- botão para voltar -->
+    <FrameLayout
         android:id="@+id/btnBack"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_icon"
+        android:backgroundTint="@color/white">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:contentDescription="Voltar"
+            android:src="@drawable/ic_back" />
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/textLogo1"

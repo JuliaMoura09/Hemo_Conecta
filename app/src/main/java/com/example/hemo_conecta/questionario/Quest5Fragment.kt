@@ -85,7 +85,8 @@ class Quest5Fragment : Fragment() {
         val dados = mapOf(
             "idUsuario" to idUsuario,
             "apto" to apto,
-            "data" to "data" to SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+            "data" to "data" to SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date()),
+            "horario" to "horário" to SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
         )
 
         reference.child("questionarios")

@@ -20,14 +20,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Voltar"
-            android:src="@drawable/ic_back" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -72,7 +72,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/tv_nome"
+                            android:id="@+id/nomeUsuario"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
@@ -198,7 +198,7 @@
                             android:textSize="10sp" />
 
                         <TextView
-                            android:id="@+id/tv_tipo_sanguineo"
+                            android:id="@+id/tvTipoSanguineo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
