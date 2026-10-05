@@ -15,6 +15,9 @@ import com.google.firebase.database.FirebaseDatabase
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import com.example.hemo_conecta.questionario.Quest1Fragment.QuestViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class Quest5Fragment : Fragment() {
     private val viewModel: QuestViewModel by activityViewModels()
@@ -82,7 +85,7 @@ class Quest5Fragment : Fragment() {
         val dados = mapOf(
             "idUsuario" to idUsuario,
             "apto" to apto,
-            "data" to System.currentTimeMillis()
+            "data" to "data" to SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
         )
 
         reference.child("questionarios")
