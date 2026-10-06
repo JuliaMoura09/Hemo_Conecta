@@ -1,6 +1,8 @@
 package com.example.hemo_conecta.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +24,8 @@ class InicioFragment : Fragment() {
 
     private lateinit var reference: DatabaseReference
 
-    private val vinteSegundos= 20000
+    private val vinteSegundos= 5000L
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,17 +82,35 @@ class InicioFragment : Fragment() {
             .get()
             .addOnSuccessListener { resultado ->
 
+                if (!resultado.exists()) {
+                    return@addOnSuccessListener
+                }
+
                 val timestamp = resultado.child("data").getValue(Long::class.java) ?: return@addOnSuccessListener
                 val agora = System.currentTimeMillis()
+                val tempoPassado = agora - timestamp
 
-                if (agora - timestamp >= vinteSegundos) {
+                if (tempoPassado >= vinteSegundos) {
                     Toast.makeText(requireContext(),"Está na hora de refazer o questionário",Toast.LENGTH_SHORT).show()
+                } else {
+                    //Ainda não passaram 20 segundos.
+                    //Calcula quanto falta.
+                    val tempoRestante = vinteSegundos - tempoPassado
+
+                    handler.postDelayed({
+
+                        if (isAdded) {
+                            Toast.makeText(requireContext(), "Está na hora de refazer o questionário", Toast.LENGTH_SHORT).show()
+                        }
+
+                    }, tempoRestante)
                 }
             }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        handler.removeCallbacksAndMessages(null)
         _binding = null
     }
 }

@@ -251,11 +251,18 @@
         <action
             android:id="@+id/action_aptoFragment_to_inicioFragment"
             app:destination="@id/inicioFragment" />
+        <action
+            android:id="@+id/action_aptoFragment_to_inicioFragment2"
+            app:destination="@id/inicioFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/naoAptoFragment"
         android:name="com.example.hemo_conecta.questionario.NaoAptoFragment"
-        android:label="NaoAptoFragment" />
+        android:label="NaoAptoFragment" >
+        <action
+            android:id="@+id/action_naoAptoFragment_to_inicioFragment"
+            app:destination="@id/inicioFragment" />
+    </fragment>
 
 </navigation>
