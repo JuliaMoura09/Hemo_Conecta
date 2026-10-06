@@ -43,13 +43,6 @@ class PerfilFragment : Fragment() {
 
         val uid = auth.currentUser?.uid ?: ""
 
-        Toast.makeText(
-            requireContext(),
-            "UID atual: $uid",
-            Toast.LENGTH_LONG
-        ).show()
-
-
         reference
             .child("usuarios")
             .child(uid)

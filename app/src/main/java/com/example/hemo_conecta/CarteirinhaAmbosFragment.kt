@@ -41,7 +41,7 @@ class CarteirinhaAmbosFragment : Fragment() {
     }
 
     private fun buscarDadosCarteirinha() {
-        val uid = auth.currentUser!!.uid
+        val uid = auth.currentUser?.uid ?: return
 
         reference
             .child("usuarios")
@@ -49,16 +49,17 @@ class CarteirinhaAmbosFragment : Fragment() {
             .addValueEventListener(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val nome = snapshot
-                        .child("nome")
-                        .getValue(String::class.java)
+                    // resgata os dados salvos anteriormente no firebase
+                    val nome = snapshot.child("nome").getValue(String::class.java)
+                    val tipoSanguineo = snapshot.child("tipoSanguineo").getValue(String::class.java)
+                    val cadastroRedome = snapshot.child("cadastroRedome").getValue(String::class.java)
+                    val cadastroHemoes = snapshot.child("cadastroHemoes").getValue(String::class.java)
 
-                    val tipoSanguineo = snapshot
-                        .child("tipoSanguineo")
-                        .getValue(String::class.java)
-
-                    binding.nomeUsuario.text = nome
-                    binding.tvTipoSanguineo.text = tipoSanguineo
+                    // atriui os valores salvos no banco de dados aos textviews no CarteirinhaAmbos
+                    binding.nomeUsuario.text = nome ?: ""
+                    binding.tvTipoSanguineo.text = tipoSanguineo ?: ""
+                    binding.tvCadastroRedome.text = cadastroRedome ?: "Não é doador de medula"
+                    binding.tvCadastroHemoes.text = cadastroHemoes ?: "Não é doador de sangue"
                 }
 
                 override fun onCancelled(error: DatabaseError) {

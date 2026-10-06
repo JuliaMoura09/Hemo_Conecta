@@ -159,7 +159,7 @@
 
     <fragment
         android:id="@+id/cuponsFragment"
-        android:name="com.example.hemo_conecta.CuponsFragment"
+        android:name="com.example.hemo_conecta.ui.CuponsFragment"
         android:label="CuponsFragment" />
 
     <fragment
@@ -169,7 +169,7 @@
 
     <fragment
         android:id="@+id/processoDoacaoFragment"
-        android:name="com.example.hemo_conecta.ProcessoDoacaoFragment"
+        android:name="com.example.hemo_conecta.ui.ProcessoDoacaoFragment"
         android:label="ProcessoDoacaoFragment" />
 
     <fragment
