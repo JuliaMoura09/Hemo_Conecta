@@ -15,9 +15,6 @@ import com.google.firebase.database.FirebaseDatabase
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import com.example.hemo_conecta.questionario.Quest1Fragment.QuestViewModel
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class Quest5Fragment : Fragment() {
     private val viewModel: QuestViewModel by activityViewModels()
@@ -48,7 +45,9 @@ class Quest5Fragment : Fragment() {
             viewModel.resposta5= false
 
             val apto = viewModel.respostasEstaoCorretas()
-            salvarResultado(apto)
+            val horario = System.currentTimeMillis()
+
+            salvarResultado(apto, horario)
 
             if (apto) {
                 findNavController().navigate(R.id.action_quest5Fragment_to_aptoFragment)
@@ -61,8 +60,9 @@ class Quest5Fragment : Fragment() {
             viewModel.resposta5= true
 
             val apto = viewModel.respostasEstaoCorretas()
+            val horario = System.currentTimeMillis()
 
-            salvarResultado(apto)
+            salvarResultado(apto, horario)
 
             if (apto) {
                 findNavController().navigate(R.id.action_quest5Fragment_to_aptoFragment)
@@ -72,7 +72,7 @@ class Quest5Fragment : Fragment() {
         }
     }
 
-    private fun salvarResultado(apto: Boolean) {
+    private fun salvarResultado(apto: Boolean, horario: Long) {
 
         val usuario = FirebaseAuth.getInstance().currentUser
 
@@ -83,10 +83,8 @@ class Quest5Fragment : Fragment() {
         val idUsuario = usuario.uid
 
         val dados = mapOf(
-            "idUsuario" to idUsuario,
             "apto" to apto,
-            "data" to "data" to SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date()),
-            "horario" to "horário" to SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+            "data" to horario
         )
 
         reference.child("questionarios")
