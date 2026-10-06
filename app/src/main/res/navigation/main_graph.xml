@@ -111,7 +111,7 @@
             app:destination="@id/inicioFragment" />
     </fragment>
 
-    <!-- telas principais - dentro do app-->
+    <!-- telas principais, presentes na barra de navegação -->
     <fragment
         android:id="@+id/inicioFragment"
         android:name="com.example.hemo_conecta.ui.InicioFragment"
@@ -154,23 +154,25 @@
         <action
             android:id="@+id/action_inicioFragment_to_quest1Fragment"
             app:destination="@id/quest1Fragment" />
-
     </fragment>
 
     <fragment
-        android:id="@+id/cuponsFragment"
-        android:name="com.example.hemo_conecta.ui.CuponsFragment"
-        android:label="CuponsFragment" />
+        android:id="@+id/carteirinhaSangueFragment"
+        android:name="com.example.hemo_conecta.CarteirinhaSangueFragment"
+        android:label="CarteirinhaSangueFragment"
+        tools:layout="@layout/fragment_carteirinha_sangue" />
 
     <fragment
-        android:id="@+id/fragmentConteudosEducativos"
-        android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
-        android:label="FragmentConteudosEducativos" />
+        android:id="@+id/carteirinhaMedulaFragment"
+        android:name="com.example.hemo_conecta.CarteirinhaMedulaFragment"
+        android:label="CarteirinhaMedulaFragment"
+        tools:layout="@layout/fragment_carteirinha_medula" />
 
     <fragment
-        android:id="@+id/processoDoacaoFragment"
-        android:name="com.example.hemo_conecta.ui.ProcessoDoacaoFragment"
-        android:label="ProcessoDoacaoFragment" />
+        android:id="@+id/naoDoadorFragment"
+        android:name="com.example.hemo_conecta.NaoDoadorFragment"
+        android:label="NaoDoadorFragment"
+        tools:layout="@layout/fragment_nao_doador" />
 
     <fragment
         android:id="@+id/carteirinhaAmbosFragment"
@@ -183,19 +185,33 @@
         android:label="LocalizacaoFragment" />
 
     <fragment
-        android:id="@+id/notificacoesFragment"
-        android:name="com.example.hemo_conecta.ui.NotificacoesFragment"
-        android:label="NotificacoesFragment" />
+        android:id="@+id/fragmentConteudosEducativos"
+        android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
+        android:label="FragmentConteudosEducativos" />
 
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.hemo_conecta.PerfilFragment"
         android:label="PerfilFragment" >
+
         <action
             android:id="@+id/action_perfilFragment_to_authentication"
             app:destination="@id/authentication" />
     </fragment>
 
+    <!-- tela de notificações -->
+    <fragment
+        android:id="@+id/notificacoesFragment"
+        android:name="com.example.hemo_conecta.ui.NotificacoesFragment"
+        android:label="NotificacoesFragment" />
+
+    <!-- tela de processo de doação -->
+    <fragment
+        android:id="@+id/processoDoacaoFragment"
+        android:name="com.example.hemo_conecta.ui.ProcessoDoacaoFragment"
+        android:label="ProcessoDoacaoFragment" />
+
+    <!-- telas do questionário -->
     <fragment
         android:id="@+id/quest1Fragment"
         android:name="com.example.hemo_conecta.questionario.Quest1Fragment"
@@ -253,5 +269,11 @@
         android:id="@+id/naoAptoFragment"
         android:name="com.example.hemo_conecta.questionario.NaoAptoFragment"
         android:label="NaoAptoFragment" />
+
+    <!-- tela de cupons -->
+    <fragment
+        android:id="@+id/cuponsFragment"
+        android:name="com.example.hemo_conecta.ui.CuponsFragment"
+        android:label="CuponsFragment" />
 
 </navigation>

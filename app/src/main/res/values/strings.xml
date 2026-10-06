@@ -22,6 +22,10 @@
     <string name="atualizar">Atualizar</string>
     <string name="title_carteirinha_medula_sangue">Carteirinha:\nDoador de Medula Óssea e  de Sangue</string>
     <string name="doador_medula_sangue">Doador de Medula Óssea e de Sangue</string>
+    <string name="titulo_nao_doador">Você não está cadastrado como doador de sangue ou medula óssea </string>
+    <string name="subtitulo_nao_doador">Caso tenha se cadastrado, clique no botão abaixo para atualizar suas informações e ter acesso a carteirinha</string>
+
+
 
     <!-- tela de dados do doador -->
     <string name="titulo_dados_doador">Atualize suas informações de doador</string>

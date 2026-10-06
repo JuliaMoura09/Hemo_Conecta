@@ -122,20 +122,39 @@ class CadastroFragment : Fragment() {
         email: String,
         senha: String
     ) {
+        // identifica a opção selecionada no RadioGroup
+        val selectedId = binding.radioGroupDoador.checkedRadioButtonId
+
+        // validação - obriga o usuário a marcar uma opção antes de cadastrar
+        if (selectedId == -1) {
+            Toast.makeText(requireContext(), "Por favor, selecione seu tipo de doador", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val tipoDoador = when (selectedId) {
+            R.id.option_doador_sangue -> "SANGUE"
+            R.id.option_doador_medula -> "MEDULA"
+            R.id.option_doador_ambos -> "AMBOS"
+            R.id.option_nao_doador -> "NAO_DOADOR"
+            else -> "NAO_DOADOR"
+        }
+
+        val isDoador = tipoDoador != "NAO_DOADOR"
 
         auth.createUserWithEmailAndPassword(email, senha)
             .addOnCompleteListener { task ->
-
                 if (task.isSuccessful) {
-
                     val uid = auth.currentUser?.uid ?: ""
 
+                    // campos que vão preencher o banco de dados
                     val dados = hashMapOf(
                         "nome" to nome,
                         "cpf" to cpf,
                         "nascimento" to nascimento,
                         "tipoSanguineo" to tipoSanguineo,
-                        "email" to email
+                        "email" to email,
+                        "tipoDoador" to tipoDoador,
+                        "isDoador" to isDoador
                     )
 
                     reference
@@ -143,20 +162,15 @@ class CadastroFragment : Fragment() {
                         .child(uid)
                         .setValue(dados)
                         .addOnCompleteListener { resultado ->
-
                             if (resultado.isSuccessful) {
-
                                 Toast.makeText(
                                     requireContext(),
                                     "Cadastro realizado!",
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                navegabilidadeTipoDoador()
-
-
+                                navegabilidadeTipoDoador(selectedId)
                             } else {
-
                                 Toast.makeText(
                                     requireContext(),
                                     "Erro ao salvar os dados",
@@ -164,9 +178,7 @@ class CadastroFragment : Fragment() {
                                 ).show()
                             }
                         }
-
                 } else {
-
                     Toast.makeText(
                         requireContext(),
                         task.exception?.message,
@@ -176,9 +188,7 @@ class CadastroFragment : Fragment() {
             }
     }
 
-    private fun navegabilidadeTipoDoador() {
-        val selectedId = binding.radioGroupDoador.checkedRadioButtonId
-
+    private fun navegabilidadeTipoDoador(selectedId: Int) {
         when (selectedId) {
             R.id.option_doador_sangue -> {
                 findNavController().navigate(R.id.action_cadastroFragment_to_DoadorSangueFragment)
@@ -191,13 +201,6 @@ class CadastroFragment : Fragment() {
             }
             R.id.option_nao_doador -> {
                 findNavController().navigate(R.id.action_global_inicioFragment)
-            }
-
-            else -> {
-                Toast.makeText(
-                    requireContext(),
-                    "Por favor, selecione uma opção na quinta pergunta",
-                    Toast.LENGTH_SHORT).show()
             }
         }
     }

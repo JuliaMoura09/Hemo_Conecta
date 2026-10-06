@@ -69,7 +69,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/data_redome_input"
+                    android:id="@+id/dataRedomeInput"
                     android:hint="@string/data_vazia"
                     android:textColor="@color/cinza"
                     android:textColorHint="@color/cinza"
@@ -109,7 +109,7 @@
                     android:backgroundTint="@color/white"
                     android:padding="18dp"
                     android:inputType="text"
-                    android:id="@+id/registro_redome_input"
+                    android:id="@+id/registroRedomeInput"
                     android:layout_marginTop="12dp"/>
             </LinearLayout>
 
