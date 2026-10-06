@@ -247,7 +247,11 @@
     <fragment
         android:id="@+id/aptoFragment"
         android:name="com.example.hemo_conecta.questionario.AptoFragment"
-        android:label="AptoFragment" />
+        android:label="AptoFragment" >
+        <action
+            android:id="@+id/action_aptoFragment_to_inicioFragment"
+            app:destination="@id/inicioFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/naoAptoFragment"
