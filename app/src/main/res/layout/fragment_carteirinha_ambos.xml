@@ -76,7 +76,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="@string/nome_doador"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -112,11 +112,11 @@
                             android:textSize="10sp" />
 
                         <TextView
-                            android:id="@+id/tv_rr_valor"
+                            android:id="@+id/tvCadastroRedome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="@string/numero_redome"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -137,11 +137,11 @@
                             android:textSize="10sp" />
 
                         <TextView
-                            android:id="@+id/tv_rd_valor"
+                            android:id="@+id/tvCadastroHemoes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="@string/rd_doador"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -202,7 +202,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="@string/sangue_doador"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
