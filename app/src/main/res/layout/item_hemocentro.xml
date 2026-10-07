@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_corner"
+    android:backgroundTint="@color/white"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvNomeUnidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/vermelho"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Hemocentro Coordenador" />
+
+    <TextView
+        android:id="@+id/tvEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/text"
+        android:textSize="13sp"
+        tools:text="Avenida Marechal Campos, 1468, Maruípe, Vitória-ES" />
+
+    <TextView
+        android:id="@+id/tvTelefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/text"
+        android:textSize="13sp"
+        tools:text="Tel. (27) 3636-7920" />
+
+    <TextView
+        android:id="@+id/tvHorario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/cinza"
+        android:textSize="12sp"
+        tools:text="Doações: todos os dias, das 07h às 19h." />
+
+</LinearLayout>
