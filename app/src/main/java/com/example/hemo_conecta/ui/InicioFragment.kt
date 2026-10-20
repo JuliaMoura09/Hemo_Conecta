@@ -67,51 +67,7 @@ class InicioFragment : Fragment() {
             )
         }
 
-        verificarQuestionario()
-
         return binding.root
-    }
-
-    private fun verificarQuestionario() {
-
-        val usuario = auth.currentUser
-
-        if (usuario == null) {
-            return
-        }
-
-        val idUsuario = usuario.uid
-
-        reference
-            .child("questionarios")
-            .child(idUsuario)
-            .get()
-            .addOnSuccessListener { resultado ->
-
-                if (!resultado.exists()) {
-                    return@addOnSuccessListener
-                }
-
-                val timestamp = resultado.child("data").getValue(Long::class.java) ?: return@addOnSuccessListener
-                val agora = System.currentTimeMillis()
-                val tempoPassado = agora - timestamp
-
-                if (tempoPassado >= vinteSegundos) {
-                    Toast.makeText(requireContext(),"Está na hora de refazer o questionário",Toast.LENGTH_SHORT).show()
-                } else {
-                    //Ainda não passaram 20 segundos.
-                    //Calcula quanto falta.
-                    val tempoRestante = vinteSegundos - tempoPassado
-
-                    handler.postDelayed({
-
-                        if (isAdded) {
-                            Toast.makeText(requireContext(), "Está na hora de refazer o questionário", Toast.LENGTH_SHORT).show()
-                        }
-
-                    }, tempoRestante)
-                }
-            }
     }
 
     override fun onDestroyView() {
@@ -120,3 +76,4 @@ class InicioFragment : Fragment() {
         _binding = null
     }
 }
+
