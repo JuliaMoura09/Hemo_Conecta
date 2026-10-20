@@ -64,5 +64,14 @@
     <color name="fundo_lanche">#E9FBF5</color>
     <color name="icon_lanche">#35C990</color>
 
+    <!-- tela de processo  -->
+    <color name="titulo_historico">#273445</color>
+    <color name="subtitulo_historico">#555B66</color>
+    <color name="fundo_plaquetas">#FFF8E1</color>
+    <color name="icon_plaquetas">#F59E0B</color>
+    <color name="fundo_sangue">#FFEBEE</color>
+    <color name="icon_sangue">#EF4444</color>
+    <color name="fundo_medula">#E3F2FD</color>
+    <color name="icon_medula">#3B82F6</color>
 
 </resources>

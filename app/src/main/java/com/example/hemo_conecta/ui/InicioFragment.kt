@@ -43,6 +43,12 @@ class InicioFragment : Fragment() {
             )
         }
 
+        binding.historicoBt.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_inicioFragment_to_historicoFragment
+            )
+        }
+
         binding.processoBt.setOnClickListener {
             findNavController().navigate(
                 R.id.action_inicioFragment_to_processoDoacaoFragment

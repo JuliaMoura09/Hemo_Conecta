@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@drawable/back_foto"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@drawable/logo" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textLogo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Adicione uma Nova Doação"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/text_data_doacao"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear1" />
+
+            <!--DATA DA DOAÇÃO-->
+                <TextView
+                    android:id="@+id/text_data_doacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data da Doação"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintTop_toBottomOf="@id/textLogo1"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/data_doacao_input"
+                    android:hint="00/00/0000"
+                    android:textColor="@color/cinza"
+                    android:textColorHint="@color/cinza"
+                    android:textSize="18sp"
+                    android:background="@drawable/rounded_corner"
+                    android:padding="18dp"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/text_data_doacao"/>
+
+        <!--TIPO DE DOAÇÃO-->
+        <TextView
+            android:id="@+id/text_tipo_doacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Que tipo de doação você realizou?"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/data_doacao_input"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group_doacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/text_tipo_doacao">
+
+            <RadioButton
+                android:id="@+id/option_doacao_sangue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Doação de sangue"/>
+
+            <RadioButton
+                android:id="@+id/option_doacao_medula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Doação de medula óssea"/>
+
+            <RadioButton
+                android:id="@+id/option_doacao_plaquetas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Doação de Plaquetas"/>
+        </RadioGroup>
+
+        <!--LOCAL DA DOAÇÃO-->
+        <TextView
+            android:id="@+id/text_local_doacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Em que local você realizou a sua doação?"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/radio_group_doacao"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_local_doacao"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/text_local_doacao"/>
+        
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar Doação"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/vermelho"
+                android:padding="18dp"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"
+                android:id="@+id/buttonCadastro"
+                app:layout_constraintTop_toBottomOf="@id/spinner_local_doacao"/>
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
