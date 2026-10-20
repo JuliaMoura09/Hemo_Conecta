@@ -26,7 +26,6 @@
     <string name="subtitulo_nao_doador">Caso tenha se cadastrado, clique no botão abaixo para atualizar suas informações e ter acesso a carteirinha</string>
 
 
-
     <!-- tela de dados do doador -->
     <string name="titulo_dados_doador">Atualize suas informações de doador</string>
     <string name="data_hemoes">Data de Cadastro no HEMOES</string>

@@ -144,6 +144,10 @@
             app:destination="@id/localizacaoFragment" />
 
         <action
+            android:id="@+id/action_inicioFragment_to_historicoFragment"
+            app:destination="@id/historicoFragment" />
+
+        <action
             android:id="@+id/action_inicioFragment_to_notificacoesFragment"
             app:destination="@id/notificacoesFragment" />
 
@@ -158,13 +162,13 @@
 
     <fragment
         android:id="@+id/carteirinhaSangueFragment"
-        android:name="com.example.hemo_conecta.CarteirinhaSangueFragment"
+        android:name="com.example.hemo_conecta.ui.CarteirinhaSangueFragment"
         android:label="CarteirinhaSangueFragment"
         tools:layout="@layout/fragment_carteirinha_sangue" />
 
     <fragment
         android:id="@+id/carteirinhaMedulaFragment"
-        android:name="com.example.hemo_conecta.CarteirinhaMedulaFragment"
+        android:name="com.example.hemo_conecta.ui.CarteirinhaMedulaFragment"
         android:label="CarteirinhaMedulaFragment"
         tools:layout="@layout/fragment_carteirinha_medula" />
 
@@ -204,6 +208,21 @@
         android:id="@+id/notificacoesFragment"
         android:name="com.example.hemo_conecta.ui.NotificacoesFragment"
         android:label="NotificacoesFragment" />
+
+    <!-- tela do histórico de doações e adicionar nova doação-->
+    <fragment
+        android:id="@+id/historicoFragment"
+        android:name="com.example.hemo_conecta.HistoricoFragment"
+        android:label="HistoricoFragment" />
+
+    <fragment
+        android:id="@+id/adicionarDoacaoFragment"
+        android:name="com.example.hemo_conecta.AdicionarDoacaoFragment"
+        android:label="AdicionarDoacaoFragment" />
+
+    <action
+        android:id="@+id/action_historicoFragment_to_adicionarDoacaoFragment"
+        app:destination="@id/adicionarDoacaoFragment" />
 
     <!-- tela de processo de doação -->
     <fragment
