@@ -4,7 +4,7 @@
     <item
         android:id="@+id/inicioFragment"
         android:icon="@drawable/ic_house"
-        android:title="Início" />
+        android:title="Inicio" />
 
     <item
         android:id="@+id/carteirinhaAmbosFragment"
@@ -14,12 +14,12 @@
     <item
         android:id="@+id/localizacaoFragment"
         android:icon="@drawable/ic_map"
-        android:title="Mapa" />
+        android:title="Hemocentros" />
 
     <item
         android:id="@+id/fragmentConteudosEducativos"
         android:icon="@drawable/ic_lamp"
-        android:title="Artigos" />
+        android:title="Curiosidades" />
 
     <item
         android:id="@+id/perfilFragment"

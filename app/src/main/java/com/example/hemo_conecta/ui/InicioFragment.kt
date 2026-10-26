@@ -12,8 +12,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.hemo_conecta.R
 import com.example.hemo_conecta.databinding.FragmentInicioBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class InicioFragment : Fragment() {
 
@@ -36,6 +39,8 @@ class InicioFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         reference = FirebaseDatabase.getInstance().reference
+
+        carregarDados()
 
         binding.btnNotificacoes.setOnClickListener {
             findNavController().navigate(
@@ -68,6 +73,36 @@ class InicioFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun carregarDados() {
+
+        val uid = auth.currentUser?.uid ?: ""
+
+        reference
+            .child("usuarios")
+            .child(uid)
+            .addValueEventListener(object : ValueEventListener {
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    val nome = snapshot.child("nome").getValue(String::class.java)
+                    val tipoSanguineo =
+                        snapshot.child("tipoSanguineo").getValue(String::class.java)
+
+                    binding.nomeUsuarioInicio.text = nome
+                    binding.tipoSanguineoInicio.text = tipoSanguineo
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Erro ao carregar os dados",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
     }
 
     override fun onDestroyView() {

@@ -2,6 +2,7 @@ package com.example.hemo_conecta
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.view.setPadding
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,6 +17,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 systemBars.left,
                 systemBars.top,
                 systemBars.right,
-                systemBars.bottom
+                0
             )
             insets
         }
@@ -49,6 +51,13 @@ class MainActivity : AppCompatActivity() {
 
         // Associa o NavController à BottomNavigation
         bottomNavigation.setupWithNavController(navController)
+
+        bottomNavigation.itemIconSize =
+            (24 * resources.displayMetrics.density).toInt()
+        bottomNavigation.setPadding(0, 0, 0, 0)
+
+        bottomNavigation.itemBackground = null
+        bottomNavigation.setItemActiveIndicatorEnabled(false)
 
         // Intercepta os cliques da BottomNavigation
         bottomNavigation.setOnItemSelectedListener { item ->
