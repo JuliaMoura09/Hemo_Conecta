@@ -199,7 +199,13 @@
     <fragment
         android:id="@+id/fragmentConteudosEducativos"
         android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
-        android:label="FragmentConteudosEducativos" />
+        android:label="FragmentConteudosEducativos">
+
+        <action
+            android:id="@+id/action_fragmentConteudosEducativos_to_exemploArtigoFragment"
+            app:destination="@id/exemploArtigoFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/perfilFragment"
@@ -325,5 +331,36 @@
         android:id="@+id/cuponsFragment"
         android:name="com.example.hemo_conecta.CuponsFragment"
         android:label="CuponsFragment" />
+
+    <fragment
+        android:id="@+id/exemploArtigoFragment"
+        android:name="com.example.hemo_conecta.ExemploArtigoFragment"
+        android:label="Artigo educativo">
+
+        <argument
+            android:name="categoria"
+            app:argType="string" />
+
+        <argument
+            android:name="titulo"
+            app:argType="string" />
+
+        <argument
+            android:name="autor"
+            app:argType="string" />
+
+        <argument
+            android:name="introducao"
+            app:argType="string" />
+
+        <argument
+            android:name="mensagem"
+            app:argType="string" />
+
+        <argument
+            android:name="curiosidade"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 
 </navigation>
