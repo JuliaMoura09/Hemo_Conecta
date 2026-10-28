@@ -162,13 +162,13 @@
 
     <fragment
         android:id="@+id/carteirinhaSangueFragment"
-        android:name="com.example.hemo_conecta.ui.CarteirinhaSangueFragment"
+        android:name="com.example.hemo_conecta.CarteirinhaSangueFragment"
         android:label="CarteirinhaSangueFragment"
         tools:layout="@layout/fragment_carteirinha_sangue" />
 
     <fragment
         android:id="@+id/carteirinhaMedulaFragment"
-        android:name="com.example.hemo_conecta.ui.CarteirinhaMedulaFragment"
+        android:name="com.example.hemo_conecta.CarteirinhaMedulaFragment"
         android:label="CarteirinhaMedulaFragment"
         tools:layout="@layout/fragment_carteirinha_medula" />
 
@@ -176,11 +176,19 @@
         android:id="@+id/naoDoadorFragment"
         android:name="com.example.hemo_conecta.NaoDoadorFragment"
         android:label="NaoDoadorFragment"
-        tools:layout="@layout/fragment_nao_doador" />
+        tools:layout="@layout/fragment_nao_doador" >
+        <action
+            android:id="@+id/action_naoDoadorFragment_to_DoadorAmbosFragment2"
+            app:destination="@id/DoadorAmbosFragment" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_naoDoadorFragment_to_DoadorAmbosFragment"
+        app:destination="@id/DoadorAmbosFragment" />
 
     <fragment
         android:id="@+id/carteirinhaAmbosFragment"
-        android:name="com.example.hemo_conecta.ui.CarteirinhaAmbosFragment"
+        android:name="com.example.hemo_conecta.CarteirinhaAmbosFragment"
         android:label="CarteirinhaAmbosFragment" />
 
     <fragment
@@ -213,21 +221,33 @@
     <fragment
         android:id="@+id/historicoFragment"
         android:name="com.example.hemo_conecta.HistoricoFragment"
-        android:label="HistoricoFragment" />
+        android:label="HistoricoFragment" >
+        <action
+            android:id="@+id/action_historicoFragment_to_adicionarDoacaoFragment2"
+            app:destination="@id/adicionarDoacaoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/adicionarDoacaoFragment"
         android:name="com.example.hemo_conecta.AdicionarDoacaoFragment"
-        android:label="AdicionarDoacaoFragment" />
+        android:label="AdicionarDoacaoFragment" >
+        <action
+            android:id="@+id/action_adicionarDoacaoFragment_to_historicoFragment2"
+            app:destination="@id/historicoFragment" />
+    </fragment>
 
     <action
         android:id="@+id/action_historicoFragment_to_adicionarDoacaoFragment"
         app:destination="@id/adicionarDoacaoFragment" />
 
+    <action
+        android:id="@+id/action_adicionarDoacaoFragment_to_historicoFragment"
+        app:destination="@id/historicoFragment" />
+
     <!-- tela de processo de doação -->
     <fragment
         android:id="@+id/processoDoacaoFragment"
-        android:name="com.example.hemo_conecta.ui.ProcessoDoacaoFragment"
+        android:name="com.example.hemo_conecta.ProcessoDoacaoFragment"
         android:label="ProcessoDoacaoFragment" />
 
     <!-- telas do questionário -->
@@ -303,7 +323,7 @@
     <!-- tela de cupons -->
     <fragment
         android:id="@+id/cuponsFragment"
-        android:name="com.example.hemo_conecta.ui.CuponsFragment"
+        android:name="com.example.hemo_conecta.CuponsFragment"
         android:label="CuponsFragment" />
 
 </navigation>

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.hemo_conecta.R
-import com.example.hemo_conecta.databinding.FragmentCadastroBinding
 import com.example.hemo_conecta.databinding.FragmentDadosDoadorAmbosBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference

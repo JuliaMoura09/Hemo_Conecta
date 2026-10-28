@@ -1,4 +1,4 @@
-package com.example.hemo_conecta.ui
+package com.example.hemo_conecta
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -50,112 +50,27 @@
                         android:layout_marginTop="8dp"/>
                 </LinearLayout>
 
-                <!-- card com as informações das doações anteriores -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="28dp"
-                    app:cardBackgroundColor="#FFF0F0"
-                    app:cardCornerRadius="16dp"
-                    app:strokeColor="#FFCDD2"
-                    app:strokeWidth="1dp"
-                    android:layout_marginTop="15dp">
-
+                <!--  lista das informações das doações anteriores -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:paddingHorizontal="4dp"
-                        android:paddingVertical="16dp"
-                        android:weightSum="5">
-
-                        <!-- qnt doações de sangue -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5"
-                                android:textColor="@color/titulo_processo"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Doações de Sangue"
-                                android:textColor="@color/subtitulo_historico"
-                                android:textSize="10sp" />
-                        </LinearLayout>
+                        android:paddingVertical="16dp">
 
                         <!-- qnt aproximada de vidas salvas -->
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="8dp">
 
                             <TextView
+                                android:id="@+id/txtVidasSalvas"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="20"
-                                android:textColor="@color/titulo_historico"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Vidas salvas"
-                                android:textColor="@color/subtitulo_historico"
-                                android:textSize="10sp" />
-                        </LinearLayout>
-
-                        <!-- qnt doações de medula óssea -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1"
-                                android:textColor="@color/titulo_historico"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Doação de Médula Óssea"
-                                android:textColor="@color/subtitulo_historico"
-                                android:textSize="10sp" />
-                        </LinearLayout>
-
-                        <!-- qnt sangue doado -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="2,25L"
+                                android:text=""
                                 android:textColor="@color/titulo_historico"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -164,47 +79,132 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Sangue doado"
+                                android:text="  Vidas salvas"
                                 android:textColor="@color/subtitulo_historico"
-                                android:textSize="10sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
-                        <!-- qnt doações de plaquetas -->
+                        <!-- qnt doações de sangue -->
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="8dp">
 
                             <TextView
+                                android:id="@+id/txtQtdSangue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5"
-                                android:textColor="@color/titulo_historico"
-                                android:textSize="18sp"
+                                android:text=""
+                                android:textColor="@color/titulo_processo"
+                                android:textSize="15sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Doações de Plaquetas"
+                                android:text="  Doações de Sangue"
                                 android:textColor="@color/subtitulo_historico"
-                                android:textSize="10sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
-                <!-- Título da Seção -->
+                        <!-- qnt sangue doado -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/txtSangueDoado"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/titulo_historico"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="  de Sangue doado"
+                                android:textColor="@color/subtitulo_historico"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- qnt doações de medula óssea -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/txtQtdMedula"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/titulo_historico"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="  Doação de Médula Óssea"
+                                android:textColor="@color/subtitulo_historico"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- qnt doações de plaquetas -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/txtQtdPlaquetas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/titulo_historico"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="  Doações de Plaquetas"
+                                android:textColor="@color/subtitulo_historico"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        </LinearLayout>
+
+                <!-- Doações do Usuário -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="Últimas doações"
+                    android:text="Últimas doações:"
                     android:textColor="@color/titulo_historico"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/containerUltimasDoacoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                 <!-- Item 1: Doação de Plaquetas -->
                 <com.google.android.material.card.MaterialCardView
@@ -265,10 +265,11 @@
                                     app:tint="@color/subtitulo_historico" />
 
                                 <TextView
+                                    android:id="@+id/txtDataCard1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="6dp"
-                                    android:text="16 de abril, 2026"
+                                    android:text=""
                                     android:textColor="@color/subtitulo_historico"
                                     android:textSize="12sp" />
                             </LinearLayout>
@@ -287,10 +288,11 @@
                                     app:tint="@color/subtitulo_historico" />
 
                                 <TextView
+                                    android:id="@+id/txtLocalCard1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="6dp"
-                                    android:text="Hemocentro HEMOES Serra"
+                                    android:text=""
                                     android:textColor="@color/subtitulo_historico"
                                     android:textSize="12sp" />
                             </LinearLayout>
@@ -357,10 +359,11 @@
                                     app:tint="@color/subtitulo_historico" />
 
                                 <TextView
+                                    android:id="@+id/txtDataCard2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="6dp"
-                                    android:text="05 de fevereiro, 2026"
+                                    android:text=""
                                     android:textColor="@color/subtitulo_historico"
                                     android:textSize="12sp" />
                             </LinearLayout>
@@ -379,10 +382,11 @@
                                     app:tint="@color/subtitulo_historico" />
 
                                 <TextView
+                                    android:id="@+id/txtLocalCard2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="6dp"
-                                    android:text="Hemocentro HEMOES Serra"
+                                    android:text=""
                                     android:textColor="@color/subtitulo_historico"
                                     android:textSize="12sp" />
                             </LinearLayout>
@@ -449,10 +453,11 @@
                                     app:tint="@color/subtitulo_historico" />
 
                                 <TextView
+                                    android:id="@+id/txtDataCard3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="6dp"
-                                    android:text="16 de abril, 2026"
+                                    android:text=""
                                     android:textColor="@color/subtitulo_historico"
                                     android:textSize="12sp" />
                             </LinearLayout>
@@ -471,16 +476,19 @@
                                     app:tint="@color/subtitulo_historico" />
 
                                 <TextView
+                                    android:id="@+id/txtLocalCard3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="6dp"
-                                    android:text="Hemocentro HEMOES Serra"
+                                    android:text=""
                                     android:textColor="@color/subtitulo_historico"
                                     android:textSize="12sp" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
 
                 <Button
                     android:layout_width="match_parent"
