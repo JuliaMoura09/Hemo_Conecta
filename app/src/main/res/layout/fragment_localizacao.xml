@@ -51,6 +51,36 @@
                 android:inputType="text"/>
 
             <LinearLayout
+                android:id="@+id/maisProximoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Hemocentro mais próximo de você"
+                    android:textColor="#111827"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMaisProximoStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/cinza"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/cardMaisProximoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/resultadosContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
