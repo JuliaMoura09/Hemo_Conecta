@@ -72,6 +72,10 @@ class Quest1Fragment : Fragment() {
             findNavController().navigate(
                 R.id.action_quest1Fragment_to_quest2Fragment)
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 
