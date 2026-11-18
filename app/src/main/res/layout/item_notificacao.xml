@@ -50,7 +50,6 @@
                 android:textSize="10sp" />
 
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
