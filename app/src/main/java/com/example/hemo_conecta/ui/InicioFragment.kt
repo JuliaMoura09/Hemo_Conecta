@@ -1,7 +1,9 @@
 package com.example.hemo_conecta.ui
 
-import android.os.Bundle
+import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
+import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +22,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
 
 class InicioFragment : Fragment() {
 
@@ -32,14 +38,19 @@ class InicioFragment : Fragment() {
     private lateinit var doacoesReference: DatabaseReference
     private lateinit var usuariosReference: DatabaseReference
 
+    private lateinit var referenciaDoacoesUsuario: DatabaseReference
+
     private var doacoesSnapshot: DataSnapshot? = null
     private var usuariosSnapshot: DataSnapshot? = null
 
     private var doacoesListener: ValueEventListener? = null
     private var usuariosListener: ValueEventListener? = null
     private var dadosListener: ValueEventListener? = null
+    private var listenerDoacaoSangue: ValueEventListener? = null
 
     private var dadosReference: DatabaseReference? = null
+
+    private val intervaloDoacao = 90
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +65,7 @@ class InicioFragment : Fragment() {
 
         carregarDados()
         carregarRanking()
+        carregarProximaDoacao()
 
         binding.btnNotificacoes.setOnClickListener {
             findNavController().navigate(
@@ -85,6 +97,16 @@ class InicioFragment : Fragment() {
             )
         }
 
+        binding.btnAgendarAgora.setOnClickListener {
+
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://agendamento.saude.es.gov.br/")
+            )
+
+            startActivity(intent)
+        }
+
         return binding.root
     }
 
@@ -113,6 +135,8 @@ class InicioFragment : Fragment() {
 
             override fun onCancelled(error: DatabaseError) {
 
+                if (_binding == null) return
+
                 Toast.makeText(
                     requireContext(),
                     "Erro ao carregar os dados",
@@ -122,6 +146,165 @@ class InicioFragment : Fragment() {
         }
 
         dadosReference?.addValueEventListener(dadosListener!!)
+    }
+
+    // CARREGAR PRÓXIMA DOAÇÃO DE SANGUE
+    private fun carregarProximaDoacao() {
+
+        val uid = auth.currentUser?.uid ?: return
+
+        referenciaDoacoesUsuario = reference
+            .child("doacoes")
+            .child(uid)
+
+        listenerDoacaoSangue = object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if (_binding == null) return
+
+                val formato = SimpleDateFormat(
+                    "dd/MM/yyyy",
+                    Locale("pt", "BR")
+                ).apply {
+                    isLenient = false
+                    timeZone = TimeZone.getTimeZone("UTC")
+                }
+
+                var ultimaDoacao: Calendar? = null
+
+                for (doacao in snapshot.children) {
+
+                    val tipo = doacao.child("tipo")
+                        .getValue(String::class.java)
+                        ?.uppercase()
+                        ?.trim()
+                        ?.replace("Ó", "O")
+
+                    if (tipo == "SANGUE") {
+
+                        val dataTexto = doacao.child("data")
+                            .getValue(String::class.java)
+
+                        try {
+
+                            if (dataTexto != null) {
+
+                                val data = formato.parse(dataTexto)
+
+                                if (data != null) {
+
+                                    val calendario = Calendar.getInstance(
+                                        TimeZone.getTimeZone("UTC")
+                                    )
+
+                                    calendario.time = data
+
+                                    calendario.set(
+                                        Calendar.HOUR_OF_DAY,
+                                        0
+                                    )
+                                    calendario.set(
+                                        Calendar.MINUTE,
+                                        0
+                                    )
+                                    calendario.set(
+                                        Calendar.SECOND,
+                                        0
+                                    )
+                                    calendario.set(
+                                        Calendar.MILLISECOND,
+                                        0
+                                    )
+
+                                    if (
+                                        ultimaDoacao == null ||
+                                        calendario.after(ultimaDoacao)
+                                    ) {
+                                        ultimaDoacao = calendario
+                                    }
+                                }
+                            }
+
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+
+                if (ultimaDoacao == null) {
+
+                    binding.diasProximaDoacao.text = "-- dias"
+
+                    binding.textoProximaDoacao.text =
+                        "Registre sua primeira doação de sangue."
+
+                    binding.progressoDoacao.progress = 0
+
+                    return
+                }
+
+                val dataLiberacao = ultimaDoacao.clone() as Calendar
+
+                dataLiberacao.add(
+                    Calendar.DAY_OF_YEAR,
+                    intervaloDoacao
+                )
+
+                val hoje = Calendar.getInstance(
+                    TimeZone.getTimeZone("UTC")
+                )
+
+                hoje.set(Calendar.HOUR_OF_DAY, 0)
+                hoje.set(Calendar.MINUTE, 0)
+                hoje.set(Calendar.SECOND, 0)
+                hoje.set(Calendar.MILLISECOND, 0)
+
+                val diferenca = (
+                        dataLiberacao.timeInMillis - hoje.timeInMillis
+                        ) / (24 * 60 * 60 * 1000)
+
+                val diasRestantes = diferenca.toInt().coerceAtLeast(0)
+
+                val diasPassados = (
+                        intervaloDoacao - diasRestantes
+                        ).coerceIn(0, intervaloDoacao)
+
+                binding.progressoDoacao.max = intervaloDoacao
+                binding.progressoDoacao.progress = diasPassados
+
+                if (diasRestantes > 0) {
+
+                    binding.diasProximaDoacao.text =
+                        "$diasRestantes dias"
+
+                    binding.textoProximaDoacao.text =
+                        "Faltam $diasRestantes dias para completar o período de referência."
+
+                } else {
+
+                    binding.diasProximaDoacao.text = "0 dias"
+
+                    binding.textoProximaDoacao.text =
+                        "O período de referência foi concluído! Consulte o hemocentro para confirmar sua aptidão."
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+                if (_binding == null) return
+
+                Toast.makeText(
+                    requireContext(),
+                    "Erro ao calcular a próxima doação.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        referenciaDoacoesUsuario.addValueEventListener(
+            listenerDoacaoSangue!!
+        )
     }
 
     // CARREGAR RANKING
@@ -139,6 +322,8 @@ class InicioFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+
+                if (_binding == null) return
 
                 Toast.makeText(
                     requireContext(),
@@ -158,6 +343,8 @@ class InicioFragment : Fragment() {
 
             override fun onCancelled(error: DatabaseError) {
 
+                if (_binding == null) return
+
                 Toast.makeText(
                     requireContext(),
                     "Erro ao carregar os usuários",
@@ -175,6 +362,8 @@ class InicioFragment : Fragment() {
 
         val doacoes = doacoesSnapshot ?: return
         val usuarios = usuariosSnapshot ?: return
+
+        if (_binding == null) return
 
         val uidAtual = auth.currentUser?.uid ?: return
 
@@ -394,6 +583,12 @@ class InicioFragment : Fragment() {
 
         dadosListener?.let {
             dadosReference?.removeEventListener(it)
+        }
+
+        listenerDoacaoSangue?.let {
+            if (::referenciaDoacoesUsuario.isInitialized) {
+                referenciaDoacoesUsuario.removeEventListener(it)
+            }
         }
 
         _binding = null

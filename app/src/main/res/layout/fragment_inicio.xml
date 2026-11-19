@@ -80,10 +80,11 @@
 
             </LinearLayout>
 
+
             <!-- PRÓXIMA DOAÇÃO -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_doacao"
                 android:elevation="6dp"
@@ -93,59 +94,58 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/proxima_doacao"
+                    android:text="PRÓXIMA DOAÇÃO DE SANGUE"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/diasProximaDoacao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dias_proxima_doacao"
-                        android:textColor="@color/white"
-                        android:textSize="26sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="@string/dias"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@drawable/bg_progress">
-
-                    <View
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/bg_progress_fill" />
-
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="101dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_agendar"
-                    android:gravity="center"
-                    android:text="@string/agendar_agora"
-                    android:textColor="@color/button_text"
-                    android:textSize="11sp"
+                    android:layout_marginTop="8dp"
+                    android:text="-- dias"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/textoProximaDoacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Calculando período..."
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressoDoacao"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="12dp"
+                    android:max="90"
+                    android:progress="0"
+                    android:progressTint="@color/white"
+                    android:progressBackgroundTint="#80FFFFFF" />
+
+                <TextView
+                    android:id="@+id/btnAgendarAgora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_agendar"
+                    android:text="Agendar agora"
+                    android:textColor="@color/button_text"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+
             </LinearLayout>
+
 
             <!-- ACESSO RÁPIDO -->
             <TextView
@@ -271,131 +271,6 @@
                         android:textSize="11sp" />
 
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- AVISOS IMPORTANTES -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="27dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/avisos_importantes"
-                    android:textColor="@color/text_title"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ver_todos"
-                    android:textColor="@color/red"
-                    android:textSize="13sp" />
-
-            </LinearLayout>
-
-            <!-- AVISO DE SANGUE -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="96dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/bg_aviso"
-                android:elevation="2dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
-                    android:background="@drawable/bg_quick_yellow"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_warning"
-                    app:tint="@color/warning_icon" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sangue_o_positivo_requisitado"
-                        android:textColor="@color/text_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:text="@string/aviso_estoque"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="11sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- COMPATIBILIDADE -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                android:layout_marginTop="13dp"
-                android:background="@drawable/bg_compatibilidade"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="14dp">
-
-                <ImageView
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_blood"
-                    app:tint="@color/white" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/compatibilidade_encontrada"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="@string/compatibilidade_descricao"
-                        android:textColor="@color/white"
-                        android:textSize="11sp" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="›"
-                    android:textColor="@color/white"
-                    android:textSize="28sp" />
 
             </LinearLayout>
 

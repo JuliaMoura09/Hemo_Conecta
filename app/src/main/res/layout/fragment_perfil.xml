@@ -77,19 +77,21 @@
                 android:gravity="center"
                 android:layout_marginTop="3dp" />
 
-            <!-- Card Nível -->
+
+            <!-- Card de Nível e HemoCoins -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="112dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp"
+                android:padding="18dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_card_nivel">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -98,21 +100,23 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/nivelAtual"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/nivel_perfil"
+                            android:text="Nível 1"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+                            android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/nomeNivelAtual"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/nome_nivel_perfil"
+                            android:text="Gota de Esperança"
                             android:textColor="@color/quick_red_icon"
-                            android:textSize="18sp"
+                            android:textSize="19sp"
                             android:textStyle="bold"
-                            android:layout_marginTop="1dp" />
+                            android:layout_marginTop="2dp" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -122,42 +126,48 @@
                         android:gravity="end">
 
                         <TextView
+                            android:id="@+id/pontosTotais"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/qnt_pontos"
+                            android:text="0"
                             android:textColor="@color/black"
-                            android:textSize="15sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/pontos_totais"
+                            android:text="HemoCoins totais"
                             android:textColor="@color/black"
-                            android:textSize="9sp" />
+                            android:textSize="10sp" />
+
                     </LinearLayout>
+
                 </LinearLayout>
 
-                <!-- Barra de Progresso -->
                 <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
                     android:id="@+id/progressoNivel"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
-                    android:layout_marginTop="9dp"
-                    android:max="1500"
-                    android:progress="1250"
-                    android:progressTint="@color/quick_red_icon"
-                    android:backgroundTint="@color/white" />
+                    android:layout_marginTop="12dp"
+                    android:max="250"
+                    android:progress="0"
+                    android:progressTint="#D9302B"
+                    android:progressBackgroundTint="#FFFFFF" />
 
                 <TextView
+                    android:id="@+id/textoProximoNivel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/qnt_pontos_proximo_nivel"
+                    android:text="250 HemoCoins para o próximo nível"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:layout_marginTop="3dp" />
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
+
             </LinearLayout>
+
 
 
             <!-- Medalhas -->
