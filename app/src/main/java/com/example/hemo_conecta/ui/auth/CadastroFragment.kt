@@ -122,10 +122,14 @@ class CadastroFragment : Fragment() {
         email: String,
         senha: String
     ) {
-        // identifica a opção selecionada no RadioGroup
-        val selectedId = binding.radioGroupDoador.checkedRadioButtonId
+        // validação do tipo sanguíneo
+        if (tipoSanguineo.isEmpty()) {
+            Toast.makeText(requireContext(), "Por favor, selecione seu tipo sanguíneo", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        // validação - obriga o usuário a marcar uma opção antes de cadastrar
+        // validação do tipo de doador
+        val selectedId = binding.radioGroupDoador.checkedRadioButtonId
         if (selectedId == -1) {
             Toast.makeText(requireContext(), "Por favor, selecione seu tipo de doador", Toast.LENGTH_SHORT).show()
             return
@@ -138,20 +142,30 @@ class CadastroFragment : Fragment() {
             R.id.option_nao_doador -> "NAO_DOADOR"
             else -> "NAO_DOADOR"
         }
-
         val isDoador = tipoDoador != "NAO_DOADOR"
+
+        // validação do gênero
+        val generoSelectedId = binding.radioGroupGenero.checkedRadioButtonId
+        val genero = when (generoSelectedId) {
+            R.id.option_genero_feminino -> "Feminino"
+            R.id.option_genero_masculino -> "Masculino"
+            else -> {
+                Toast.makeText(requireContext(), "Por favor, selecione o seu gênero", Toast.LENGTH_SHORT).show()
+                return
+            }
+        }
 
         auth.createUserWithEmailAndPassword(email, senha)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val uid = auth.currentUser?.uid ?: ""
 
-                    // campos que vão preencher o banco de dados
                     val dados = hashMapOf(
                         "nome" to nome,
                         "cpf" to cpf,
                         "nascimento" to nascimento,
                         "tipoSanguineo" to tipoSanguineo,
+                        "genero" to genero,
                         "email" to email,
                         "tipoDoador" to tipoDoador,
                         "isDoador" to isDoador

@@ -52,6 +52,7 @@ class HistoricoFragment : Fragment() {
                 var qtdSangue = 0
                 var qtdMedula = 0
                 var qtdPlaquetas = 0
+                var qtdPlasma = 0
 
                 val listaDoacoes = mutableListOf<Doacao>()
 
@@ -63,6 +64,8 @@ class HistoricoFragment : Fragment() {
                             "SANGUE" -> qtdSangue++
                             "MEDULA" -> qtdMedula++
                             "PLAQUETAS" -> qtdPlaquetas++
+                            "PLASMA" -> qtdPlasma++
+
                         }
                     }
                 }
@@ -70,6 +73,7 @@ class HistoricoFragment : Fragment() {
                 binding.txtQtdSangue.text = qtdSangue.toString()
                 binding.txtQtdMedula.text = qtdMedula.toString()
                 binding.txtQtdPlaquetas.text = qtdPlaquetas.toString()
+                binding.txtQtdPlasma.text = qtdPlasma.toString()
 
                 val vidasSalvas = qtdSangue * 4
                 val sangueDoadoMl = qtdSangue * 450

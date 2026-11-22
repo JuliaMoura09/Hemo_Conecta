@@ -24,6 +24,11 @@ class AdicionarDoacaoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         _binding = FragmentAdicionarDoacaoBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -60,6 +65,7 @@ class AdicionarDoacaoFragment : Fragment() {
             R.id.option_doacao_sangue -> "SANGUE"
             R.id.option_doacao_medula -> "MEDULA"
             R.id.option_doacao_plaquetas -> "PLAQUETAS"
+            R.id.option_doacao_plasma -> "PLASMA"
             else -> ""
         }
 

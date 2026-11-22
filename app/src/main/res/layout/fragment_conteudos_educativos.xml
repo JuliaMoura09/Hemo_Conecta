@@ -12,31 +12,53 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Cabeçalho -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_icon"
+                android:backgroundTint="@color/white">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Voltar"
+                    android:src="@drawable/ic_back" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Conteúdos Educacionais"
-                android:textColor="#111827"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:text="Artigos escritos por diversos especialistas."
-                android:textColor="#6B7280"
-                android:textSize="12sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Artigos Educativos"
+                    android:textColor="#111827"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Artigos escritos por diversos especialistas."
+                    android:textColor="#6B7280"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="24dp"/>
+            </LinearLayout>
         </LinearLayout>
+
 
         <!-- Os cards dos artigos serão adicionados pelo Kotlin -->
         <LinearLayout
