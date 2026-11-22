@@ -168,8 +168,6 @@
 
             </LinearLayout>
 
-
-
             <!-- Medalhas -->
             <TextView
                 android:layout_width="wrap_content"
@@ -181,14 +179,15 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="8dp" />
 
-            <!-- Primeira Linha de Medalhas-->
+            <!-- Primeira Linha de Medalhas -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <!-- Primeira Medalha -->
+                <!-- Primeira Gota -->
                 <LinearLayout
+                    android:id="@+id/medalhaPrimeiraGota"
                     android:layout_width="0dp"
                     android:layout_height="132dp"
                     android:layout_weight="1"
@@ -198,6 +197,7 @@
                     android:background="@drawable/bg_medalha">
 
                     <ImageView
+                        android:id="@+id/iconePrimeiraGota"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:scaleType="centerInside"
@@ -207,6 +207,7 @@
                         android:backgroundTint="@color/red_light"/>
 
                     <TextView
+                        android:id="@+id/tituloPrimeiraGota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/primeira_medalha"
@@ -216,6 +217,7 @@
                         android:layout_marginTop="5dp" />
 
                     <TextView
+                        android:id="@+id/descricaoPrimeiraGota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/primeira_medalha_descricao"
@@ -224,12 +226,14 @@
                         android:gravity="center"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
+
                 <Space
                     android:layout_width="8dp"
                     android:layout_height="1dp" />
 
-                <!-- Segunda Medalha -->
+                <!-- Doador de Plaquetas -->
                 <LinearLayout
+                    android:id="@+id/medalhaPlaquetas"
                     android:layout_width="0dp"
                     android:layout_height="132dp"
                     android:layout_weight="1"
@@ -239,6 +243,7 @@
                     android:background="@drawable/bg_medalha">
 
                     <ImageView
+                        android:id="@+id/iconePlaquetas"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:src="@drawable/ic_star"
@@ -248,6 +253,7 @@
                         android:background="@drawable/bg_icone_medalha" />
 
                     <TextView
+                        android:id="@+id/tituloPlaquetas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/segunda_medalha"
@@ -257,6 +263,7 @@
                         android:layout_marginTop="5dp" />
 
                     <TextView
+                        android:id="@+id/descricaoPlaquetas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/segunda_medalha_descricao"
@@ -265,13 +272,14 @@
                         android:gravity="center"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
+
                 <Space
                     android:layout_width="8dp"
                     android:layout_height="1dp" />
 
-
-                <!-- Terceira Medalha -->
+                <!-- Herói da Medula -->
                 <LinearLayout
+                    android:id="@+id/medalhaMedula"
                     android:layout_width="0dp"
                     android:layout_height="132dp"
                     android:layout_weight="1"
@@ -281,6 +289,7 @@
                     android:background="@drawable/bg_medalha">
 
                     <ImageView
+                        android:id="@+id/iconeMedula"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:src="@drawable/ic_heart"
@@ -290,6 +299,7 @@
                         android:background="@drawable/bg_icone_medalha" />
 
                     <TextView
+                        android:id="@+id/tituloMedula"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/terceira_medalha"
@@ -299,6 +309,7 @@
                         android:layout_marginTop="5dp" />
 
                     <TextView
+                        android:id="@+id/descricaoMedula"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/terceira_medalha_descricao"
@@ -316,8 +327,9 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="8dp">
 
-                <!-- Quarta Medalha - Bloqueada -->
+                <!-- Estudioso -->
                 <LinearLayout
+                    android:id="@+id/medalhaEstudioso"
                     android:layout_width="0dp"
                     android:layout_height="132dp"
                     android:layout_weight="1"
@@ -327,6 +339,7 @@
                     android:background="@drawable/bg_medalha">
 
                     <ImageView
+                        android:id="@+id/iconeEstudioso"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:scaleType="centerInside"
@@ -336,6 +349,7 @@
                         android:background="@drawable/bg_icone_medalha" />
 
                     <TextView
+                        android:id="@+id/tituloEstudioso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/quarta_medalha"
@@ -345,6 +359,7 @@
                         android:layout_marginTop="5dp" />
 
                     <TextView
+                        android:id="@+id/descricaoEstudioso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/quarta_medalha_descricao"
@@ -352,12 +367,14 @@
                         android:textSize="10sp"
                         android:gravity="center" />
                 </LinearLayout>
+
                 <Space
                     android:layout_width="8dp"
                     android:layout_height="1dp" />
 
-                <!-- Quinta Medalha - Bloqueada -->
+                <!-- Doador Frequente -->
                 <LinearLayout
+                    android:id="@+id/medalhaFrequente"
                     android:layout_width="0dp"
                     android:layout_height="132dp"
                     android:layout_weight="1"
@@ -367,6 +384,7 @@
                     android:background="@drawable/bg_medalha">
 
                     <ImageView
+                        android:id="@+id/iconeFrequente"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:scaleType="centerInside"
@@ -376,6 +394,7 @@
                         android:background="@drawable/bg_icone_medalha" />
 
                     <TextView
+                        android:id="@+id/tituloFrequente"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/quinta_medalha"
@@ -385,6 +404,7 @@
                         android:layout_marginTop="5dp" />
 
                     <TextView
+                        android:id="@+id/descricaoFrequente"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/quinta_medalha_descricao"
@@ -397,8 +417,9 @@
                     android:layout_width="8dp"
                     android:layout_height="1dp" />
 
-                <!-- Sexta Medalha - Bloqueada -->
+                <!-- Lenda Viva -->
                 <LinearLayout
+                    android:id="@+id/medalhaLenda"
                     android:layout_width="0dp"
                     android:layout_height="132dp"
                     android:layout_weight="1"
@@ -408,6 +429,7 @@
                     android:background="@drawable/bg_medalha">
 
                     <ImageView
+                        android:id="@+id/iconeLenda"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:scaleType="centerInside"
@@ -417,6 +439,7 @@
                         android:background="@drawable/bg_icone_medalha" />
 
                     <TextView
+                        android:id="@+id/tituloLenda"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/sexta_medalha"
@@ -426,6 +449,7 @@
                         android:layout_marginTop="5dp" />
 
                     <TextView
+                        android:id="@+id/descricaoLenda"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/sexta_medalha_descricao"

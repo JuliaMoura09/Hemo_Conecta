@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.ImageView
+import android.widget.TextView
+import android.graphics.Color
+import android.content.res.ColorStateList
 import androidx.navigation.fragment.findNavController
 import com.example.hemo_conecta.databinding.FragmentPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -14,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class PerfilFragment : Fragment() {
 
@@ -158,6 +164,9 @@ class PerfilFragment : Fragment() {
 
                 if (_binding == null) return
 
+                // Verificar medalhas
+                verificarMedalhas(snapshot, uid)
+
                 var totalHemoCoins = 0L
 
                 for (doacao in snapshot.children) {
@@ -228,6 +237,181 @@ class PerfilFragment : Fragment() {
         doacoesRef.addValueEventListener(doacoesListener!!)
     }
 
+    // Verificar medalhas
+    private fun verificarMedalhas(snapshot: DataSnapshot, uid: String) {
+
+        var totalSangue = 0
+        var totalPlasma = 0
+        var totalPlaquetas = 0
+        var totalDoacoes = 0
+        var doacoesAno = 0
+
+        val formato = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        formato.isLenient = false
+
+        val agora = System.currentTimeMillis()
+        val umAno = 365L * 24 * 60 * 60 * 1000
+
+        for (doacao in snapshot.children) {
+
+            val tipo = doacao.child("tipo")
+                .getValue(String::class.java)
+                ?.trim()
+                ?.uppercase()
+                ?.replace("Ó", "O")
+
+            val dataString = doacao.child("data")
+                .getValue(String::class.java)
+
+            when (tipo) {
+                "SANGUE" -> totalSangue++
+                "PLASMA" -> totalPlasma++
+                "PLAQUETAS" -> totalPlaquetas++
+            }
+
+            if (tipo == "SANGUE" ||
+                tipo == "PLASMA" ||
+                tipo == "MEDULA OSSEA" ||
+                tipo == "PLAQUETAS"
+            ) {
+
+                totalDoacoes++
+
+                if (!dataString.isNullOrEmpty()) {
+
+                    val data = formato.parse(dataString)?.time
+
+                    if (data != null &&
+                        agora - data <= umAno &&
+                        data <= agora
+                    ) {
+                        doacoesAno++
+                    }
+                }
+            }
+        }
+
+        val usuarioRef = reference
+            .child("usuarios")
+            .child(uid)
+
+        // Verificar cadastro no REDOME
+        usuarioRef.child("cadastroRedome").get()
+            .addOnSuccessListener { redomeSnapshot ->
+
+                if (_binding == null) return@addOnSuccessListener
+
+                val cadastroRedome = redomeSnapshot
+                    .getValue(String::class.java)
+
+                val cadastradoRedome = !cadastroRedome.isNullOrBlank()
+
+                // Primeira Gota
+                atualizarMedalha(
+                    binding.iconePrimeiraGota,
+                    binding.tituloPrimeiraGota,
+                    binding.descricaoPrimeiraGota,
+                    totalSangue >= 1,
+                    R.drawable.ic_blood,
+                    "Realizou a primeira doação"
+                )
+
+                // Primeira doação de plaquetas
+                atualizarMedalha(
+                    binding.iconePlaquetas,
+                    binding.tituloPlaquetas,
+                    binding.descricaoPlaquetas,
+                    totalPlaquetas >= 1,
+                    R.drawable.ic_star,
+                    "Fez a primeira doação de plaquetas"
+                )
+
+                // Cadastro no REDOME
+                atualizarMedalha(
+                    binding.iconeMedula,
+                    binding.tituloMedula,
+                    binding.descricaoMedula,
+                    cadastradoRedome,
+                    R.drawable.ic_heart,
+                    "Cadastrado no REDOME"
+                )
+
+                // Estudioso (ainda sem sistema de artigos)
+                atualizarMedalha(
+                    binding.iconeEstudioso,
+                    binding.tituloEstudioso,
+                    binding.descricaoEstudioso,
+                    false,
+                    R.drawable.ic_estudioso,
+                    "Leu 3 artigos"
+                )
+
+                // 3 doações nos últimos 12 meses
+                atualizarMedalha(
+                    binding.iconeFrequente,
+                    binding.tituloFrequente,
+                    binding.descricaoFrequente,
+                    doacoesAno >= 3,
+                    R.drawable.ic_doador_frequente,
+                    "Doou 3 vezes em um ano"
+                )
+
+                // 20 doações no histórico
+                atualizarMedalha(
+                    binding.iconeLenda,
+                    binding.tituloLenda,
+                    binding.descricaoLenda,
+                    totalDoacoes >= 20,
+                    R.drawable.ic_lenda,
+                    "20 doações realizadas"
+                )
+            }
+            .addOnFailureListener {
+
+                if (_binding == null) return@addOnFailureListener
+
+                Toast.makeText(
+                    requireContext(),
+                    "Erro ao verificar cadastro no REDOME",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+
+    // Atualizar o visual de cada medalha
+    private fun atualizarMedalha(
+        icone: ImageView,
+        titulo: TextView,
+        descricao: TextView,
+        desbloqueada: Boolean,
+        iconeMedalha: Int,
+        textoDescricao: String
+    ) {
+
+        if (desbloqueada) {
+
+            icone.setImageResource(iconeMedalha)
+
+            icone.backgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#FDE2E2"))
+
+            titulo.setTextColor(Color.parseColor("#20283A"))
+            descricao.setTextColor(Color.parseColor("#64748B"))
+
+        } else {
+
+            icone.setImageResource(R.drawable.ic_padlock)
+
+            icone.backgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#F1F5F9"))
+
+            titulo.setTextColor(Color.parseColor("#64748B"))
+            descricao.setTextColor(Color.parseColor("#94A3B8"))
+        }
+
+        descricao.text = textoDescricao
+    }
+
     // Atualizar nível e progresso
     private fun atualizarNivel(hemocoins: Long) {
 
@@ -277,6 +461,7 @@ class PerfilFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnLogout.setOnClickListener {
