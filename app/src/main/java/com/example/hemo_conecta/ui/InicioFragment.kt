@@ -50,7 +50,7 @@ class InicioFragment : Fragment() {
 
     private var dadosReference: DatabaseReference? = null
 
-    private val intervaloDoacao = 90
+    private var intervaloDoacao = 90
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -98,7 +98,6 @@ class InicioFragment : Fragment() {
         }
 
         binding.btnAgendarAgora.setOnClickListener {
-
             val intent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://agendamento.saude.es.gov.br/")
@@ -122,6 +121,8 @@ class InicioFragment : Fragment() {
         dadosListener = object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                if (_binding == null) return
 
                 val nome = snapshot.child("nome")
                     .getValue(String::class.java)
@@ -153,158 +154,199 @@ class InicioFragment : Fragment() {
 
         val uid = auth.currentUser?.uid ?: return
 
-        referenciaDoacoesUsuario = reference
-            .child("doacoes")
+        // Busca o gênero do usuário
+        reference.child("usuarios")
             .child(uid)
+            .child("genero")
+            .get()
+            .addOnSuccessListener { snapshot ->
 
-        listenerDoacaoSangue = object : ValueEventListener {
+                if (_binding == null) return@addOnSuccessListener
 
-            override fun onDataChange(snapshot: DataSnapshot) {
+                val genero = snapshot.getValue(String::class.java)
+                    ?.trim()
+                    ?.uppercase()
 
-                if (_binding == null) return
+                // Define o intervalo de acordo com o gênero
+                intervaloDoacao = when (genero) {
 
-                val formato = SimpleDateFormat(
-                    "dd/MM/yyyy",
-                    Locale("pt", "BR")
-                ).apply {
-                    isLenient = false
-                    timeZone = TimeZone.getTimeZone("UTC")
+                    "MASCULINO" -> 60
+
+                    "FEMININO" -> 90
+
+                    else -> 90
                 }
 
-                var ultimaDoacao: Calendar? = null
+                // Busca as doações do usuário
+                referenciaDoacoesUsuario = reference
+                    .child("doacoes")
+                    .child(uid)
 
-                for (doacao in snapshot.children) {
+                listenerDoacaoSangue = object : ValueEventListener {
 
-                    val tipo = doacao.child("tipo")
-                        .getValue(String::class.java)
-                        ?.uppercase()
-                        ?.trim()
-                        ?.replace("Ó", "O")
+                    override fun onDataChange(snapshot: DataSnapshot) {
 
-                    if (tipo == "SANGUE") {
+                        if (_binding == null) return
 
-                        val dataTexto = doacao.child("data")
-                            .getValue(String::class.java)
+                        val formato = SimpleDateFormat(
+                            "dd/MM/yyyy",
+                            Locale("pt", "BR")
+                        ).apply {
+                            isLenient = false
+                            timeZone = TimeZone.getTimeZone("UTC")
+                        }
 
-                        try {
+                        var ultimaDoacao: Calendar? = null
 
-                            if (dataTexto != null) {
+                        for (doacao in snapshot.children) {
 
-                                val data = formato.parse(dataTexto)
+                            val tipo = doacao.child("tipo")
+                                .getValue(String::class.java)
+                                ?.uppercase()
+                                ?.trim()
+                                ?.replace("Ó", "O")
 
-                                if (data != null) {
+                            if (tipo == "SANGUE") {
 
-                                    val calendario = Calendar.getInstance(
-                                        TimeZone.getTimeZone("UTC")
-                                    )
+                                val dataTexto = doacao.child("data")
+                                    .getValue(String::class.java)
 
-                                    calendario.time = data
+                                try {
 
-                                    calendario.set(
-                                        Calendar.HOUR_OF_DAY,
-                                        0
-                                    )
-                                    calendario.set(
-                                        Calendar.MINUTE,
-                                        0
-                                    )
-                                    calendario.set(
-                                        Calendar.SECOND,
-                                        0
-                                    )
-                                    calendario.set(
-                                        Calendar.MILLISECOND,
-                                        0
-                                    )
+                                    if (dataTexto != null) {
 
-                                    if (
-                                        ultimaDoacao == null ||
-                                        calendario.after(ultimaDoacao)
-                                    ) {
-                                        ultimaDoacao = calendario
+                                        val data = formato.parse(dataTexto)
+
+                                        if (data != null) {
+
+                                            val calendario = Calendar.getInstance(
+                                                TimeZone.getTimeZone("UTC")
+                                            )
+
+                                            calendario.time = data
+
+                                            calendario.set(
+                                                Calendar.HOUR_OF_DAY,
+                                                0
+                                            )
+                                            calendario.set(
+                                                Calendar.MINUTE,
+                                                0
+                                            )
+                                            calendario.set(
+                                                Calendar.SECOND,
+                                                0
+                                            )
+                                            calendario.set(
+                                                Calendar.MILLISECOND,
+                                                0
+                                            )
+
+                                            if (
+                                                ultimaDoacao == null ||
+                                                calendario.after(ultimaDoacao)
+                                            ) {
+                                                ultimaDoacao = calendario
+                                            }
+                                        }
                                     }
+
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
                                 }
                             }
-
-                        } catch (e: Exception) {
-                            e.printStackTrace()
                         }
+
+                        // Caso não existam doações de sangue
+                        if (ultimaDoacao == null) {
+
+                            binding.diasProximaDoacao.text = "-- dias"
+
+                            binding.textoProximaDoacao.text =
+                                "Registre sua primeira doação de sangue."
+
+                            binding.progressoDoacao.progress = 0
+
+                            return
+                        }
+
+                        // Calcula a data de liberação
+                        val dataLiberacao = ultimaDoacao.clone() as Calendar
+
+                        dataLiberacao.add(
+                            Calendar.DAY_OF_YEAR,
+                            intervaloDoacao
+                        )
+
+                        // Data atual
+                        val hoje = Calendar.getInstance(
+                            TimeZone.getTimeZone("UTC")
+                        )
+
+                        hoje.set(Calendar.HOUR_OF_DAY, 0)
+                        hoje.set(Calendar.MINUTE, 0)
+                        hoje.set(Calendar.SECOND, 0)
+                        hoje.set(Calendar.MILLISECOND, 0)
+
+                        // Calcula a diferença entre as datas
+                        val diferenca = (
+                                dataLiberacao.timeInMillis - hoje.timeInMillis
+                                ) / (24 * 60 * 60 * 1000)
+
+                        val diasRestantes = diferenca.toInt().coerceAtLeast(0)
+
+                        val diasPassados = (
+                                intervaloDoacao - diasRestantes
+                                ).coerceIn(0, intervaloDoacao)
+
+                        // Atualiza a barra de progresso
+                        binding.progressoDoacao.max = intervaloDoacao
+                        binding.progressoDoacao.progress = diasPassados
+
+                        // Exibe os dias restantes
+                        if (diasRestantes > 0) {
+
+                            binding.diasProximaDoacao.text =
+                                "$diasRestantes dias"
+
+                            binding.textoProximaDoacao.text =
+                                "Faltam $diasRestantes dias para completar o período de referência."
+
+                        } else {
+
+                            binding.diasProximaDoacao.text = "0 dias"
+
+                            binding.textoProximaDoacao.text =
+                                "O período de referência foi concluído! Consulte o hemocentro para confirmar sua aptidão."
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                        if (_binding == null) return
+
+                        Toast.makeText(
+                            requireContext(),
+                            "Erro ao calcular a próxima doação.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
-                if (ultimaDoacao == null) {
-
-                    binding.diasProximaDoacao.text = "-- dias"
-
-                    binding.textoProximaDoacao.text =
-                        "Registre sua primeira doação de sangue."
-
-                    binding.progressoDoacao.progress = 0
-
-                    return
-                }
-
-                val dataLiberacao = ultimaDoacao.clone() as Calendar
-
-                dataLiberacao.add(
-                    Calendar.DAY_OF_YEAR,
-                    intervaloDoacao
+                referenciaDoacoesUsuario.addValueEventListener(
+                    listenerDoacaoSangue!!
                 )
-
-                val hoje = Calendar.getInstance(
-                    TimeZone.getTimeZone("UTC")
-                )
-
-                hoje.set(Calendar.HOUR_OF_DAY, 0)
-                hoje.set(Calendar.MINUTE, 0)
-                hoje.set(Calendar.SECOND, 0)
-                hoje.set(Calendar.MILLISECOND, 0)
-
-                val diferenca = (
-                        dataLiberacao.timeInMillis - hoje.timeInMillis
-                        ) / (24 * 60 * 60 * 1000)
-
-                val diasRestantes = diferenca.toInt().coerceAtLeast(0)
-
-                val diasPassados = (
-                        intervaloDoacao - diasRestantes
-                        ).coerceIn(0, intervaloDoacao)
-
-                binding.progressoDoacao.max = intervaloDoacao
-                binding.progressoDoacao.progress = diasPassados
-
-                if (diasRestantes > 0) {
-
-                    binding.diasProximaDoacao.text =
-                        "$diasRestantes dias"
-
-                    binding.textoProximaDoacao.text =
-                        "Faltam $diasRestantes dias para completar o período de referência."
-
-                } else {
-
-                    binding.diasProximaDoacao.text = "0 dias"
-
-                    binding.textoProximaDoacao.text =
-                        "O período de referência foi concluído! Consulte o hemocentro para confirmar sua aptidão."
-                }
             }
+            .addOnFailureListener {
 
-            override fun onCancelled(error: DatabaseError) {
-
-                if (_binding == null) return
+                if (_binding == null) return@addOnFailureListener
 
                 Toast.makeText(
                     requireContext(),
-                    "Erro ao calcular a próxima doação.",
+                    "Erro ao buscar o gênero do usuário.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        }
-
-        referenciaDoacoesUsuario.addValueEventListener(
-            listenerDoacaoSangue!!
-        )
     }
 
     // CARREGAR RANKING
@@ -395,6 +437,8 @@ class InicioFragment : Fragment() {
                     "MEDULA OSSEA" -> pontos += 1000
 
                     "PLASMA" -> pontos += 250
+
+                    "PLAQUETAS" -> pontos += 250
                 }
             }
 
@@ -496,8 +540,11 @@ class InicioFragment : Fragment() {
                 val cor = when (posicao) {
 
                     0 -> R.color.ranking_gold
+
                     1 -> R.color.ranking_second
+
                     2 -> R.color.ranking_third
+
                     else -> R.color.text_dark
                 }
 
@@ -546,7 +593,7 @@ class InicioFragment : Fragment() {
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 )
 
-                text = "$pontos pts"
+                text = "$pontos hemocoins"
                 textSize = 13f
                 setTypeface(null, Typeface.BOLD)
 
