@@ -34,6 +34,7 @@ class PerfilFragment : Fragment() {
 
     private var usuarioListener: ValueEventListener? = null
     private var doacoesListener: ValueEventListener? = null
+    private var artigosListener: ValueEventListener? = null
 
     // HemoCoins necessários para cada nível
     private val pontuacaoNiveis = listOf(
@@ -83,6 +84,7 @@ class PerfilFragment : Fragment() {
         if (!uidAtual.isNullOrEmpty()) {
             carregarDados(uidAtual!!)
             observarDoacoes(uidAtual!!)
+            observarArtigosLidos(uidAtual!!)
         }
 
         return binding.root
@@ -165,7 +167,7 @@ class PerfilFragment : Fragment() {
 
                 if (_binding == null) return
 
-                // Verificar medalhas
+                // Verificar medalhas de doação
                 verificarMedalhas(snapshot, uid)
 
                 var totalHemoCoins = 0L
@@ -238,7 +240,7 @@ class PerfilFragment : Fragment() {
         doacoesRef.addValueEventListener(doacoesListener!!)
     }
 
-    // Verificar medalhas
+    // Verificar medalhas de doação
     private fun verificarMedalhas(snapshot: DataSnapshot, uid: String) {
 
         var totalSangue = 0
@@ -343,18 +345,6 @@ class PerfilFragment : Fragment() {
                     "Medula"
                 )
 
-                // Estudioso (ainda sem sistema de artigos)
-                atualizarMedalha(
-                    binding.iconeEstudioso,
-                    binding.tituloEstudioso,
-                    binding.descricaoEstudioso,
-                    false,
-                    R.drawable.ic_estudioso,
-                    "Leu 3 artigos",
-                    "estudioso",
-                    "Estudioso"
-                )
-
                 // 3 doações nos últimos 12 meses
                 atualizarMedalha(
                     binding.iconeFrequente,
@@ -389,6 +379,50 @@ class PerfilFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+    }
+
+    // Observar artigos lidos para verificar a medalha Estudioso
+    private fun observarArtigosLidos(uid: String) {
+
+        val artigosRef = reference
+            .child("usuarios")
+            .child(uid)
+            .child("artigos_lidos")
+
+        artigosListener = object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if (_binding == null) return
+
+                val totalArtigosLidos = snapshot.childrenCount
+
+                // Medalha Estudioso
+                atualizarMedalha(
+                    binding.iconeEstudioso,
+                    binding.tituloEstudioso,
+                    binding.descricaoEstudioso,
+                    totalArtigosLidos >= 3,
+                    R.drawable.ic_estudioso,
+                    "Leu 3 artigos educativos",
+                    "estudioso",
+                    "Estudioso"
+                )
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+                if (_binding == null) return
+
+                Toast.makeText(
+                    requireContext(),
+                    "Erro ao verificar artigos lidos",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        artigosRef.addValueEventListener(artigosListener!!)
     }
 
     // Atualizar o visual de cada medalha
@@ -431,6 +465,7 @@ class PerfilFragment : Fragment() {
 
         descricao.text = textoDescricao
     }
+
     // Atualizar nível e progresso
     private fun atualizarNivel(hemocoins: Long) {
 
@@ -514,10 +549,18 @@ class PerfilFragment : Fragment() {
                     .child(uid)
                     .removeEventListener(it)
             }
+
+            artigosListener?.let {
+                reference.child("usuarios")
+                    .child(uid)
+                    .child("artigos_lidos")
+                    .removeEventListener(it)
+            }
         }
 
         usuarioListener = null
         doacoesListener = null
+        artigosListener = null
         uidAtual = null
 
         super.onDestroyView()
