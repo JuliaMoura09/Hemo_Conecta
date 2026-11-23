@@ -173,6 +173,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="12dp" />
 
+            <Button
+                android:id="@+id/btnConcluirLeitura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Carregando leitura..."
+                android:textColor="@color/white"
+                android:backgroundTint="@color/vermelho"
+                android:padding="18dp"
+                android:textSize="16sp"
+                android:enabled="false"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"/>
+
         </LinearLayout>
 
     </LinearLayout>
