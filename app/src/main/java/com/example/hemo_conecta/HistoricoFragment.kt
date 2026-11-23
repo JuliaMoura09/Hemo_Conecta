@@ -1,4 +1,3 @@
-
 package com.example.hemo_conecta
 
 import android.os.Bundle
@@ -50,7 +49,6 @@ class HistoricoFragment : Fragment() {
     }
 
     private fun carregarDadosDoacoes() {
-
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         if (userId == null) {
@@ -73,9 +71,9 @@ class HistoricoFragment : Fragment() {
 
         databaseRef.get()
             .addOnSuccessListener { snapshot ->
+                val currentBinding = _binding ?: return@addOnSuccessListener
 
-                if (!isAdded || _binding == null) return@addOnSuccessListener
-
+                if (!isAdded) return@addOnSuccessListener
                 val listaDoacoes = mutableListOf<Doacao>()
 
                 for (item in snapshot.children) {
@@ -86,7 +84,41 @@ class HistoricoFragment : Fragment() {
                     }
                 }
 
-                // ordena da doação mais recente para a mais antiga
+                var qtdSangue = 0
+                var qtdMedula = 0
+                var qtdPlaquetas = 0
+                var qtdPlasma = 0
+
+                for (doacao in listaDoacoes) {
+                    when (doacao.tipo.uppercase(Locale.ROOT)) {
+                        "SANGUE" -> qtdSangue++
+                        "MEDULA" -> qtdMedula++
+                        "PLAQUETAS" -> qtdPlaquetas++
+                        "PLASMA" -> qtdPlasma++
+                    }
+                }
+
+                val vidasSalvas = qtdSangue * 4
+                val sangueDoadoMl = qtdSangue * 450
+
+                currentBinding.txtVidasSalvas.text =
+                    vidasSalvas.toString()
+
+                currentBinding.txtQtdSangue.text =
+                    qtdSangue.toString()
+
+                currentBinding.txtSangueDoado.text =
+                    "$sangueDoadoMl ml"
+
+                currentBinding.txtQtdMedula.text =
+                    qtdMedula.toString()
+
+                currentBinding.txtQtdPlaquetas.text =
+                    qtdPlaquetas.toString()
+
+                currentBinding.txtQtdPlasma.text =
+                    qtdPlasma.toString()
+
                 val doacoesOrdenadas = listaDoacoes.sortedByDescending { doacao ->
                     try {
                         formatoData.parse(doacao.data)?.time ?: Long.MIN_VALUE
@@ -97,20 +129,23 @@ class HistoricoFragment : Fragment() {
 
                 val cards = mapOf(
                     "PLAQUETAS" to Pair(
-                        binding.txtDataCard1,
-                        binding.txtLocalCard1
+                        currentBinding.txtDataCard1,
+                        currentBinding.txtLocalCard1
                     ),
+
                     "SANGUE" to Pair(
-                        binding.txtDataCard2,
-                        binding.txtLocalCard2
+                        currentBinding.txtDataCard2,
+                        currentBinding.txtLocalCard2
                     ),
+
                     "MEDULA" to Pair(
-                        binding.txtDataCard3,
-                        binding.txtLocalCard3
+                        currentBinding.txtDataCard3,
+                        currentBinding.txtLocalCard3
                     ),
+
                     "PLASMA" to Pair(
-                        binding.txtDataCard4,
-                        binding.txtLocalCard4
+                        currentBinding.txtDataCard4,
+                        currentBinding.txtLocalCard4
                     )
                 )
 
@@ -119,9 +154,7 @@ class HistoricoFragment : Fragment() {
                     local.text = "-"
                 }
 
-                // procura a doação mais recente de cada tipo
                 for ((tipo, card) in cards) {
-
                     val doacaoMaisRecente = doacoesOrdenadas.firstOrNull {
                         it.tipo.equals(tipo, ignoreCase = true)
                     }
@@ -132,8 +165,8 @@ class HistoricoFragment : Fragment() {
                     }
                 }
             }
-            .addOnFailureListener { erro ->
 
+            .addOnFailureListener { erro ->
                 if (!isAdded || _binding == null) {
                     return@addOnFailureListener
                 }

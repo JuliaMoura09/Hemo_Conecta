@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.hemo_conecta.databinding.FragmentCarteirinhaAmbosBinding
 import com.example.hemo_conecta.databinding.FragmentCarteirinhaMedulaBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -19,8 +18,12 @@ class CarteirinhaMedulaFragment : Fragment() {
 
     private var _binding: FragmentCarteirinhaMedulaBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var auth: FirebaseAuth
     private lateinit var reference: DatabaseReference
+
+    private var usuarioReference: DatabaseReference? = null
+    private var dadosListener: ValueEventListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,41 +41,67 @@ class CarteirinhaMedulaFragment : Fragment() {
         reference = FirebaseDatabase.getInstance().reference
 
         buscarDadosCarteirinha()
+
         return binding.root
     }
 
     private fun buscarDadosCarteirinha() {
+
         val uid = auth.currentUser?.uid ?: return
 
-        reference
+        usuarioReference = reference
             .child("usuarios")
             .child(uid)
-            .addValueEventListener(object : ValueEventListener {
 
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    // Resgata os dados do Firebase informados pelo usuário
-                    val nome = snapshot.child("nome").getValue(String::class.java)
-                    val cadastroRedome = snapshot.child("cadastroRedome").getValue(String::class.java)
-                    val dataRedome = snapshot.child("dataCadastroRedome").getValue(String::class.java)
+        dadosListener = object : ValueEventListener {
 
-                    // atribui os valores salvos no banco de dados às views
-                    binding.nomeUsuario.text = nome ?: ""
-                    binding.tvCadastroRedome.text = cadastroRedome ?: "Não informado"
-                    binding.tvDataRedome.text = dataRedome ?: "Não informado"
-                }
+            override fun onDataChange(snapshot: DataSnapshot) {
 
-                override fun onCancelled(error: DatabaseError) {
+                val currentBinding = _binding ?: return
+
+                val nome = snapshot.child("nome")
+                    .getValue(String::class.java)
+
+                val cadastroRedome = snapshot.child("cadastroRedome")
+                    .getValue(String::class.java)
+
+                val dataRedome = snapshot.child("dataCadastroRedome")
+                    .getValue(String::class.java)
+
+                currentBinding.nomeUsuario.text = nome ?: ""
+                currentBinding.tvCadastroRedome.text =
+                    cadastroRedome ?: "Não informado"
+
+                currentBinding.tvDataRedome.text =
+                    dataRedome ?: "Não informado"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+                context?.let {
                     Toast.makeText(
-                        requireContext(),
+                        it,
                         "Erro ao carregar os dados.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-            })
+            }
+        }
+
+        usuarioReference?.addValueEventListener(dadosListener!!)
     }
 
     override fun onDestroyView() {
+
+        dadosListener?.let { listener ->
+            usuarioReference?.removeEventListener(listener)
+        }
+
+        dadosListener = null
+        usuarioReference = null
+
         super.onDestroyView()
+
         _binding = null
     }
 }
