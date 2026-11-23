@@ -1,17 +1,16 @@
+
 package com.example.hemo_conecta
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.hemo_conecta.databinding.FragmentHistoricoBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -25,6 +24,7 @@ class HistoricoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentHistoricoBinding.inflate(
             inflater,
             container,
@@ -36,97 +36,114 @@ class HistoricoFragment : Fragment() {
         }
 
         binding.buttonCadastrarDoacao.setOnClickListener {
-            findNavController().navigate(R.id.action_historicoFragment_to_adicionarDoacaoFragment)
+            findNavController().navigate(
+                R.id.action_historicoFragment_to_adicionarDoacaoFragment
+            )
         }
 
-        carregarDadosDoacoes()
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        carregarDadosDoacoes()
+    }
+
     private fun carregarDadosDoacoes() {
-        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        val databaseRef = FirebaseDatabase.getInstance().getReference("doacoes").child(userId)
 
-        databaseRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (!isAdded || _binding == null) return
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
 
-                var qtdSangue = 0
-                var qtdMedula = 0
-                var qtdPlaquetas = 0
-                var qtdPlasma = 0
+        if (userId == null) {
+            Toast.makeText(
+                requireContext(),
+                "Usuário não encontrado.",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        val databaseRef = FirebaseDatabase.getInstance()
+            .getReference("doacoes")
+            .child(userId)
+
+        val formatoData = SimpleDateFormat(
+            "dd/MM/yyyy",
+            Locale.getDefault()
+        )
+
+        databaseRef.get()
+            .addOnSuccessListener { snapshot ->
+
+                if (!isAdded || _binding == null) return@addOnSuccessListener
 
                 val listaDoacoes = mutableListOf<Doacao>()
 
-                for (doacaoSnapshot in snapshot.children) {
-                    val doacao = doacaoSnapshot.getValue(Doacao::class.java)
+                for (item in snapshot.children) {
+                    val doacao = item.getValue(Doacao::class.java)
+
                     if (doacao != null) {
                         listaDoacoes.add(doacao)
-                        when (doacao.tipo) {
-                            "SANGUE" -> qtdSangue++
-                            "MEDULA" -> qtdMedula++
-                            "PLAQUETAS" -> qtdPlaquetas++
-                            "PLASMA" -> qtdPlasma++
-                        }
                     }
                 }
 
-                binding.txtQtdSangue.text = qtdSangue.toString()
-                binding.txtQtdMedula.text = qtdMedula.toString()
-                binding.txtQtdPlaquetas.text = qtdPlaquetas.toString()
-                binding.txtQtdPlasma.text = qtdPlasma.toString()
-
-                val vidasSalvas = qtdSangue * 4
-                val sangueDoadoMl = qtdSangue * 450
-
-                binding.txtVidasSalvas.text = vidasSalvas.toString()
-                binding.txtSangueDoado.text = "$sangueDoadoMl ml"
-
-                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-
-                val doacoesOrdenadasPorData = listaDoacoes.sortedByDescending { doacao ->
+                // ordena da doação mais recente para a mais antiga
+                val doacoesOrdenadas = listaDoacoes.sortedByDescending { doacao ->
                     try {
-                        dateFormat.parse(doacao.data)?.time ?: 0L
+                        formatoData.parse(doacao.data)?.time ?: Long.MIN_VALUE
                     } catch (e: Exception) {
-                        0L
+                        Long.MIN_VALUE
                     }
                 }
 
-                binding.txtDataCard1.text = "Nenhuma doação recente"
-                binding.txtLocalCard1.text = "-"
-                binding.txtDataCard2.text = "Nenhuma doação recente"
-                binding.txtLocalCard2.text = "-"
-                binding.txtDataCard3.text = "Nenhuma doação recente"
-                binding.txtLocalCard3.text = "-"
-                binding.txtDataCard4.text = "Nenhuma doação recente"
-                binding.txtLocalCard4.text = "-"
+                val cards = mapOf(
+                    "PLAQUETAS" to Pair(
+                        binding.txtDataCard1,
+                        binding.txtLocalCard1
+                    ),
+                    "SANGUE" to Pair(
+                        binding.txtDataCard2,
+                        binding.txtLocalCard2
+                    ),
+                    "MEDULA" to Pair(
+                        binding.txtDataCard3,
+                        binding.txtLocalCard3
+                    ),
+                    "PLASMA" to Pair(
+                        binding.txtDataCard4,
+                        binding.txtLocalCard4
+                    )
+                )
 
-                // preenche os cards com base na lista ordenada, da data mais recente para a mais antiga
-                if (doacoesOrdenadasPorData.isNotEmpty()) {
-                    binding.txtDataCard1.text = doacoesOrdenadasPorData[0].data
-                    binding.txtLocalCard1.text = doacoesOrdenadasPorData[0].local
+                cards.values.forEach { (data, local) ->
+                    data.text = "Nenhuma doação"
+                    local.text = "-"
                 }
 
-                if (doacoesOrdenadasPorData.size > 1) {
-                    binding.txtDataCard2.text = doacoesOrdenadasPorData[1].data
-                    binding.txtLocalCard2.text = doacoesOrdenadasPorData[1].local
-                }
+                // procura a doação mais recente de cada tipo
+                for ((tipo, card) in cards) {
 
-                if (doacoesOrdenadasPorData.size > 2) {
-                    binding.txtDataCard3.text = doacoesOrdenadasPorData[2].data
-                    binding.txtLocalCard3.text = doacoesOrdenadasPorData[2].local
-                }
+                    val doacaoMaisRecente = doacoesOrdenadas.firstOrNull {
+                        it.tipo.equals(tipo, ignoreCase = true)
+                    }
 
-                if (doacoesOrdenadasPorData.size > 3) {
-                    binding.txtDataCard4.text = doacoesOrdenadasPorData[3].data
-                    binding.txtLocalCard4.text = doacoesOrdenadasPorData[3].local
+                    if (doacaoMaisRecente != null) {
+                        card.first.text = doacaoMaisRecente.data
+                        card.second.text = doacaoMaisRecente.local
+                    }
                 }
             }
+            .addOnFailureListener { erro ->
 
-            override fun onCancelled(error: DatabaseError) {
-                if (!isAdded || _binding == null) return
+                if (!isAdded || _binding == null) {
+                    return@addOnFailureListener
+                }
+
+                Toast.makeText(
+                    requireContext(),
+                    "Erro ao carregar doações: ${erro.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-        })
     }
 
     override fun onDestroyView() {

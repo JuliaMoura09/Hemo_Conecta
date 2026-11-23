@@ -1,3 +1,4 @@
+
 package com.example.hemo_conecta
 
 import android.os.Bundle
@@ -12,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.MutableData
+import com.google.firebase.database.Transaction
 
 class ExemploArtigoFragment : Fragment() {
 
@@ -25,6 +28,7 @@ class ExemploArtigoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val view = inflater.inflate(
             R.layout.fragment_exemplo_artigo,
             container,
@@ -32,12 +36,16 @@ class ExemploArtigoFragment : Fragment() {
         )
 
         val titulo = arguments?.getString("titulo").orEmpty()
-        artigoId = titulo.hashCode().toString()
+
+        artigoId = arguments?.getString("artigoId")
+            ?.takeIf { it.isNotBlank() }
+            ?: titulo.hashCode().toString()
 
         view.findViewById<TextView>(R.id.categoriaArtigo).text =
             arguments?.getString("categoria").orEmpty()
 
-        view.findViewById<TextView>(R.id.tituloArtigo).text = titulo
+        view.findViewById<TextView>(R.id.tituloArtigo).text =
+            titulo
 
         view.findViewById<TextView>(R.id.autorArtigo).text =
             arguments?.getString("autor").orEmpty()
@@ -50,24 +58,31 @@ class ExemploArtigoFragment : Fragment() {
 
         val curiosidade = arguments?.getString("curiosidade").orEmpty()
 
-        view.findViewById<TextView>(R.id.curiosidadeArtigo).text = curiosidade
+        view.findViewById<TextView>(R.id.curiosidadeArtigo).text =
+            curiosidade
 
         if (curiosidade.isBlank()) {
-            view.findViewById<View>(R.id.dicaArtigo).visibility = View.GONE
+            view.findViewById<View>(R.id.dicaArtigo).visibility =
+                View.GONE
         }
 
         view.findViewById<View>(R.id.btnBack).setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
-        btnConcluirLeitura = view.findViewById(R.id.btnConcluirLeitura)
+        btnConcluirLeitura =
+            view.findViewById(R.id.btnConcluirLeitura)
+
         btnConcluirLeitura.isEnabled = false
 
-        // inicia a contagem de tempo (90 segundos = 90000 ms)
         iniciarTemporizador(90000)
 
         btnConcluirLeitura.setOnClickListener {
+
             if (podeResgatar) {
+
+                btnConcluirLeitura.isEnabled = false
+
                 verificarEAtribuirPontos()
             }
         }
@@ -76,76 +91,158 @@ class ExemploArtigoFragment : Fragment() {
     }
 
     private fun iniciarTemporizador(tempoMillis: Long) {
-        countDownTimer = object : CountDownTimer(tempoMillis, 1000) {
+
+        countDownTimer = object : CountDownTimer(
+            tempoMillis,
+            1000
+        ) {
+
             override fun onTick(millisUntilFinished: Long) {
+
                 if (!isAdded) return
+
                 val segundosRestantes = millisUntilFinished / 1000
-                btnConcluirLeitura.text = "Leia o artigo ($segundosRestantes s)"
+
+                btnConcluirLeitura.text =
+                    "Leia o artigo (${segundosRestantes}s)"
             }
 
             override fun onFinish() {
+
                 if (!isAdded) return
+
                 podeResgatar = true
+
                 btnConcluirLeitura.isEnabled = true
-                btnConcluirLeitura.text = "Concluir Leitura e Ganhar Pontos"
+
+                btnConcluirLeitura.text =
+                    "Concluir Leitura e Ganhar Pontos"
             }
         }.start()
     }
 
     private fun verificarEAtribuirPontos() {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        val usuarioRef = FirebaseDatabase.getInstance().getReference("usuarios").child(uid)
-        val artigoLidoRef = usuarioRef.child("artigos_lidos").child(artigoId)
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        if (uid == null) {
 
-        artigoLidoRef.get().addOnSuccessListener { snapshot ->
-            if (!isAdded) return@addOnSuccessListener
-            val jaLeu = snapshot.getValue(Boolean::class.java) ?: false
+            Toast.makeText(
+                requireContext(),
+                "Usuário não encontrado.",
+                Toast.LENGTH_SHORT
+            ).show()
 
-            if (jaLeu) {
-                Toast.makeText(requireContext(), "Você já ganhou pontos por este artigo!", Toast.LENGTH_SHORT).show()
-                findNavController().navigateUp()
-            } else {
-                artigoLidoRef.setValue(true)
-                usuarioRef.child("pontos").get().addOnSuccessListener { pontosSnapshot ->
-                    if (!isAdded) return@addOnSuccessListener
-                    val pontosAtuais = pontosSnapshot.getValue(Int::class.java) ?: 0
-                    val novosPontos = pontosAtuais + 10
+            return
+        }
 
-                    usuarioRef.child("pontos").setValue(novosPontos).addOnSuccessListener {
-                        if (!isAdded) return@addOnSuccessListener
-                        Toast.makeText(requireContext(), "Parabéns! Você ganhou 10 pontos!", Toast.LENGTH_LONG).show()
+        val usuarioRef = FirebaseDatabase.getInstance()
+            .getReference("usuarios")
+            .child(uid)
+
+        usuarioRef.runTransaction(object : Transaction.Handler {
+
+            override fun doTransaction(
+                dados: MutableData
+            ): Transaction.Result {
+
+                val artigoLido = dados
+                    .child("artigos_lidos")
+                    .child(artigoId)
+                    .getValue(Boolean::class.java) ?: false
+
+                if (artigoLido) {
+                    return Transaction.abort()
+                }
+
+                val pontosAtuais = dados
+                    .child("pontos")
+                    .getValue(Int::class.java) ?: 0
+
+                dados
+                    .child("artigos_lidos")
+                    .child(artigoId)
+                    .value = true
+
+                dados.child("pontos").value =
+                    pontosAtuais + 10
+
+                return Transaction.success(dados)
+            }
+
+            override fun onComplete(
+                error: com.google.firebase.database.DatabaseError?,
+                committed: Boolean,
+                snapshot: com.google.firebase.database.DataSnapshot?
+            ) {
+
+                if (!isAdded) return
+                when {
+
+                    error != null -> {
+
+                        Toast.makeText(
+                            requireContext(),
+                            "Erro ao registrar leitura: ${error.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        btnConcluirLeitura.isEnabled = true
+                    }
+
+                    committed -> {
+
+                        Toast.makeText(
+                            requireContext(),
+                            "Parabéns! Você ganhou 10 pontos!",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                        findNavController().navigateUp()
+                    }
+
+                    else -> {
+
+                        Toast.makeText(
+                            requireContext(),
+                            "Você já ganhou pontos por este artigo!",
+                            Toast.LENGTH_LONG
+                        ).show()
+
                         findNavController().navigateUp()
                     }
                 }
             }
-        }
+        })
     }
 
     override fun onDestroyView() {
+
         countDownTimer?.cancel()
         countDownTimer = null
         super.onDestroyView()
     }
 
     companion object {
+
         fun newInstance(
             categoria: String,
             titulo: String,
             autor: String,
             introducao: String,
             mensagem: String,
-            curiosidade: String
+            curiosidade: String,
+            artigoId: String? = null
         ): ExemploArtigoFragment {
 
             val fragment = ExemploArtigoFragment()
 
             fragment.arguments = Bundle().apply {
+
                 putString("categoria", categoria)
                 putString("titulo", titulo)
                 putString("autor", autor)
                 putString("introducao", introducao)
                 putString("mensagem", mensagem)
                 putString("curiosidade", curiosidade)
+                putString("artigoId", artigoId)
             }
 
             return fragment

@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,10 +11,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:minHeight="125dp"
         android:orientation="horizontal">
 
-        <!-- porcentagem -->
+        <!-- desconto -->
         <LinearLayout
             android:id="@+id/llDiscountBadge"
             android:layout_width="90dp"
@@ -38,12 +40,14 @@
                 android:textColor="#FFFFFF"
                 android:textSize="10sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
-        <!-- informações do cupom -->
+        <!-- informações -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="125dp"
             android:layout_weight="1"
             android:padding="12dp">
 
@@ -61,6 +65,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="Vita - App de Saúde"
@@ -71,7 +76,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvCategory" />
 
-            <!-- código do cupom -->
+            <!-- pontos necessários -->
+            <TextView
+                android:id="@+id/tvPontosNecessarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="100 pontos necessários"
+                android:textColor="#6B7280"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            <!-- código -->
             <TextView
                 android:id="@+id/tvCouponCode"
                 android:layout_width="wrap_content"
@@ -84,20 +101,41 @@
                 android:textColor="#374151"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPontosNecessarios" />
 
-            <!-- botão de copiar -->
+            <!-- copiar -->
             <ImageView
                 android:id="@+id/btnCopy"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:contentDescription="Copiar"
+                android:layout_marginStart="5dp"
+                android:contentDescription="Copiar código"
                 android:src="@drawable/ic_copy"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/tvCouponCode"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvCouponCode"
                 app:layout_constraintTop_toTopOf="@id/tvCouponCode"
                 app:tint="#E52E2E" />
+
+            <!-- resgatar -->
+            <Button
+                android:id="@+id/btnResgatar"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#E52E2E"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingHorizontal="12dp"
+                android:text="Resgatar cupom"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPontosNecessarios" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

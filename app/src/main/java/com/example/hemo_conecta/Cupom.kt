@@ -1,12 +1,15 @@
+
 package com.example.hemo_conecta
 
 data class Cupom(
-    val ativo: Boolean = false,
-    val codCupom: String? = "",
-    val dataCriacao: Long? = 0L,
-    val pontos: Int? = 0,
-    val tipoValor: String? = "",
-    val valor: Double? = 0.0,
-    val categoria: String? = "",
-    var parceiro: String? = ""
+    var ativo: Boolean = false,
+    var codCupom: String? = "",
+    var dataCriacao: Long? = 0L,
+    var pontos: Int? = 0,
+    var tipoValor: String? = "",
+    var valor: Double? = 0.0,
+    var categoria: String? = "",
+    var parceiro: String? = "",
+    var id: String = "",
+    var parceiroId: String = ""
 )

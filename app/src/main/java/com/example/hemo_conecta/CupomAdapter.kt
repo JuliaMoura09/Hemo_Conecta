@@ -1,53 +1,139 @@
+
 package com.example.hemo_conecta
 
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hemo_conecta.databinding.ItemCupomBinding
 
-class CupomAdapter(private val listaCupons: List<Cupom>) :
-    RecyclerView.Adapter<CupomAdapter.CupomViewHolder>() {
+class CupomAdapter(
+    private val listaCupons: List<Cupom>,
+    private var pontosUsuario: Int,
+    private val cuponsResgatados: Set<String>,
+    private val onResgatar: (Cupom) -> Unit
+) : RecyclerView.Adapter<CupomAdapter.CupomViewHolder>() {
 
-    class CupomViewHolder(val binding: ItemCupomBinding) : RecyclerView.ViewHolder(binding.root)
+    class CupomViewHolder(
+        val binding: ItemCupomBinding
+    ) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CupomViewHolder {
-        val binding = ItemCupomBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): CupomViewHolder {
+
+        val binding = ItemCupomBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return CupomViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CupomViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: CupomViewHolder,
+        position: Int
+    ) {
+
         val cupom = listaCupons[position]
+        val binding = holder.binding
+        val context = holder.itemView.context
+        val chaveCupom = "${cupom.parceiroId}/${cupom.id}"
+        val custo = cupom.pontos ?: 0
+        val jaResgatado = cuponsResgatados.contains(chaveCupom)
+        val possuiPontos = pontosUsuario >= custo && custo > 0
 
-        // categoria que o cupom pertence
-        holder.binding.tvCategory.text = cupom.categoria ?: "Geral"
+        binding.tvCategory.text = cupom.categoria ?: "Geral"
+        binding.tvTitle.text = cupom.parceiro ?: "Parceiro"
+        val valor = cupom.valor ?: 0.0
 
-        // nome da loja parceira
-        holder.binding.tvTitle.text = cupom.parceiro
+        binding.tvDiscountPercent.text =
+            if (cupom.tipoValor.equals("porcentagem", ignoreCase = true)) {
+                "${valor.toInt()}%"
+            } else {
+                "R$ ${valor.toInt()}"
+            }
 
-        // formato do desconto (valor ou porcentagem)
-        val valorInt = cupom.valor?.toInt() ?: 0
-        holder.binding.tvDiscountPercent.text = if (cupom.tipoValor == "porcentagem") {
-            "$valorInt%"
+        binding.tvPontosNecessarios.text =
+            "$custo pontos necessários"
+
+        if (jaResgatado) {
+            binding.tvCouponCode.visibility = View.VISIBLE
+            binding.btnCopy.visibility = View.VISIBLE
+            binding.btnResgatar.visibility = View.GONE
+            binding.tvCouponCode.text = cupom.codCupom ?: ""
+
         } else {
-            "R$$valorInt"
+            binding.tvCouponCode.visibility = View.GONE
+            binding.btnCopy.visibility = View.GONE
+            binding.btnResgatar.visibility = View.VISIBLE
+
+            if (possuiPontos) {
+                binding.btnResgatar.text = "Resgatar cupom"
+                binding.btnResgatar.isEnabled = true
+
+            } else {
+                binding.btnResgatar.text = "Pontos insuficientes"
+                binding.btnResgatar.isEnabled = false
+            }
         }
+        binding.btnResgatar.setOnClickListener {
 
-        // código do cupom
-        holder.binding.tvCouponCode.text = cupom.codCupom
+            if (!jaResgatado && possuiPontos) {
+                onResgatar(cupom)
+            }
+        }
+        binding.btnCopy.setOnClickListener {
 
-        // copia o código ao clicar no botão
-        holder.binding.btnCopy.setOnClickListener {
-            val context = holder.itemView.context
-            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("Código do Cupom", cupom.codCupom)
+            if (!jaResgatado) return@setOnClickListener
+            val codigo = cupom.codCupom.orEmpty()
+
+            if (codigo.isBlank()) {
+                Toast.makeText(
+                    context,
+                    "Código do cupom indisponível.",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
+            val clipboard = context.getSystemService(
+                Context.CLIPBOARD_SERVICE
+            ) as ClipboardManager
+
+            val clip = ClipData.newPlainText(
+                "Código do Cupom",
+                codigo
+            )
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(context, "Cupom copiado: ${cupom.codCupom}", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(
+                context,
+                "Cupom copiado: $codigo",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
-    override fun getItemCount(): Int = listaCupons.size
+    fun atualizarEstado(
+        novosPontos: Int,
+        novosResgatados: Set<String>
+    ) {
+
+        pontosUsuario = novosPontos
+        (cuponsResgatados as? MutableSet<String>)?.let {
+            it.clear()
+            it.addAll(novosResgatados)
+        }
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount(): Int {
+        return listaCupons.size
+    }
 }
