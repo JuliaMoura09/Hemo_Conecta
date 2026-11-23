@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import java.text.SimpleDateFormat
 import java.util.Locale
+import com.example.hemo_conecta.ui.GerenciadorNotificacoes
 
 class PerfilFragment : Fragment() {
 
@@ -313,7 +314,9 @@ class PerfilFragment : Fragment() {
                     binding.descricaoPrimeiraGota,
                     totalSangue >= 1,
                     R.drawable.ic_blood,
-                    "Realizou a primeira doação"
+                    "Realizou a primeira doação",
+                    "primeira_gota",
+                    "Primeira Gota"
                 )
 
                 // Primeira doação de plaquetas
@@ -323,7 +326,9 @@ class PerfilFragment : Fragment() {
                     binding.descricaoPlaquetas,
                     totalPlaquetas >= 1,
                     R.drawable.ic_star,
-                    "Fez a primeira doação de plaquetas"
+                    "Fez a primeira doação de plaquetas",
+                    "plaquetas",
+                    "Plaquetas"
                 )
 
                 // Cadastro no REDOME
@@ -333,7 +338,9 @@ class PerfilFragment : Fragment() {
                     binding.descricaoMedula,
                     cadastradoRedome,
                     R.drawable.ic_heart,
-                    "Cadastrado no REDOME"
+                    "Cadastrado no REDOME",
+                    "medula",
+                    "Medula"
                 )
 
                 // Estudioso (ainda sem sistema de artigos)
@@ -343,7 +350,9 @@ class PerfilFragment : Fragment() {
                     binding.descricaoEstudioso,
                     false,
                     R.drawable.ic_estudioso,
-                    "Leu 3 artigos"
+                    "Leu 3 artigos",
+                    "estudioso",
+                    "Estudioso"
                 )
 
                 // 3 doações nos últimos 12 meses
@@ -353,7 +362,9 @@ class PerfilFragment : Fragment() {
                     binding.descricaoFrequente,
                     doacoesAno >= 3,
                     R.drawable.ic_doador_frequente,
-                    "Doou 3 vezes em um ano"
+                    "Doou 3 vezes em um ano",
+                    "doador_frequente",
+                    "Doador Frequente"
                 )
 
                 // 20 doações no histórico
@@ -363,7 +374,9 @@ class PerfilFragment : Fragment() {
                     binding.descricaoLenda,
                     totalDoacoes >= 20,
                     R.drawable.ic_lenda,
-                    "20 doações realizadas"
+                    "20 doações realizadas",
+                    "lenda",
+                    "Lenda"
                 )
             }
             .addOnFailureListener {
@@ -385,7 +398,9 @@ class PerfilFragment : Fragment() {
         descricao: TextView,
         desbloqueada: Boolean,
         iconeMedalha: Int,
-        textoDescricao: String
+        textoDescricao: String,
+        medalhaId: String,
+        nomeMedalha: String
     ) {
 
         if (desbloqueada) {
@@ -397,6 +412,11 @@ class PerfilFragment : Fragment() {
 
             titulo.setTextColor(Color.parseColor("#20283A"))
             descricao.setTextColor(Color.parseColor("#64748B"))
+
+            GerenciadorNotificacoes().registrarMedalha(
+                medalhaId,
+                nomeMedalha
+            )
 
         } else {
 
@@ -411,7 +431,6 @@ class PerfilFragment : Fragment() {
 
         descricao.text = textoDescricao
     }
-
     // Atualizar nível e progresso
     private fun atualizarNivel(hemocoins: Long) {
 
@@ -427,6 +446,10 @@ class PerfilFragment : Fragment() {
         }
 
         val nivel = indiceNivel + 1
+
+        if (nivel > 1) {
+            GerenciadorNotificacoes().registrarNivel(nivel)
+        }
 
         binding.nivelAtual.text = "Nível $nivel"
         binding.nomeNivelAtual.text = nomesNiveis[indiceNivel]

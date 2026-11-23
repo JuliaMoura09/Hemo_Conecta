@@ -1,4 +1,3 @@
-
 package com.example.hemo_conecta.ui
 
 import android.os.Bundle
@@ -13,11 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hemo_conecta.databinding.FragmentNotificacoesBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 
 class NotificacoesFragment : Fragment() {
 
@@ -31,6 +26,7 @@ class NotificacoesFragment : Fragment() {
     private val vinteSegundos = 20_000L
 
     private lateinit var adapter: NotificacaoAdapter
+
     private var listenerNotificacoes: ValueEventListener? = null
     private var referenciaNotificacoes: DatabaseReference? = null
 
@@ -45,6 +41,7 @@ class NotificacoesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentNotificacoesBinding.inflate(
             inflater,
             container,
@@ -65,7 +62,7 @@ class NotificacoesFragment : Fragment() {
         binding.rvNotificacoes.adapter = adapter
 
         binding.btnBack.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().popBackStack()
         }
 
         carregarNotificacoes()
@@ -73,17 +70,24 @@ class NotificacoesFragment : Fragment() {
     }
 
     private fun carregarNotificacoes() {
+
         val usuario = auth.currentUser ?: return
 
         referenciaNotificacoes = reference
-            .child("notificacoes")
+            .child("usuarios")
             .child(usuario.uid)
+            .child("notificacoes")
 
         listenerNotificacoes = object : ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                if (_binding == null) return
+
                 val lista = mutableListOf<Notificacao>()
 
                 for (item in snapshot.children) {
+
                     val notificacao =
                         item.getValue(Notificacao::class.java)
 
@@ -94,17 +98,19 @@ class NotificacoesFragment : Fragment() {
                 }
 
                 lista.sortByDescending { it.data }
+
                 adapter.atualizarLista(lista)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                if (isAdded) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Não foi possível carregar as notificações.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+
+                if (_binding == null) return
+
+                Toast.makeText(
+                    requireContext(),
+                    "Não foi possível carregar as notificações.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -114,6 +120,7 @@ class NotificacoesFragment : Fragment() {
     }
 
     private fun verificarQuestionario() {
+
         val usuario = auth.currentUser ?: return
 
         reference
@@ -122,7 +129,8 @@ class NotificacoesFragment : Fragment() {
             .child("data")
             .get()
             .addOnSuccessListener { resultado ->
-                if (!isAdded || !resultado.exists()) {
+
+                if (!isAdded || _binding == null || !resultado.exists()) {
                     return@addOnSuccessListener
                 }
 
@@ -133,8 +141,11 @@ class NotificacoesFragment : Fragment() {
                     System.currentTimeMillis() - timestamp
 
                 if (tempoPassado >= vinteSegundos) {
+
                     criarNotificacaoQuestionario(timestamp)
+
                 } else {
+
                     handler.removeCallbacks(verificarNovamente)
 
                     handler.postDelayed(
@@ -146,6 +157,7 @@ class NotificacoesFragment : Fragment() {
     }
 
     private fun criarNotificacaoQuestionario(timestamp: Long) {
+
         val usuario = auth.currentUser ?: return
 
         val notificacao = Notificacao(
@@ -157,13 +169,15 @@ class NotificacoesFragment : Fragment() {
         )
 
         reference
-            .child("notificacoes")
+            .child("usuarios")
             .child(usuario.uid)
+            .child("notificacoes")
             .child(timestamp.toString())
             .setValue(notificacao)
     }
 
     override fun onDestroyView() {
+
         handler.removeCallbacks(verificarNovamente)
 
         if (listenerNotificacoes != null) {
@@ -176,6 +190,7 @@ class NotificacoesFragment : Fragment() {
         referenciaNotificacoes = null
 
         _binding = null
+
         super.onDestroyView()
     }
 }
