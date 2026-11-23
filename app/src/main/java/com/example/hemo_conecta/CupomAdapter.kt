@@ -21,19 +21,31 @@ class CupomAdapter(private val listaCupons: List<Cupom>) :
 
     override fun onBindViewHolder(holder: CupomViewHolder, position: Int) {
         val cupom = listaCupons[position]
-        holder.binding.tvCategory.text = cupom.categoria
-        holder.binding.tvTitle.text = cupom.titulo
-        holder.binding.tvDiscountPercent.text = cupom.desconto
-        holder.binding.tvCouponCode.text = cupom.codigo
 
+        // categoria que o cupom pertence
+        holder.binding.tvCategory.text = cupom.categoria ?: "Geral"
 
-        // copia o código do cupom ao clicar no botão do copiar
+        // nome da loja parceira
+        holder.binding.tvTitle.text = cupom.parceiro
+
+        // formato do desconto (valor ou porcentagem)
+        val valorInt = cupom.valor?.toInt() ?: 0
+        holder.binding.tvDiscountPercent.text = if (cupom.tipoValor == "porcentagem") {
+            "$valorInt%"
+        } else {
+            "R$$valorInt"
+        }
+
+        // código do cupom
+        holder.binding.tvCouponCode.text = cupom.codCupom
+
+        // copia o código ao clicar no botão
         holder.binding.btnCopy.setOnClickListener {
             val context = holder.itemView.context
             val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("Código do Cupom", cupom.codigo)
+            val clip = ClipData.newPlainText("Código do Cupom", cupom.codCupom)
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(context, "Cupom copiado: ${cupom.codigo}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Cupom copiado: ${cupom.codCupom}", Toast.LENGTH_SHORT).show()
         }
     }
 

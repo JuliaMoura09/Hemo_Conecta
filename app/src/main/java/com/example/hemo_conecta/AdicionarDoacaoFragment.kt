@@ -24,12 +24,10 @@ class AdicionarDoacaoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        _binding = FragmentAdicionarDoacaoBinding.inflate(inflater, container, false)
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
         }
-
-        _binding = FragmentAdicionarDoacaoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -74,6 +72,13 @@ class AdicionarDoacaoFragment : Fragment() {
         // validação - obriga o usuário a informar a data
         if (dataDoacao.isEmpty()) {
             binding.dataDoacaoInput.error = "Digite a data da doação"
+            binding.dataDoacaoInput.requestFocus()
+            return
+        }
+
+        // validação de tamanho (ex: 10 caracteres para "DD/MM/AAAA")
+        if (dataDoacao.length < 10) {
+            binding.dataDoacaoInput.error = "Digite a data completa (DD/MM/AAAA)"
             binding.dataDoacaoInput.requestFocus()
             return
         }

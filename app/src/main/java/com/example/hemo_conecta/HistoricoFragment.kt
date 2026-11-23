@@ -12,6 +12,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class HistoricoFragment : Fragment() {
 
@@ -65,7 +67,6 @@ class HistoricoFragment : Fragment() {
                             "MEDULA" -> qtdMedula++
                             "PLAQUETAS" -> qtdPlaquetas++
                             "PLASMA" -> qtdPlasma++
-
                         }
                     }
                 }
@@ -81,32 +82,44 @@ class HistoricoFragment : Fragment() {
                 binding.txtVidasSalvas.text = vidasSalvas.toString()
                 binding.txtSangueDoado.text = "$sangueDoadoMl ml"
 
-                // preenche os cards com as últimas doações cadastradas (final da lista)
-                val doacoesInvertidas = listaDoacoes.reversed()
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+                val doacoesOrdenadasPorData = listaDoacoes.sortedByDescending { doacao ->
+                    try {
+                        dateFormat.parse(doacao.data)?.time ?: 0L
+                    } catch (e: Exception) {
+                        0L
+                    }
+                }
 
                 binding.txtDataCard1.text = "Nenhuma doação recente"
                 binding.txtLocalCard1.text = "-"
-
                 binding.txtDataCard2.text = "Nenhuma doação recente"
                 binding.txtLocalCard2.text = "-"
-
                 binding.txtDataCard3.text = "Nenhuma doação recente"
                 binding.txtLocalCard3.text = "-"
+                binding.txtDataCard4.text = "Nenhuma doação recente"
+                binding.txtLocalCard4.text = "-"
 
-                // preenche os cards se existir pelo menos uma doação
-                if (doacoesInvertidas.isNotEmpty()) {
-                    binding.txtDataCard1.text = doacoesInvertidas[0].data
-                    binding.txtLocalCard1.text = doacoesInvertidas[0].local
+                // preenche os cards com base na lista ordenada, da data mais recente para a mais antiga
+                if (doacoesOrdenadasPorData.isNotEmpty()) {
+                    binding.txtDataCard1.text = doacoesOrdenadasPorData[0].data
+                    binding.txtLocalCard1.text = doacoesOrdenadasPorData[0].local
                 }
 
-                if (doacoesInvertidas.size > 1) {
-                    binding.txtDataCard2.text = doacoesInvertidas[1].data
-                    binding.txtLocalCard2.text = doacoesInvertidas[1].local
+                if (doacoesOrdenadasPorData.size > 1) {
+                    binding.txtDataCard2.text = doacoesOrdenadasPorData[1].data
+                    binding.txtLocalCard2.text = doacoesOrdenadasPorData[1].local
                 }
 
-                if (doacoesInvertidas.size > 2) {
-                    binding.txtDataCard3.text = doacoesInvertidas[2].data
-                    binding.txtLocalCard3.text = doacoesInvertidas[2].local
+                if (doacoesOrdenadasPorData.size > 2) {
+                    binding.txtDataCard3.text = doacoesOrdenadasPorData[2].data
+                    binding.txtLocalCard3.text = doacoesOrdenadasPorData[2].local
+                }
+
+                if (doacoesOrdenadasPorData.size > 3) {
+                    binding.txtDataCard4.text = doacoesOrdenadasPorData[3].data
+                    binding.txtLocalCard4.text = doacoesOrdenadasPorData[3].local
                 }
             }
 

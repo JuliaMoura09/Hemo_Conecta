@@ -55,14 +55,23 @@ class DadosDoadorAmbosFragment : Fragment() {
         dataCadastroRedome: String,
         cadastroRedome: String
     ) {
+        val uid = auth.currentUser?.uid ?: return
 
-        val uid = auth.currentUser!!.uid
+        val temHemoes = dataCadastroHemoes.isNotBlank() || cadastroHemoes.isNotBlank()
+        val temRedome = dataCadastroRedome.isNotBlank() || cadastroRedome.isNotBlank()
+        val novoTipoDoador = when {
+            temHemoes && temRedome -> "AMBOS"
+            temHemoes -> "SANGUE"
+            temRedome -> "MEDULA"
+            else -> "NAO_DOADOR"
+        }
 
         val dados: Map<String, Any> = hashMapOf(
             "dataCadastroHemoes" to dataCadastroHemoes,
             "cadastroHemoes" to cadastroHemoes,
             "dataCadastroRedome" to dataCadastroRedome,
-            "cadastroRedome" to cadastroRedome
+            "cadastroRedome" to cadastroRedome,
+            "tipoDoador" to novoTipoDoador
         )
 
         reference
@@ -70,23 +79,21 @@ class DadosDoadorAmbosFragment : Fragment() {
             .child(uid)
             .updateChildren(dados)
             .addOnCompleteListener { resultado ->
-
-        if (resultado.isSuccessful) {
-            Toast.makeText(
-                requireContext(),
-                "Dados atualizados com sucesso!",
-                Toast.LENGTH_SHORT
-            ).show()
-            findNavController().navigate( R.id.action_DoadorAmbosFragment_to_inicioFragment )
-
-        } else {
-            Toast.makeText(
-                requireContext(),
-                "Erro ao salvar os dados.",
-                Toast.LENGTH_SHORT
-            ).show()
+                if (resultado.isSuccessful) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Dados atualizados com sucesso!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().navigate(R.id.action_DoadorAmbosFragment_to_inicioFragment)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Erro ao salvar os dados.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
     }
 
     override fun onDestroyView() {

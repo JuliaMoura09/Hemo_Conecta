@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@drawable/back_foto">
 
             <LinearLayout
@@ -184,6 +185,32 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="  Doações de Plaquetas"
+                                android:textColor="@color/subtitulo_historico"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- qnt doações de plasma -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/txtQtdPlasma"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/titulo_historico"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="  Doações de Plasma"
                                 android:textColor="@color/subtitulo_historico"
                                 android:textSize="12sp" />
                         </LinearLayout>
