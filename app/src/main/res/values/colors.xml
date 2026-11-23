@@ -76,4 +76,7 @@
     <color name="fundo_plasma">#EEFFE5</color>
     <color name="icon_plasma">#59993B</color>
 
+    <color name="fundo_plasma">#EDE9FE</color>
+    <color name="icon_plasma">#8B5CF6</color>
+
 </resources>
