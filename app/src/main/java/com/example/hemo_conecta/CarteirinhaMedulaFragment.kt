@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener
 
 class CarteirinhaMedulaFragment : Fragment() {
 
-
     private var _binding: FragmentCarteirinhaMedulaBinding? = null
     private val binding get() = _binding!!
 

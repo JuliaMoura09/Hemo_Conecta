@@ -5,47 +5,67 @@
     android:viewportHeight="512">
   <path
       android:pathData="M256,256m-236,0a236,236 0,1 1,472 0a236,236 0,1 1,-472 0"
+      android:fillColor="@color/cor_fee2e2"/>
   <path
       android:pathData="M185,135V112Q185,92 205,92Q225,92 225,112V145"
       android:strokeLineJoin="round"
       android:strokeWidth="26"
+      android:fillColor="@color/cor_00000000"
+      android:strokeColor="@color/icon_sangue"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M287,145V112Q287,92 307,92Q327,92 327,112V135"
       android:strokeLineJoin="round"
       android:strokeWidth="26"
+      android:fillColor="@color/cor_00000000"
+      android:strokeColor="@color/icon_sangue"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M145,145H367Q390,145 390,168V290"
       android:strokeLineJoin="round"
       android:strokeWidth="26"
+      android:fillColor="@color/cor_00000000"
+      android:strokeColor="@color/icon_sangue"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M122,168Q122,145 145,145M122,168V345Q122,368 145,368H280"
       android:strokeLineJoin="round"
       android:strokeWidth="26"
+      android:fillColor="@color/cor_00000000"
+      android:strokeColor="@color/icon_sangue"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M122,205H390"
       android:strokeLineJoin="round"
       android:strokeWidth="26"
+      android:fillColor="@color/cor_00000000"
+      android:strokeColor="@color/icon_sangue"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M163,230L178,230A8,8 0,0 1,186 238L186,253A8,8 0,0 1,178 261L163,261A8,8 0,0 1,155 253L155,238A8,8 0,0 1,163 230z"
+      android:fillColor="@color/icon_sangue"/>
   <path
       android:pathData="M213,230L228,230A8,8 0,0 1,236 238L236,253A8,8 0,0 1,228 261L213,261A8,8 0,0 1,205 253L205,238A8,8 0,0 1,213 230z"
+      android:fillColor="@color/icon_sangue"/>
   <path
       android:pathData="M263,230L278,230A8,8 0,0 1,286 238L286,253A8,8 0,0 1,278 261L263,261A8,8 0,0 1,255 253L255,238A8,8 0,0 1,263 230z"
+      android:fillColor="@color/icon_sangue"/>
   <path
       android:pathData="M163,278L178,278A8,8 0,0 1,186 286L186,301A8,8 0,0 1,178 309L163,309A8,8 0,0 1,155 301L155,286A8,8 0,0 1,163 278z"
+      android:fillColor="@color/icon_sangue"/>
   <path
       android:pathData="M213,278L228,278A8,8 0,0 1,236 286L236,301A8,8 0,0 1,228 309L213,309A8,8 0,0 1,205 301L205,286A8,8 0,0 1,213 278z"
+      android:fillColor="@color/icon_sangue"/>
   <path
       android:pathData="M332,245C332,245 278,304 278,344C278,382 305,410 340,410C375,410 402,382 402,344C402,304 332,245 332,245Z"
       android:strokeLineJoin="round"
       android:strokeWidth="26"
+      android:fillColor="@color/cor_fee2e2"
+      android:strokeColor="@color/icon_sangue"/>
   <path
       android:pathData="M323,333C315,347 318,363 329,371"
       android:strokeWidth="16"
+      android:fillColor="@color/cor_00000000"
+      android:strokeColor="@color/icon_sangue"
       android:strokeLineCap="round"/>
 </vector>

@@ -1,3 +1,4 @@
+
 package com.example.hemo_conecta
 
 import android.content.ClipData
@@ -73,9 +74,11 @@ class CupomAdapter(
             binding.btnResgatar.visibility = View.VISIBLE
 
             if (possuiPontos) {
+                binding.btnResgatar.setText(R.string.ui_resgatar_cupom)
                 binding.btnResgatar.isEnabled = true
 
             } else {
+                binding.btnResgatar.setText(R.string.ui_pontos_insuficientes)
                 binding.btnResgatar.isEnabled = false
             }
         }
@@ -93,6 +96,7 @@ class CupomAdapter(
             if (codigo.isBlank()) {
                 Toast.makeText(
                     context,
+                    R.string.ui_codigo_do_cupom_indisponivel,
                     Toast.LENGTH_SHORT
                 ).show()
                 return@setOnClickListener
