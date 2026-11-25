@@ -5,7 +5,6 @@
     android:viewportHeight="48">
   <path
       android:pathData="M24,0L24,0A24,24 0,0 1,48 24L48,24A24,24 0,0 1,24 48L24,48A24,24 0,0 1,0 24L0,24A24,24 0,0 1,24 0z"
-      android:fillColor="@color/cor_fef9c3"/>
   <group>
     <clip-path
         android:pathData="M12,12h24v24h-24z"/>
@@ -13,39 +12,27 @@
         android:pathData="M18,16H30V23C30,26.314 27.314,29 24,29C20.686,29 18,26.314 18,23V16Z"
         android:strokeLineJoin="round"
         android:strokeWidth="2"
-        android:fillColor="@color/cor_00000000"
-        android:strokeColor="@color/quick_yellow_icon"/>
     <path
         android:pathData="M18,18H14V21C14,24 16,26 19,26"
         android:strokeLineJoin="round"
         android:strokeWidth="2"
-        android:fillColor="@color/cor_00000000"
-        android:strokeColor="@color/quick_yellow_icon"
         android:strokeLineCap="round"/>
     <path
         android:pathData="M30,18H34V21C34,24 32,26 29,26"
         android:strokeLineJoin="round"
         android:strokeWidth="2"
-        android:fillColor="@color/cor_00000000"
-        android:strokeColor="@color/quick_yellow_icon"
         android:strokeLineCap="round"/>
     <path
         android:pathData="M24,29V33"
         android:strokeWidth="2"
-        android:fillColor="@color/cor_00000000"
-        android:strokeColor="@color/quick_yellow_icon"
         android:strokeLineCap="round"/>
     <path
         android:pathData="M20,33H28"
         android:strokeWidth="2"
-        android:fillColor="@color/cor_00000000"
-        android:strokeColor="@color/quick_yellow_icon"
         android:strokeLineCap="round"/>
     <path
         android:pathData="M18,36H30"
         android:strokeWidth="2"
-        android:fillColor="@color/cor_00000000"
-        android:strokeColor="@color/quick_yellow_icon"
         android:strokeLineCap="round"/>
   </group>
 </vector>

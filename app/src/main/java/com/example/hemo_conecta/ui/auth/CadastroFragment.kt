@@ -53,7 +53,7 @@ class CadastroFragment : Fragment() {
 
                 Toast.makeText(
                     requireContext(),
-                    R.string.ui_as_senhas_nao_coincidem,
+                    "As senhas não coincidem",
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -122,16 +122,12 @@ class CadastroFragment : Fragment() {
         email: String,
         senha: String
     ) {
-        // validação do tipo sanguíneo
-        if (tipoSanguineo.isEmpty()) {
-            Toast.makeText(requireContext(), R.string.ui_por_favor_selecione_seu_tipo_sanguineo, Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        // validação do tipo de doador
+        // identifica a opção selecionada no RadioGroup
         val selectedId = binding.radioGroupDoador.checkedRadioButtonId
+
+        // validação - obriga o usuário a marcar uma opção antes de cadastrar
         if (selectedId == -1) {
-            Toast.makeText(requireContext(), R.string.ui_por_favor_selecione_seu_tipo_de_doador, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Por favor, selecione seu tipo de doador", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -142,30 +138,20 @@ class CadastroFragment : Fragment() {
             R.id.option_nao_doador -> "NAO_DOADOR"
             else -> "NAO_DOADOR"
         }
-        val isDoador = tipoDoador != "NAO_DOADOR"
 
-        // validação do gênero
-        val generoSelectedId = binding.radioGroupGenero.checkedRadioButtonId
-        val genero = when (generoSelectedId) {
-            R.id.option_genero_feminino -> "Feminino"
-            R.id.option_genero_masculino -> "Masculino"
-            else -> {
-                Toast.makeText(requireContext(), R.string.ui_por_favor_selecione_o_seu_genero, Toast.LENGTH_SHORT).show()
-                return
-            }
-        }
+        val isDoador = tipoDoador != "NAO_DOADOR"
 
         auth.createUserWithEmailAndPassword(email, senha)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val uid = auth.currentUser?.uid ?: ""
 
+                    // campos que vão preencher o banco de dados
                     val dados = hashMapOf(
                         "nome" to nome,
                         "cpf" to cpf,
                         "nascimento" to nascimento,
                         "tipoSanguineo" to tipoSanguineo,
-                        "genero" to genero,
                         "email" to email,
                         "tipoDoador" to tipoDoador,
                         "isDoador" to isDoador
@@ -179,7 +165,7 @@ class CadastroFragment : Fragment() {
                             if (resultado.isSuccessful) {
                                 Toast.makeText(
                                     requireContext(),
-                                    R.string.ui_cadastro_realizado,
+                                    "Cadastro realizado!",
                                     Toast.LENGTH_SHORT
                                 ).show()
 
@@ -187,7 +173,7 @@ class CadastroFragment : Fragment() {
                             } else {
                                 Toast.makeText(
                                     requireContext(),
-                                    R.string.ui_erro_ao_salvar_os_dados_2,
+                                    "Erro ao salvar os dados",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }

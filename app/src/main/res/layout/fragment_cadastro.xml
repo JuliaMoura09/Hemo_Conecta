@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/ui_criar_conta"
+            android:text="Criar conta"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -48,7 +48,7 @@
             android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ui_junte_se_a_comunidade_de_doadores"
+            android:text="Junte-se à comunidade de doadores!"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textLogo1" />
@@ -66,7 +66,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_nome_completo"
+                android:text="Nome Completo"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="24dp"/>
@@ -74,7 +74,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nome_doador"
+                android:hint="Rubi Silva"
                 android:textColor="@color/cinza"
                 android:textColorHint="@color/cinza"
                 android:textSize="18sp"
@@ -107,7 +107,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ui_cpf"
+                    android:text="CPF"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/cpf_input"
-                    android:hint="@string/ui_000_000_000_00"
+                    android:hint="000.000.000-00"
                     android:textColor="@color/cinza"
                     android:textColorHint="@color/cinza"
                     android:textSize="18sp"
@@ -140,7 +140,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ui_data_de_nascimento"
+                    android:text="Data de Nascimento"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -148,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/nasc_input"
-                    android:hint="@string/data_vazia"
+                    android:hint="00/00/0000"
                     android:textColor="@color/cinza"
                     android:textColorHint="@color/cinza"
                     android:textSize="18sp"
@@ -159,59 +159,20 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!--GÊNERO-->
-        <LinearLayout
-            android:id="@+id/linear_genero"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear3">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/ui_qual_o_seu_genero"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <RadioGroup
-                android:id="@+id/radio_group_genero"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <RadioButton
-                    android:id="@+id/option_genero_feminino"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ui_feminino" />
-
-                <RadioButton
-                    android:id="@+id/option_genero_masculino"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ui_masculino" />
-            </RadioGroup>
-        </LinearLayout>
-
         <!--TIPO SANGUÍNEO-->
         <LinearLayout
-            android:id="@+id/linear4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_genero">
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear3"
+            android:gravity="center"
+            android:id="@+id/linear4">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tipo_sanguineo"
+                android:text="Tipo Sanguíneo"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="24dp"/>
@@ -236,7 +197,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/ui_a"
+                        android:text="A+"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"/>
@@ -254,7 +215,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/ui_a_2"
+                        android:text="A−"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"/>
@@ -273,7 +234,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/ui_b"
+                        android:text="B+"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"/>
@@ -291,7 +252,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/ui_b_2"
+                        android:text="B−"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"/>
@@ -309,7 +270,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/ui_ab"
+                        android:text="AB+"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"/>
@@ -327,7 +288,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/ui_ab_2"
+                        android:text="AB−"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"/>
@@ -346,7 +307,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/sangue_doador"
+                        android:text="O+"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"/>
@@ -364,7 +325,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/ui_o"
+                        android:text="O−"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:gravity="center"/>
@@ -375,7 +336,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_que_tipo_de_doador_voce_e"
+                android:text="Que tipo de doador você é?"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="24dp"/>
@@ -390,25 +351,25 @@
                 android:id="@+id/option_doador_sangue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_sou_apenas_doador_de_sangue"/>
+                android:text="Sou apenas doador de sangue"/>
 
             <RadioButton
                 android:id="@+id/option_doador_medula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_sou_apenas_doador_de_medula_ossea"/>
+                android:text="Sou apenas doador de medula óssea"/>
 
             <RadioButton
                 android:id="@+id/option_doador_ambos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_sou_doador_de_sangue_e_de_medula_ossea"/>
+                android:text="Sou doador de sangue e de medula óssea"/>
 
             <RadioButton
                 android:id="@+id/option_nao_doador"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_nao_sou_doador_de_sangue_e_nem_de_medula_ossea"/>
+                android:text="Não sou doador de sangue e nem de medula óssea"/>
         </RadioGroup>
 
             <!--EMAIL-->
@@ -416,7 +377,7 @@
                 android:id="@+id/text_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_e_mail"
+                android:text="E-mail"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="24dp"
@@ -425,7 +386,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ui_seu_email_com"
+                android:hint="seu@email.com"
                 android:textColor="@color/cinza"
                 android:textColorHint="@color/cinza"
                 android:textSize="18sp"
@@ -442,7 +403,7 @@
                 android:id="@+id/text_senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_senha"
+                android:text="Senha"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="24dp"
@@ -451,7 +412,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ui_texto"
+                android:hint="********"
                 android:textColor="@color/cinza"
                 android:textColorHint="@color/cinza"
                 android:textSize="18sp"
@@ -468,7 +429,7 @@
                 android:id="@+id/confirmar_senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_confirme_sua_senha"
+                android:text="Confirme sua Senha"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="24dp"
@@ -477,7 +438,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ui_texto"
+                android:hint="********"
                 android:textColor="@color/cinza"
                 android:textColorHint="@color/cinza"
                 android:textSize="18sp"
@@ -492,7 +453,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ui_cadastrar"
+                android:text="Cadastrar"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/vermelho"
                 android:padding="18dp"

@@ -12,37 +12,31 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Cabeçalho -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:orientation="vertical">
+                android:layout_marginTop="30dp"
+                android:text="Conteúdos Educacionais"
+                android:textColor="#111827"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ui_artigos_educativos"
-                    android:textColor="@color/cor_111827"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="30dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Artigos escritos por diversos especialistas."
+                android:textColor="#6B7280"
+                android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ui_artigos_escritos_por_diversos_especialistas"
-                    android:textColor="@color/cor_6b7280"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="24dp"/>
-            </LinearLayout>
         </LinearLayout>
-
 
         <!-- Os cards dos artigos serão adicionados pelo Kotlin -->
         <LinearLayout

@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="#FFF5F5"
     android:fillViewport="true">
 
     <LinearLayout
@@ -18,7 +18,7 @@
             android:paddingEnd="24dp"
             android:paddingTop="24dp"
             android:paddingBottom="28dp"
-            android:background="@color/cor_ffe6e8">
+            android:background="#FFE6E8">
 
             <FrameLayout
                 android:id="@+id/btnBack"
@@ -31,7 +31,7 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/ui_voltar"
+                    android:contentDescription="Voltar"
                     android:src="@drawable/ic_back" />
 
             </FrameLayout>
@@ -44,8 +44,8 @@
                 android:background="@drawable/bg_categoria_artigo"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="8dp"
-                android:text="@string/ui_categoria_do_artigo"
-                android:textColor="@color/cor_263449"
+                android:text="Categoria do artigo"
+                android:textColor="#263449"
                 android:textSize="14sp" />
 
             <TextView
@@ -53,8 +53,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/ui_titulo_do_artigo"
-                android:textColor="@color/cor_202c40"
+                android:text="Título do artigo"
+                android:textColor="#202C40"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -63,8 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/ui_nome_do_autor"
-                android:textColor="@color/cor_77849a"
+                android:text="Nome do autor"
+                android:textColor="#77849A"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -86,8 +86,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/ui_sobre_o_artigo"
-                    android:textColor="@color/cor_20385c"
+                    android:text="Sobre o artigo"
+                    android:textColor="#20385C"
                     android:textSize="21sp"
                     android:textStyle="bold" />
 
@@ -96,8 +96,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/ui_apresentacao_do_assunto_e_dos_principais_pontos_do_arti"
-                    android:textColor="@color/cor_70819d"
+                    android:text="Apresentação do assunto e dos principais pontos do artigo."
+                    android:textColor="#70819D"
                     android:textSize="16sp"
                     android:lineSpacingExtra="5dp" />
 
@@ -115,8 +115,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/ui_entenda_o_assunto"
-                    android:textColor="@color/cor_20385c"
+                    android:text="Entenda o assunto"
+                    android:textColor="#20385C"
                     android:textSize="21sp"
                     android:textStyle="bold" />
 
@@ -125,8 +125,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/ui_desenvolva_aqui_o_conteudo_do_artigo"
-                    android:textColor="@color/cor_70819d"
+                    android:text="Desenvolva aqui o conteúdo do artigo"
+                    android:textColor="#70819D"
                     android:textSize="16sp"
                     android:lineSpacingExtra="5dp" />
 
@@ -150,8 +150,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/ui_voce_sabia"
-                        android:textColor="@color/cor_20385c"
+                        android:text="Você sabia?"
+                        android:textColor="#20385C"
                         android:textSize="21sp"
                         android:textStyle="bold" />
 
@@ -160,8 +160,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/ui_adicione_aqui_uma_curiosidade_relacionada_ao_tema"
-                        android:textColor="@color/cor_70819d"
+                        android:text="Adicione aqui uma curiosidade relacionada ao tema."
+                        android:textColor="#70819D"
                         android:textSize="16sp"
                         android:lineSpacingExtra="4dp" />
 
@@ -172,19 +172,6 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="12dp" />
-
-            <Button
-                android:id="@+id/btnConcluirLeitura"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ui_carregando_leitura"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/vermelho"
-                android:padding="18dp"
-                android:textSize="16sp"
-                android:enabled="false"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"/>
 
         </LinearLayout>
 
