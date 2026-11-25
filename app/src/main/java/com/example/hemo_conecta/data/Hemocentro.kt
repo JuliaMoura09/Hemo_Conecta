@@ -18,8 +18,3 @@ data class Hemocentro @JvmOverloads constructor(
     val longitude: Double? = null
 )
 
-/** Um hemocentro junto com a distância (em km) até o usuário. */
-data class HemocentroProximo(
-    val hemocentro: Hemocentro,
-    val distanciaKm: Float
-)

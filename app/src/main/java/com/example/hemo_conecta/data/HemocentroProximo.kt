@@ -5,5 +5,5 @@ package com.example.hemo_conecta.data
  */
 data class HemocentroProximo(
     val hemocentro: Hemocentro,
-    val distanciaKm: Double
+    val distanciaKm: Float
 )
