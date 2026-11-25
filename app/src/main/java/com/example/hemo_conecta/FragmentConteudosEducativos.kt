@@ -1,7 +1,6 @@
 
 package com.example.hemo_conecta
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -97,7 +96,7 @@ class FragmentConteudosEducativos : Fragment() {
                 if (isAdded) {
                     Toast.makeText(
                         requireContext(),
-                        "Não foi possível carregar os artigos.",
+                        R.string.ui_nao_foi_possivel_carregar_os_artigos,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -120,7 +119,7 @@ class FragmentConteudosEducativos : Fragment() {
         val card = CardView(context).apply {
             radius = dp(16).toFloat()
             cardElevation = dp(2).toFloat()
-            setCardBackgroundColor(Color.WHITE)
+            setCardBackgroundColor(androidx.core.content.ContextCompat.getColor(context, R.color.white))
             useCompatPadding = false
 
             layoutParams = LinearLayout.LayoutParams(
@@ -174,7 +173,7 @@ class FragmentConteudosEducativos : Fragment() {
         val textoCategoria = TextView(context).apply {
             text = categoria
             setBackgroundResource(R.drawable.border_text)
-            setTextColor(Color.BLACK)
+            setTextColor(androidx.core.content.ContextCompat.getColor(context, R.color.black))
             textSize = 12f
             setPadding(dp(8), dp(4), dp(8), dp(4))
 
@@ -201,7 +200,7 @@ class FragmentConteudosEducativos : Fragment() {
 
         val parteInferior = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
-            setBackgroundColor(Color.WHITE)
+            setBackgroundColor(androidx.core.content.ContextCompat.getColor(context, R.color.white))
             setPadding(dp(20), dp(16), dp(20), dp(12))
 
             minimumHeight = dp(85)
@@ -214,7 +213,7 @@ class FragmentConteudosEducativos : Fragment() {
 
         val textoTitulo = TextView(context).apply {
             text = titulo
-            setTextColor(Color.BLACK)
+            setTextColor(androidx.core.content.ContextCompat.getColor(context, R.color.black))
             textSize = 16f
             setTypeface(null, android.graphics.Typeface.BOLD)
             maxLines = 2
@@ -228,7 +227,7 @@ class FragmentConteudosEducativos : Fragment() {
 
         val textoAutor = TextView(context).apply {
             text = autor
-            setTextColor(Color.parseColor("#737373"))
+            setTextColor(androidx.core.content.ContextCompat.getColor(context, R.color.cor_737373))
             textSize = 12f
 
             layoutParams = LinearLayout.LayoutParams(
@@ -256,7 +255,7 @@ class FragmentConteudosEducativos : Fragment() {
         val texto = TextView(context).apply {
             text = mensagem
             textSize = 14f
-            setTextColor(Color.parseColor("#6B7280"))
+            setTextColor(androidx.core.content.ContextCompat.getColor(context, R.color.cor_6b7280))
             gravity = Gravity.CENTER
             setPadding(dp(16), dp(24), dp(16), dp(24))
         }

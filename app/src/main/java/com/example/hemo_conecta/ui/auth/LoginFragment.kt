@@ -55,7 +55,7 @@ class LoginFragment : Fragment() {
                         } else {
                             Toast.makeText(
                                 requireContext(),
-                                "E-mail ou senha incorretos",
+                                R.string.ui_e_mail_ou_senha_incorretos,
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -63,7 +63,7 @@ class LoginFragment : Fragment() {
             } else {
                 Toast.makeText(
                     requireContext(),
-                    "Preencha o e-mail e a senha",
+                    R.string.ui_preencha_o_e_mail_e_a_senha,
                     Toast.LENGTH_SHORT
                 ).show()
             }

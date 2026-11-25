@@ -10,15 +10,15 @@
         android:pathData="M1.67,10.005C1.67,5.402 5.402,1.67 10.005,1.67C14.608,1.67 18.34,5.402 18.34,10.005C18.34,14.608 14.608,18.34 10.005,18.34C5.402,18.34 1.67,14.608 1.67,10.005Z"
         android:strokeLineJoin="round"
         android:strokeWidth="2"
-        android:fillColor="#00000000"
-        android:strokeColor="#EF4444"
+        android:fillColor="@color/cor_00000000"
+        android:strokeColor="@color/icon_sangue"
         android:strokeLineCap="round"/>
     <path
         android:pathData="M10,5V10.002L13.33,11.67"
         android:strokeLineJoin="round"
         android:strokeWidth="2"
-        android:fillColor="#00000000"
-        android:strokeColor="#EF4444"
+        android:fillColor="@color/cor_00000000"
+        android:strokeColor="@color/icon_sangue"
         android:strokeLineCap="round"/>
   </group>
 </vector>

@@ -56,7 +56,7 @@ class DadosDoadorSangueFragment : Fragment() {
                 if (resultado.isSuccessful) {
                     Toast.makeText(
                         requireContext(),
-                        "Dados atualizados com sucesso!",
+                        R.string.ui_dados_atualizados_com_sucesso,
                         Toast.LENGTH_SHORT
                     ).show()
                     findNavController().navigate(R.id.action_DoadorSangueFragment_to_inicioFragment)
@@ -64,7 +64,7 @@ class DadosDoadorSangueFragment : Fragment() {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Erro ao salvar os dados.",
+                        R.string.ui_erro_ao_salvar_os_dados,
                         Toast.LENGTH_SHORT
                     ).show()
                 }

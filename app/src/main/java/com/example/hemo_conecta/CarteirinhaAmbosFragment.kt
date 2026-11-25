@@ -18,8 +18,12 @@ class CarteirinhaAmbosFragment : Fragment() {
 
     private var _binding: FragmentCarteirinhaAmbosBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var auth: FirebaseAuth
     private lateinit var reference: DatabaseReference
+
+    private var usuarioReference: DatabaseReference? = null
+    private var dadosListener: ValueEventListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,43 +41,78 @@ class CarteirinhaAmbosFragment : Fragment() {
         reference = FirebaseDatabase.getInstance().reference
 
         buscarDadosCarteirinha()
+
         return binding.root
     }
 
     private fun buscarDadosCarteirinha() {
+
         val uid = auth.currentUser?.uid ?: return
 
-        reference
+        usuarioReference = reference
             .child("usuarios")
             .child(uid)
-            .addValueEventListener(object : ValueEventListener {
 
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    // resgata os dados salvos anteriormente no firebase
-                    val nome = snapshot.child("nome").getValue(String::class.java)
-                    val tipoSanguineo = snapshot.child("tipoSanguineo").getValue(String::class.java)
-                    val cadastroRedome = snapshot.child("cadastroRedome").getValue(String::class.java)
-                    val cadastroHemoes = snapshot.child("cadastroHemoes").getValue(String::class.java)
+        dadosListener = object : ValueEventListener {
 
-                    // atriui os valores salvos no banco de dados aos textviews no CarteirinhaAmbos
-                    binding.nomeUsuario.text = nome ?: ""
-                    binding.tvTipoSanguineo.text = tipoSanguineo ?: ""
-                    binding.tvCadastroRedome.text = cadastroRedome ?: "Não é doador de medula"
-                    binding.tvCadastroHemoes.text = cadastroHemoes ?: "Não é doador de sangue"
-                }
+            override fun onDataChange(snapshot: DataSnapshot) {
 
-                override fun onCancelled(error: DatabaseError) {
+                // Verifica se a tela ainda existe
+                val currentBinding = _binding ?: return
+
+                // Resgata os dados do Firebase
+                val nome = snapshot.child("nome")
+                    .getValue(String::class.java)
+
+                val tipoSanguineo = snapshot.child("tipoSanguineo")
+                    .getValue(String::class.java)
+
+                val cadastroRedome = snapshot.child("cadastroRedome")
+                    .getValue(String::class.java)
+
+                val cadastroHemoes = snapshot.child("cadastroHemoes")
+                    .getValue(String::class.java)
+
+                // Atualiza os TextViews
+                currentBinding.nomeUsuario.text = nome ?: ""
+
+                currentBinding.tvTipoSanguineo.text =
+                    tipoSanguineo ?: ""
+
+                currentBinding.tvCadastroRedome.text =
+                    cadastroRedome ?: "Não é doador de medula"
+
+                currentBinding.tvCadastroHemoes.text =
+                    cadastroHemoes ?: "Não é doador de sangue"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+                context?.let {
                     Toast.makeText(
-                        requireContext(),
+                        it,
                         "Erro ao carregar os dados.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-            })
+            }
+        }
+
+        usuarioReference?.addValueEventListener(dadosListener!!)
     }
 
     override fun onDestroyView() {
+
+        // Remove o listener do Firebase
+        dadosListener?.let { listener ->
+            usuarioReference?.removeEventListener(listener)
+        }
+
+        dadosListener = null
+        usuarioReference = null
+
         super.onDestroyView()
+
         _binding = null
     }
 }

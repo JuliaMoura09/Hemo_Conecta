@@ -41,7 +41,7 @@
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:layout_gravity="center"
-                        android:contentDescription="Voltar"
+                        android:contentDescription="@string/ui_voltar"
                         android:src="@drawable/ic_back" />
                 </FrameLayout>
 
@@ -52,7 +52,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Voltar"
+                android:contentDescription="@string/ui_voltar"
                 android:src="@drawable/false_icon"
                 android:layout_marginTop="60dp"
                 android:layout_gravity="center"/>
@@ -80,7 +80,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Voltar a tela inicial"
+                android:text="@string/ui_voltar_a_tela_inicial"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/vermelho"
                 android:padding="18dp"

@@ -7,17 +7,14 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <!-- menu inferior -->
     <ScrollView
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +25,7 @@
             android:paddingEnd="22dp"
             android:paddingBottom="25dp">
 
-            <!-- cabeçalho -->
+            <!-- CABEÇALHO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +56,6 @@
 
                 </LinearLayout>
 
-                <!-- tipo sanguíneo -->
                 <TextView
                     android:id="@+id/tipoSanguineoInicio"
                     android:layout_width="42dp"
@@ -71,24 +67,24 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <!-- notificações -->
                 <ImageButton
+                    android:id="@+id/btn_notificacoes"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="10dp"
-                    android:id="@+id/btn_notificacoes"
                     android:background="@drawable/bg_buttom_notifications"
                     android:contentDescription="@string/notificacoes"
                     android:padding="12dp"
                     android:src="@drawable/ic_notifications"
                     app:tint="@color/text_dark" />
+
             </LinearLayout>
 
 
-            <!-- cartão próxima doação -->
+            <!-- PRÓXIMA DOAÇÃO -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_doacao"
                 android:elevation="6dp"
@@ -98,62 +94,60 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/proxima_doacao"
+                    android:text="@string/ui_proxima_doacao_de_sangue"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/diasProximaDoacao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="8dp"
+                    android:text="@string/ui_dias"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dias_proxima_doacao"
-                        android:textColor="@color/white"
-                        android:textSize="26sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textoProximaDoacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/ui_calculando_periodo"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="@string/dias"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-                <!-- barra de progress-->
-                <FrameLayout
+                <ProgressBar
+                    android:id="@+id/progressoDoacao"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@drawable/bg_progress">
+                    android:layout_marginTop="12dp"
+                    android:max="90"
+                    android:progress="0"
+                    android:progressTint="@color/white"
+                    android:progressBackgroundTint="@color/cor_80ffffff" />
 
-                    <View
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/bg_progress_fill" />
-                </FrameLayout>
-
-                <!-- botão -->
                 <TextView
-                    android:layout_width="101dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/btnAgendarAgora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/bg_agendar"
-                    android:gravity="center"
                     android:text="@string/agendar_agora"
                     android:textColor="@color/button_text"
                     android:textSize="11sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+
             </LinearLayout>
 
 
-            <!-- acesso rápido -->
+            <!-- ACESSO RÁPIDO -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -170,7 +164,7 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <!-- histórico -->
+                <!-- HISTÓRICO -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -194,9 +188,10 @@
                         android:text="@string/historico"
                         android:textColor="@color/text_dark"
                         android:textSize="11sp" />
+
                 </LinearLayout>
 
-                <!-- processo -->
+                <!-- PROCESSO -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -205,9 +200,9 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/processo_bt"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:id="@+id/processo_bt"
                         android:background="@drawable/bg_quick_blue"
                         android:padding="17dp"
                         android:src="@drawable/ic_document"
@@ -220,9 +215,10 @@
                         android:text="@string/processo"
                         android:textColor="@color/text_dark"
                         android:textSize="11sp" />
+
                 </LinearLayout>
 
-                <!-- questionário -->
+                <!-- QUESTIONÁRIO -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -231,9 +227,9 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/quest_bt"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:id="@+id/quest_bt"
                         android:background="@drawable/bg_quick_purple"
                         android:padding="17dp"
                         android:src="@drawable/ic_clipboard"
@@ -246,9 +242,10 @@
                         android:text="@string/questionario"
                         android:textColor="@color/text_dark"
                         android:textSize="11sp" />
+
                 </LinearLayout>
 
-                <!-- descontos -->
+                <!-- DESCONTOS -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -257,9 +254,9 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/cupons_bt"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:id="@+id/cupons_bt"
                         android:background="@drawable/bg_quick_yellow"
                         android:padding="17dp"
                         android:src="@drawable/ic_gift"
@@ -272,143 +269,21 @@
                         android:text="@string/descontos"
                         android:textColor="@color/text_dark"
                         android:textSize="11sp" />
+
                 </LinearLayout>
+
             </LinearLayout>
 
-
-            <!-- avisos importantes -->
+            <!-- RANKING DINÂMICO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="27dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/avisos_importantes"
-                    android:textColor="@color/text_title"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ver_todos"
-                    android:textColor="@color/red"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-
-            <!-- aviso de sangue -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="96dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/bg_aviso"
-                android:elevation="2dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
-                    android:background="@drawable/bg_quick_yellow"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_warning"
-                    app:tint="@color/warning_icon" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sangue_o_positivo_requisitado"
-                        android:textColor="@color/text_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:text="@string/aviso_estoque"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="11sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <!-- compatibilidade -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                android:layout_marginTop="13dp"
-                android:background="@drawable/bg_compatibilidade"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="14dp">
-
-                <ImageView
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_blood"
-                    app:tint="@color/white" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/compatibilidade_encontrada"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="@string/compatibilidade_descricao"
-                        android:textColor="@color/white"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="›"
-                    android:textColor="@color/white"
-                    android:textSize="28sp" />
-            </LinearLayout>
-
-
-            <!-- ranking -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="215dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/bg_ranking"
                 android:orientation="vertical"
                 android:padding="18dp">
 
-                <!-- título -->
+                <!-- TÍTULO -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -437,110 +312,21 @@
                         android:text="@string/ver_todos"
                         android:textColor="@color/red"
                         android:textSize="12sp" />
+
                 </LinearLayout>
 
-                <!-- primeiro -->
+                <!-- POSIÇÕES DINÂMICAS -->
                 <LinearLayout
+                    android:id="@+id/rankingLista"
                     android:layout_width="match_parent"
-                    android:layout_height="43dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical" />
 
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/primeiro_lugar"
-                        android:textColor="@color/ranking_gold"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/ranking_primeiro"
-                        android:textColor="@color/text_dark"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pontos_primeiro"
-                        android:textColor="@color/text_dark"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <!-- segundo -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="43dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/segundo_lugar"
-                        android:textColor="@color/ranking_second"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/ranking_segundo"
-                        android:textColor="@color/text_dark"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pontos_segundo"
-                        android:textColor="@color/text_dark"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-
-                <!-- terceiro / usuário -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="39dp"
-                    android:background="@drawable/bg_ranking_selected"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp">
-
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/terceiro_lugar"
-                        android:textColor="@color/ranking_third"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/ranking_terceiro"
-                        android:textColor="@color/red_dark"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pontos_terceiro"
-                        android:textColor="@color/text_dark"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

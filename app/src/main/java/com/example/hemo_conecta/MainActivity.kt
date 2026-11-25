@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MainActivity, "Erro ao carregar os dados", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, R.string.ui_erro_ao_carregar_os_dados, Toast.LENGTH_SHORT).show()
             }
         })
     }

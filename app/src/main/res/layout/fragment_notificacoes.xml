@@ -28,7 +28,7 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_gravity="center"
-                android:contentDescription="Voltar"
+                android:contentDescription="@string/ui_voltar"
                 android:src="@drawable/ic_back" />
 
         </FrameLayout>
@@ -37,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:text="Notificações"
-            android:textColor="#111827"
+            android:text="@string/notificacoes"
+            android:textColor="@color/cor_111827"
             android:textSize="18sp"
             android:textStyle="bold" />
 

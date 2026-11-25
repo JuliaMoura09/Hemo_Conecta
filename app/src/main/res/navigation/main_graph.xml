@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.hemo_conecta.ui.SplashFragment"
-        android:label="SplashFragment"
+        android:label="@string/ui_splashfragment"
         tools:layout="@layout/fragment_splash">
 
         <action
@@ -39,7 +39,7 @@
         <fragment
             android:id="@+id/loginFragment"
             android:name="com.example.hemo_conecta.ui.auth.LoginFragment"
-            android:label="LoginFragment">
+            android:label="@string/ui_loginfragment">
 
             <action
                 android:id="@+id/action_loginFragment_to_cadastroFragment"
@@ -54,7 +54,7 @@
         <fragment
             android:id="@+id/cadastroFragment"
             android:name="com.example.hemo_conecta.ui.auth.CadastroFragment"
-            android:label="CadastroFragment" >
+            android:label="@string/ui_cadastrofragment" >
 
         <action
             android:id="@+id/action_cadastroFragment_to_DoadorAmbosFragment"
@@ -73,7 +73,7 @@
         <fragment
             android:id="@+id/RecuperarSenhaFragment"
             android:name="com.example.hemo_conecta.ui.auth.RecuperarSenhaFragment"
-            android:label="RecuperarSenhaFragment" />
+            android:label="@string/ui_recuperarsenhafragment" />
 
         <action
             android:id="@+id/action_RecuperarSenhaFragment_to_loginFragment"
@@ -84,7 +84,7 @@
     <fragment
         android:id="@+id/DoadorAmbosFragment"
         android:name="com.example.hemo_conecta.ui.DadosDoadorAmbosFragment"
-        android:label="DoadorAmbosFragment">
+        android:label="@string/ui_doadorambosfragment">
 
         <action
             android:id="@+id/action_DoadorAmbosFragment_to_inicioFragment"
@@ -94,7 +94,7 @@
     <fragment
         android:id="@+id/DoadorSangueFragment"
         android:name="com.example.hemo_conecta.ui.DadosDoadorSangueFragment"
-        android:label="DoadorSangueFragment">
+        android:label="@string/ui_doadorsanguefragment">
 
         <action
             android:id="@+id/action_DoadorSangueFragment_to_inicioFragment"
@@ -104,7 +104,7 @@
     <fragment
         android:id="@+id/DoadorMedulaFragment"
         android:name="com.example.hemo_conecta.ui.DadosDoadorMedulaFragment"
-        android:label="DoadorMedulaFragment">
+        android:label="@string/ui_doadormedulafragment">
 
         <action
             android:id="@+id/action_DoadorMedulaFragment_to_inicioFragment"
@@ -115,7 +115,7 @@
     <fragment
         android:id="@+id/inicioFragment"
         android:name="com.example.hemo_conecta.ui.InicioFragment"
-        android:label="InicioFragment">
+        android:label="@string/ui_iniciofragment">
 
         <action
             android:id="@+id/action_inicioFragment_to_authentication"
@@ -163,19 +163,19 @@
     <fragment
         android:id="@+id/carteirinhaSangueFragment"
         android:name="com.example.hemo_conecta.CarteirinhaSangueFragment"
-        android:label="CarteirinhaSangueFragment"
+        android:label="@string/ui_carteirinhasanguefragment"
         tools:layout="@layout/fragment_carteirinha_sangue" />
 
     <fragment
         android:id="@+id/carteirinhaMedulaFragment"
         android:name="com.example.hemo_conecta.CarteirinhaMedulaFragment"
-        android:label="CarteirinhaMedulaFragment"
+        android:label="@string/ui_carteirinhamedulafragment"
         tools:layout="@layout/fragment_carteirinha_medula" />
 
     <fragment
         android:id="@+id/naoDoadorFragment"
         android:name="com.example.hemo_conecta.NaoDoadorFragment"
-        android:label="NaoDoadorFragment"
+        android:label="@string/ui_naodoadorfragment"
         tools:layout="@layout/fragment_nao_doador" >
         <action
             android:id="@+id/action_naoDoadorFragment_to_DoadorAmbosFragment2"
@@ -189,17 +189,17 @@
     <fragment
         android:id="@+id/carteirinhaAmbosFragment"
         android:name="com.example.hemo_conecta.CarteirinhaAmbosFragment"
-        android:label="CarteirinhaAmbosFragment" />
+        android:label="@string/ui_carteirinhaambosfragment" />
 
     <fragment
         android:id="@+id/localizacaoFragment"
         android:name="com.example.hemo_conecta.LocalizacaoFragment"
-        android:label="LocalizacaoFragment" />
+        android:label="@string/ui_localizacaofragment" />
 
     <fragment
         android:id="@+id/fragmentConteudosEducativos"
         android:name="com.example.hemo_conecta.FragmentConteudosEducativos"
-        android:label="FragmentConteudosEducativos">
+        android:label="@string/ui_fragmentconteudoseducativos">
 
         <action
             android:id="@+id/action_fragmentConteudosEducativos_to_exemploArtigoFragment"
@@ -210,7 +210,7 @@
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.hemo_conecta.PerfilFragment"
-        android:label="PerfilFragment" >
+        android:label="@string/ui_perfilfragment" >
 
         <action
             android:id="@+id/action_perfilFragment_to_authentication"
@@ -221,13 +221,13 @@
     <fragment
         android:id="@+id/notificacoesFragment"
         android:name="com.example.hemo_conecta.ui.NotificacoesFragment"
-        android:label="NotificacoesFragment" />
+        android:label="@string/ui_notificacoesfragment" />
 
     <!-- tela do histórico de doações e adicionar nova doação-->
     <fragment
         android:id="@+id/historicoFragment"
         android:name="com.example.hemo_conecta.HistoricoFragment"
-        android:label="HistoricoFragment" >
+        android:label="@string/ui_historicofragment" >
         <action
             android:id="@+id/action_historicoFragment_to_adicionarDoacaoFragment2"
             app:destination="@id/adicionarDoacaoFragment" />
@@ -236,7 +236,7 @@
     <fragment
         android:id="@+id/adicionarDoacaoFragment"
         android:name="com.example.hemo_conecta.AdicionarDoacaoFragment"
-        android:label="AdicionarDoacaoFragment" >
+        android:label="@string/ui_adicionardoacaofragment" >
         <action
             android:id="@+id/action_adicionarDoacaoFragment_to_historicoFragment2"
             app:destination="@id/historicoFragment" />
@@ -254,13 +254,13 @@
     <fragment
         android:id="@+id/processoDoacaoFragment"
         android:name="com.example.hemo_conecta.ProcessoDoacaoFragment"
-        android:label="ProcessoDoacaoFragment" />
+        android:label="@string/ui_processodoacaofragment" />
 
     <!-- telas do questionário -->
     <fragment
         android:id="@+id/quest1Fragment"
         android:name="com.example.hemo_conecta.questionario.Quest1Fragment"
-        android:label="Quest1Fragment" >
+        android:label="@string/ui_quest1fragment" >
         <action
             android:id="@+id/action_quest1Fragment_to_quest2Fragment"
             app:destination="@id/quest2Fragment" />
@@ -269,7 +269,7 @@
     <fragment
         android:id="@+id/quest2Fragment"
         android:name="com.example.hemo_conecta.questionario.Quest2Fragment"
-        android:label="Quest2Fragment" >
+        android:label="@string/ui_quest2fragment" >
         <action
             android:id="@+id/action_quest2Fragment_to_quest3Fragment"
             app:destination="@id/quest3Fragment" />
@@ -278,7 +278,7 @@
     <fragment
         android:id="@+id/quest3Fragment"
         android:name="com.example.hemo_conecta.questionario.Quest3Fragment"
-        android:label="Quest3Fragment" >
+        android:label="@string/ui_quest3fragment" >
         <action
             android:id="@+id/action_quest3Fragment_to_quest4Fragment"
             app:destination="@id/quest4Fragment" />
@@ -287,7 +287,7 @@
     <fragment
         android:id="@+id/quest4Fragment"
         android:name="com.example.hemo_conecta.questionario.Quest4Fragment"
-        android:label="Quest4Fragment" >
+        android:label="@string/ui_quest4fragment" >
         <action
             android:id="@+id/action_quest4Fragment_to_quest5Fragment"
             app:destination="@id/quest5Fragment" />
@@ -296,7 +296,7 @@
     <fragment
         android:id="@+id/quest5Fragment"
         android:name="com.example.hemo_conecta.questionario.Quest5Fragment"
-        android:label="Quest5Fragment" >
+        android:label="@string/ui_quest5fragment" >
         <action
             android:id="@+id/action_quest5Fragment_to_aptoFragment"
             app:destination="@id/aptoFragment" />
@@ -308,7 +308,7 @@
     <fragment
         android:id="@+id/aptoFragment"
         android:name="com.example.hemo_conecta.questionario.AptoFragment"
-        android:label="AptoFragment" >
+        android:label="@string/ui_aptofragment" >
         <action
             android:id="@+id/action_aptoFragment_to_inicioFragment"
             app:destination="@id/inicioFragment" />
@@ -320,7 +320,7 @@
     <fragment
         android:id="@+id/naoAptoFragment"
         android:name="com.example.hemo_conecta.questionario.NaoAptoFragment"
-        android:label="NaoAptoFragment" >
+        android:label="@string/ui_naoaptofragment" >
         <action
             android:id="@+id/action_naoAptoFragment_to_inicioFragment"
             app:destination="@id/inicioFragment" />
@@ -330,12 +330,12 @@
     <fragment
         android:id="@+id/cuponsFragment"
         android:name="com.example.hemo_conecta.CuponsFragment"
-        android:label="CuponsFragment" />
+        android:label="@string/ui_cuponsfragment" />
 
     <fragment
         android:id="@+id/exemploArtigoFragment"
         android:name="com.example.hemo_conecta.ExemploArtigoFragment"
-        android:label="Artigo educativo">
+        android:label="@string/ui_artigo_educativo">
 
         <argument
             android:name="categoria"

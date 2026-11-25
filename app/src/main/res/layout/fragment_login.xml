@@ -38,7 +38,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sua doação salva até 10 vidas."
+        android:text="@string/ui_sua_doacao_salva_ate_10_vidas"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="E-mail"
+            android:text="@string/ui_e_mail"
             android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_marginTop="24dp"/>
@@ -65,7 +65,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="seu@email.com"
+            android:hint="@string/ui_seu_email_com"
             android:textColor="@color/cinza"
             android:textColorHint="@color/cinza"
             android:textSize="18sp"
@@ -85,7 +85,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Senha"
+                android:text="@string/ui_senha"
                 android:layout_weight="1"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"/>
@@ -94,7 +94,7 @@
                 android:id="@+id/btnRecuperarSenha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Esqueceu a senha?"
+                android:text="@string/ui_esqueceu_a_senha"
                 android:layout_weight="1"
                 android:textAlignment="textEnd"
                 android:textSize="14sp"
@@ -105,7 +105,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="********"
+            android:hint="@string/ui_texto"
             android:textColor="@color/cinza"
             android:textColorHint="@color/cinza"
             android:textSize="18sp"
@@ -119,7 +119,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Entrar"
+            android:text="@string/ui_entrar"
             android:textColor="@color/white"
             android:backgroundTint="@color/vermelho"
             android:padding="18dp"
@@ -132,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Cadastre-se"
+            android:text="@string/ui_cadastre_se"
             android:textSize="14sp"
             android:layout_marginTop="24dp"
             android:textColor="@color/vermelho"

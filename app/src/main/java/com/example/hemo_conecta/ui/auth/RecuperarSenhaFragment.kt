@@ -1,5 +1,7 @@
 package com.example.hemo_conecta.ui.auth
 
+import com.example.hemo_conecta.R
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -53,7 +55,7 @@ class RecuperarSenhaFragment : Fragment() {
         } else {
             Toast.makeText(
                 requireContext(),
-                "Digite seu e-mail",
+                R.string.ui_digite_seu_e_mail,
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -68,7 +70,7 @@ class RecuperarSenhaFragment : Fragment() {
 
                     Toast.makeText(
                         requireContext(),
-                        "E-mail de recuperação enviado!",
+                        R.string.ui_e_mail_de_recuperacao_enviado,
                         Toast.LENGTH_LONG
                     ).show()
 

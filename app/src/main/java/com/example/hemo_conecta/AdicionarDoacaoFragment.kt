@@ -25,6 +25,9 @@ class AdicionarDoacaoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAdicionarDoacaoBinding.inflate(inflater, container, false)
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
         return binding.root
     }
 
@@ -50,7 +53,7 @@ class AdicionarDoacaoFragment : Fragment() {
         if (selectedId == -1) {
             Toast.makeText(
                 requireContext(),
-                "Por favor, selecione seu tipo de doação",
+                R.string.ui_por_favor_selecione_seu_tipo_de_doacao,
                 Toast.LENGTH_SHORT
             ).show()
             return
@@ -60,6 +63,7 @@ class AdicionarDoacaoFragment : Fragment() {
             R.id.option_doacao_sangue -> "SANGUE"
             R.id.option_doacao_medula -> "MEDULA"
             R.id.option_doacao_plaquetas -> "PLAQUETAS"
+            R.id.option_doacao_plasma -> "PLASMA"
             else -> ""
         }
 
@@ -68,6 +72,13 @@ class AdicionarDoacaoFragment : Fragment() {
         // validação - obriga o usuário a informar a data
         if (dataDoacao.isEmpty()) {
             binding.dataDoacaoInput.error = "Digite a data da doação"
+            binding.dataDoacaoInput.requestFocus()
+            return
+        }
+
+        // validação de tamanho (ex: 10 caracteres para "DD/MM/AAAA")
+        if (dataDoacao.length < 10) {
+            binding.dataDoacaoInput.error = "Digite a data completa (DD/MM/AAAA)"
             binding.dataDoacaoInput.requestFocus()
             return
         }
@@ -84,7 +95,7 @@ class AdicionarDoacaoFragment : Fragment() {
             .addOnSuccessListener {
                 Toast.makeText(
                     requireContext(),
-                    "Doação cadastrada com sucesso!",
+                    R.string.ui_doacao_cadastrada_com_sucesso,
                     Toast.LENGTH_SHORT
                 ).show()
                 findNavController().navigate(R.id.action_adicionarDoacaoFragment_to_historicoFragment2)            }

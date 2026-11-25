@@ -4,25 +4,25 @@
     <item
         android:id="@+id/inicioFragment"
         android:icon="@drawable/ic_house"
-        android:title="Inicio" />
+        android:title="@string/ui_inicio" />
 
     <item
         android:id="@+id/carteirinhaAmbosFragment"
         android:icon="@drawable/ic_card"
-        android:title="Carteirinha" />
+        android:title="@string/app_name" />
 
     <item
         android:id="@+id/localizacaoFragment"
         android:icon="@drawable/ic_map"
-        android:title="Hemocentros" />
+        android:title="@string/ui_hemocentros" />
 
     <item
         android:id="@+id/fragmentConteudosEducativos"
         android:icon="@drawable/ic_lamp"
-        android:title="Curiosidades" />
+        android:title="@string/ui_curiosidades" />
 
     <item
         android:id="@+id/perfilFragment"
         android:icon="@drawable/ic_profile"
-        android:title="Perfil" />
+        android:title="@string/ui_perfil" />
 </menu>

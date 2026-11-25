@@ -27,8 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Procure aqui um\nhemocentro perto de você"
-                android:textColor="#111827"
+                android:text="@string/ui_procure_aqui_um_nhemocentro_perto_de_voce"
+                android:textColor="@color/cor_111827"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
                 android:id="@+id/etSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pesquisar..."
+                android:hint="@string/ui_pesquisar"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/cinza"
                 android:textColorHint="@color/cinza"
@@ -49,6 +49,36 @@
                 android:backgroundTint="@color/white"
                 android:padding="18dp"
                 android:inputType="text"/>
+
+            <LinearLayout
+                android:id="@+id/maisProximoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/ui_hemocentro_mais_proximo_de_voce"
+                    android:textColor="@color/cor_111827"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMaisProximoStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/cinza"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/cardMaisProximoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/resultadosContainer"
@@ -64,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="Nenhum hemocentro encontrado para essa busca."
+                android:text="@string/ui_nenhum_hemocentro_encontrado_para_essa_busca"
                 android:textColor="@color/cinza"
                 android:textSize="14sp"
                 android:visibility="gone" />
@@ -87,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="Imagem: https://hemoes.es.gov.br/enderecos-dos-hemocentros"
+                    android:text="@string/ui_imagem_https_hemoes_es_gov_br_enderecos_dos_hemocentros"
                     android:textColor="@color/cinza"
                     android:textSize="10sp" />
             </LinearLayout>
@@ -98,7 +128,7 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="64dp"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         app:itemIconTint="@color/bottom_nav_colors"
         app:itemTextColor="@color/bottom_nav_colors"
         app:labelVisibilityMode="labeled"

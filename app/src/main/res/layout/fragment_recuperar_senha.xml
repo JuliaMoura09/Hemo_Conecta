@@ -21,7 +21,7 @@
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_gravity="center"
-            android:contentDescription="Voltar"
+            android:contentDescription="@string/ui_voltar"
             android:src="@drawable/ic_back" />
     </FrameLayout>
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:gravity="center"
-        android:text="Informe seu e-mail para receber uma link onde você poderá alterar sua senha."
+        android:text="@string/ui_informe_seu_e_mail_para_receber_uma_link_onde_voce_pode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textLogo1"/>
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="E-mail"
+            android:text="@string/ui_e_mail"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -73,7 +73,7 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/white"
-            android:hint="seu@email.com"
+            android:hint="@string/ui_seu_email_com"
             android:inputType="text"
             android:padding="18dp"
             android:textColor="@color/cinza"
@@ -87,7 +87,7 @@
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/vermelho"
             android:padding="18dp"
-            android:text="Enviar E-mail"
+            android:text="@string/ui_enviar_e_mail"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
