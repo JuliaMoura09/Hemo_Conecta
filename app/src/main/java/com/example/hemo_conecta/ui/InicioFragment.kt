@@ -35,20 +35,16 @@ class InicioFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var reference: DatabaseReference
 
-    private lateinit var doacoesReference: DatabaseReference
     private lateinit var usuariosReference: DatabaseReference
-
     private lateinit var referenciaDoacoesUsuario: DatabaseReference
 
-    private var doacoesSnapshot: DataSnapshot? = null
     private var usuariosSnapshot: DataSnapshot? = null
-
-    private var doacoesListener: ValueEventListener? = null
     private var usuariosListener: ValueEventListener? = null
-    private var dadosListener: ValueEventListener? = null
-    private var listenerDoacaoSangue: ValueEventListener? = null
 
     private var dadosReference: DatabaseReference? = null
+    private var dadosListener: ValueEventListener? = null
+
+    private var listenerDoacaoSangue: ValueEventListener? = null
 
     private var intervaloDoacao = 90
 
@@ -130,8 +126,8 @@ class InicioFragment : Fragment() {
                 val tipoSanguineo = snapshot.child("tipoSanguineo")
                     .getValue(String::class.java)
 
-                binding.nomeUsuarioInicio.text = nome
-                binding.tipoSanguineoInicio.text = tipoSanguineo
+                binding.nomeUsuarioInicio.text = nome ?: ""
+                binding.tipoSanguineoInicio.text = tipoSanguineo ?: ""
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -154,7 +150,6 @@ class InicioFragment : Fragment() {
 
         val uid = auth.currentUser?.uid ?: return
 
-        // Busca o gênero do usuário
         reference.child("usuarios")
             .child(uid)
             .child("genero")
@@ -167,17 +162,12 @@ class InicioFragment : Fragment() {
                     ?.trim()
                     ?.uppercase()
 
-                // Define o intervalo de acordo com o gênero
                 intervaloDoacao = when (genero) {
-
                     "MASCULINO" -> 60
-
                     "FEMININO" -> 90
-
                     else -> 90
                 }
 
-                // Busca as doações do usuário
                 referenciaDoacoesUsuario = reference
                     .child("doacoes")
                     .child(uid)
@@ -229,14 +219,17 @@ class InicioFragment : Fragment() {
                                                 Calendar.HOUR_OF_DAY,
                                                 0
                                             )
+
                                             calendario.set(
                                                 Calendar.MINUTE,
                                                 0
                                             )
+
                                             calendario.set(
                                                 Calendar.SECOND,
                                                 0
                                             )
+
                                             calendario.set(
                                                 Calendar.MILLISECOND,
                                                 0
@@ -257,19 +250,23 @@ class InicioFragment : Fragment() {
                             }
                         }
 
-                        // Caso não existam doações de sangue
+                        // CASO NÃO EXISTAM DOAÇÕES DE SANGUE
                         if (ultimaDoacao == null) {
 
-                            binding.diasProximaDoacao.setText(R.string.ui_dias)
+                            binding.diasProximaDoacao.setText(
+                                R.string.ui_dias
+                            )
 
-                            binding.textoProximaDoacao.setText(R.string.ui_registre_sua_primeira_doacao_de_sangue)
+                            binding.textoProximaDoacao.setText(
+                                R.string.ui_registre_sua_primeira_doacao_de_sangue
+                            )
 
                             binding.progressoDoacao.progress = 0
 
                             return
                         }
 
-                        // Calcula a data de liberação
+                        // CALCULA A DATA DE LIBERAÇÃO
                         val dataLiberacao = ultimaDoacao.clone() as Calendar
 
                         dataLiberacao.add(
@@ -277,7 +274,7 @@ class InicioFragment : Fragment() {
                             intervaloDoacao
                         )
 
-                        // Data atual
+                        // DATA ATUAL
                         val hoje = Calendar.getInstance(
                             TimeZone.getTimeZone("UTC")
                         )
@@ -287,22 +284,24 @@ class InicioFragment : Fragment() {
                         hoje.set(Calendar.SECOND, 0)
                         hoje.set(Calendar.MILLISECOND, 0)
 
-                        // Calcula a diferença entre as datas
+                        // CALCULA A DIFERENÇA ENTRE AS DATAS
                         val diferenca = (
-                                dataLiberacao.timeInMillis - hoje.timeInMillis
+                                dataLiberacao.timeInMillis -
+                                        hoje.timeInMillis
                                 ) / (24 * 60 * 60 * 1000)
 
-                        val diasRestantes = diferenca.toInt().coerceAtLeast(0)
+                        val diasRestantes = diferenca.toInt()
+                            .coerceAtLeast(0)
 
                         val diasPassados = (
                                 intervaloDoacao - diasRestantes
                                 ).coerceIn(0, intervaloDoacao)
 
-                        // Atualiza a barra de progresso
+                        // ATUALIZA A BARRA DE PROGRESSO
                         binding.progressoDoacao.max = intervaloDoacao
                         binding.progressoDoacao.progress = diasPassados
 
-                        // Exibe os dias restantes
+                        // EXIBE OS DIAS RESTANTES
                         if (diasRestantes > 0) {
 
                             binding.diasProximaDoacao.text =
@@ -313,9 +312,13 @@ class InicioFragment : Fragment() {
 
                         } else {
 
-                            binding.diasProximaDoacao.setText(R.string.ui_0_dias)
+                            binding.diasProximaDoacao.setText(
+                                R.string.ui_0_dias
+                            )
 
-                            binding.textoProximaDoacao.setText(R.string.ui_o_periodo_de_referencia_foi_concluido_consulte_o_hemoce)
+                            binding.textoProximaDoacao.setText(
+                                R.string.ui_o_periodo_de_referencia_foi_concluido_consulte_o_hemoce
+                            )
                         }
                     }
 
@@ -350,28 +353,7 @@ class InicioFragment : Fragment() {
     // CARREGAR RANKING
     private fun carregarRanking() {
 
-        doacoesReference = reference.child("doacoes")
         usuariosReference = reference.child("usuarios")
-
-        doacoesListener = object : ValueEventListener {
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                doacoesSnapshot = snapshot
-                atualizarRanking()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-                if (_binding == null) return
-
-                Toast.makeText(
-                    requireContext(),
-                    R.string.ui_erro_ao_carregar_as_doacoes,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
 
         usuariosListener = object : ValueEventListener {
 
@@ -393,14 +375,12 @@ class InicioFragment : Fragment() {
             }
         }
 
-        doacoesReference.addValueEventListener(doacoesListener!!)
         usuariosReference.addValueEventListener(usuariosListener!!)
     }
 
     // CALCULAR E EXIBIR RANKING
     private fun atualizarRanking() {
 
-        val doacoes = doacoesSnapshot ?: return
         val usuarios = usuariosSnapshot ?: return
 
         if (_binding == null) return
@@ -409,41 +389,23 @@ class InicioFragment : Fragment() {
 
         val ranking = mutableListOf<Pair<String, Int>>()
 
-        // Percorre todos os usuários cadastrados
+        // PERCORRE TODOS OS USUÁRIOS
         for (usuario in usuarios.children) {
 
             val uid = usuario.key ?: continue
 
-            var pontos = 0
+            // LÊ A PONTUAÇÃO ARMAZENADA NO PERFIL
+            val hemocoins = usuario.child("hemocoins")
+                .getValue(Long::class.java)
+                ?.toInt()
+                ?: usuario.child("hemocoins")
+                    .getValue(Int::class.java)
+                ?: 0
 
-            // Busca as doações do usuário
-            val doacoesUsuario = doacoes.child(uid)
-
-            for (doacao in doacoesUsuario.children) {
-
-                val tipo = doacao.child("tipo")
-                    .getValue(String::class.java)
-                    ?.uppercase()
-                    ?.trim()
-                    ?.replace("Ó", "O")
-                    ?.replace("_", " ")
-
-                when (tipo) {
-
-                    "SANGUE" -> pontos += 500
-
-                    "MEDULA OSSEA" -> pontos += 1000
-
-                    "PLASMA" -> pontos += 250
-
-                    "PLAQUETAS" -> pontos += 250
-                }
-            }
-
-            ranking.add(Pair(uid, pontos))
+            ranking.add(Pair(uid, hemocoins))
         }
 
-        // Ordena pela pontuação e pelo nome em caso de empate
+        // ORDENA PELA PONTUAÇÃO E PELO NOME
         ranking.sortWith(
             compareByDescending<Pair<String, Int>> { it.second }
                 .thenBy {
@@ -454,20 +416,20 @@ class InicioFragment : Fragment() {
                 }
         )
 
-        // Encontra a posição do usuário logado
+        // ENCONTRA A POSIÇÃO DO USUÁRIO LOGADO
         val posicaoUsuario = ranking.indexOfFirst {
             it.first == uidAtual
         }
 
-        // Define as posições que serão exibidas
+        // DEFINE AS POSIÇÕES QUE SERÃO EXIBIDAS
         val posicoes = mutableSetOf<Int>()
 
-        // Adiciona os três primeiros colocados
+        // ADICIONA OS TRÊS PRIMEIROS
         for (i in 0 until minOf(3, ranking.size)) {
             posicoes.add(i)
         }
 
-        // Adiciona o usuário e seus vizinhos
+        // ADICIONA O USUÁRIO E SEUS VIZINHOS
         if (posicaoUsuario != -1) {
 
             if (posicaoUsuario > 0) {
@@ -481,10 +443,10 @@ class InicioFragment : Fragment() {
             }
         }
 
-        // Limpa o ranking anterior
+        // LIMPA O RANKING ANTERIOR
         binding.rankingLista.removeAllViews()
 
-        // Exibe cada posição
+        // EXIBE CADA POSIÇÃO
         for (posicao in posicoes.sorted()) {
 
             val (uid, pontos) = ranking[posicao]
@@ -495,7 +457,7 @@ class InicioFragment : Fragment() {
 
             val usuarioAtual = uid == uidAtual
 
-            // Cria a linha
+            // CRIA A LINHA
             val linha = LinearLayout(requireContext()).apply {
 
                 orientation = LinearLayout.HORIZONTAL
@@ -512,7 +474,9 @@ class InicioFragment : Fragment() {
                         R.drawable.bg_ranking_selected
                     )
 
-                    val padding = (8 * resources.displayMetrics.density).toInt()
+                    val padding = (
+                            8 * resources.displayMetrics.density
+                            ).toInt()
 
                     setPadding(
                         padding,
@@ -523,7 +487,7 @@ class InicioFragment : Fragment() {
                 }
             }
 
-            // Número da posição
+            // NÚMERO DA POSIÇÃO
             val textoPosicao = TextView(requireContext()).apply {
 
                 layoutParams = LinearLayout.LayoutParams(
@@ -536,13 +500,9 @@ class InicioFragment : Fragment() {
                 setTypeface(null, Typeface.BOLD)
 
                 val cor = when (posicao) {
-
                     0 -> R.color.ranking_gold
-
                     1 -> R.color.ranking_second
-
                     2 -> R.color.ranking_third
-
                     else -> R.color.text_dark
                 }
 
@@ -551,7 +511,7 @@ class InicioFragment : Fragment() {
                 )
             }
 
-            // Nome do usuário
+            // NOME DO USUÁRIO
             val textoNome = TextView(requireContext()).apply {
 
                 layoutParams = LinearLayout.LayoutParams(
@@ -583,7 +543,7 @@ class InicioFragment : Fragment() {
                 }
             }
 
-            // Pontuação
+            // HEMOCOINS
             val textoPontos = TextView(requireContext()).apply {
 
                 layoutParams = LinearLayout.LayoutParams(
@@ -613,12 +573,6 @@ class InicioFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-
-        doacoesListener?.let {
-            if (::doacoesReference.isInitialized) {
-                doacoesReference.removeEventListener(it)
-            }
-        }
 
         usuariosListener?.let {
             if (::usuariosReference.isInitialized) {

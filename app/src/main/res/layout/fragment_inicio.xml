@@ -131,7 +131,7 @@
                 <TextView
                     android:id="@+id/btnAgendarAgora"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/bg_agendar"
                     android:text="@string/agendar_agora"

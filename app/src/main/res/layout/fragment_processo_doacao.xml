@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/titulo_processo"
                     android:textColor="@color/titulo_processo"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -63,7 +63,7 @@
                     android:layout_marginTop="1dp"
                     android:text="@string/subtitulo_processo"
                     android:textColor="@color/texto_processo"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -104,7 +104,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/processo_tempo"
                             android:textColor="@color/texto_processo"
-                            android:textSize="9sp" />
+                            android:textSize="10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -112,7 +112,7 @@
                             android:layout_marginTop="1dp"
                             android:text="@string/processo_tempo_min"
                             android:textColor="@color/titulo_processo"
-                            android:textSize="15sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -123,8 +123,8 @@
                         android:backgroundTint="@color/fundo_tempo">
 
                         <ImageView
-                            android:layout_width="17dp"
-                            android:layout_height="17dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_clock"
                             app:tint="@color/icon_tempo" />
@@ -186,7 +186,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/titulo_cadastro"
                             android:textColor="@color/titulo_processo"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -196,7 +196,7 @@
                             android:lineSpacingExtra="1dp"
                             android:text="@string/descricao_cadastro"
                             android:textColor="@color/texto_processo"
-                            android:textSize="10sp" />
+                            android:textSize="13sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -249,7 +249,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/titulo_pre_triagem"
                             android:textColor="@color/titulo_processo"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -259,7 +259,7 @@
                             android:lineSpacingExtra="1dp"
                             android:text="@string/descricao_pre_triagem"
                             android:textColor="@color/texto_processo"
-                            android:textSize="10sp" />
+                            android:textSize="13sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -312,7 +312,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/titulo_triagem"
                             android:textColor="@color/titulo_processo"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -322,7 +322,7 @@
                             android:lineSpacingExtra="1dp"
                             android:text="@string/descricao_triagem"
                             android:textColor="@color/texto_processo"
-                            android:textSize="10sp" />
+                            android:textSize="13sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -374,7 +374,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/titulo_coleta"
                             android:textColor="@color/titulo_processo"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -384,7 +384,7 @@
                             android:lineSpacingExtra="1dp"
                             android:text="@string/descricao_coleta"
                             android:textColor="@color/texto_processo"
-                            android:textSize="10sp" />
+                            android:textSize="13sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -431,7 +431,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/titulo_lanche"
                             android:textColor="@color/titulo_processo"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -441,7 +441,7 @@
                             android:lineSpacingExtra="1dp"
                             android:text="@string/descricao_lanche"
                             android:textColor="@color/texto_processo"
-                            android:textSize="10sp" />
+                            android:textSize="13sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

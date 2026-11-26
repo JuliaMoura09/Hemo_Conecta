@@ -137,15 +137,15 @@
     <string name="processo_tempo">Tempo Estimado</string>
     <string name="processo_tempo_min">40 – 60 min</string>
     <string name="titulo_cadastro">Cadastro</string>
-    <string name="descricao_cadastro">Apresentação de documento oficial com foto e atualização \n de dados.</string>
+    <string name="descricao_cadastro">Apresentação de documento oficial com foto e atualização de dados.</string>
     <string name="titulo_pre_triagem">Pré-Triagem</string>
-    <string name="descricao_pre_triagem">Verificação dos sinais vitais: pressão arterial, temperatura, \n frequência cardíaca, peso dosagem de hemoglobina.</string>
+    <string name="descricao_pre_triagem">Verificação dos sinais vitais: pressão arterial, temperatura, frequência cardíaca, peso dosagem de hemoglobina.</string>
     <string name="titulo_triagem">Triagem Clínica</string>
-    <string name="descricao_triagem">Entrevista individual e sigilosa sobre seu estado de saúde \n para verificar se a doação pode ser feita e assinatura do \n Termo de Consentimento Livre e Esclarecido.</string>
+    <string name="descricao_triagem">Entrevista individual e sigilosa sobre seu estado de saúde para verificar se a doação pode ser feita e assinatura do Termo de Consentimento Livre e Esclarecido.</string>
     <string name="titulo_coleta">Coleta de Sangue</string>
-    <string name="descricao_coleta">Doação feita através de punção com agulha em uma veia \n do braço com o material estéril e descartável. O volume \n de sangue coletado varia de 400 a 470ml e o processo \n dura de 5 a 15 minutos.</string>
+    <string name="descricao_coleta">Doação feita através de punção com agulha em uma veia do braço com o material estéril e descartável. O volume de sangue coletado varia de 400 a 470ml e o processo dura de 5 a 15 minutos.</string>
     <string name="titulo_lanche">Lanche e Descanso</string>
-    <string name="descricao_lanche">Após a doação, o doador faz um lanche para repor os níveis \n de glicemia e hidratação e permanece no Hemoes por pelo \n menos 15 minutos após o fim da doação. Essas medidas \n visam a diminuição do risco de problemas após a doação.</string>
+    <string name="descricao_lanche">Após a doação, o doador faz um lanche para repor os níveis de glicemia e hidratação e permanece no Hemoes por pelo  menos 15 minutos após o fim da doação. Essas medidas visam a diminuição do risco de problemas após a doação.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
